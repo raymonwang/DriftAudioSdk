@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>DriftAudioSdk.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>DriftAudioSdkTest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>439CA5631A0B30C90027DFF3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>439CA56E1A0B30C90027DFF3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>43AE42041A1098A40017CFEB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>43AE42161A1098A40017CFEB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
