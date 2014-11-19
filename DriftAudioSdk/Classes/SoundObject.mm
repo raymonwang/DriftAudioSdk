@@ -9,6 +9,7 @@
 #import "SoundObject.h"
 #import "lame.h"
 #import "RTChatSDKMain.h"
+#import "amr_codec/audio_format_convert.h"
 
 @interface SoundObject ()
 
@@ -43,8 +44,17 @@
         size_t read, write;
         
         FILE *pcm = fopen([self.current_recordedFile_caf cStringUsingEncoding:1], "rb");  //source 被转换的音频文件位置
+        if (!pcm) {
+            NSLog(@"原始录音文件打开失败");
+            return NO;
+        }
         fseek(pcm, 4*1024, SEEK_CUR);                                   //skip file header
         FILE *mp3 = fopen([self.current_recordedFile_mp3 cStringUsingEncoding:1], "wb");  //output 输出生成的Mp3文件位置
+        if (!mp3) {
+            NSLog(@"生成压缩文件失败");
+            fclose(pcm);
+            return NO;
+        }
         
         const int PCM_SIZE = 8192;
         const int MP3_SIZE = 8192;
@@ -78,6 +88,11 @@
     @catch (NSException *exception) {
         NSLog(@"%@",[exception description]);
     }
+}
+
+- (BOOL)transferPCMtoAMR
+{
+    return !pcm2amr([self.current_recordedFile_caf UTF8String], [self.current_recordedFile_mp3 UTF8String], 1);
 }
 
 -(instancetype)init
@@ -138,7 +153,7 @@
     //录音设置
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     //录音格式 无法使用
-    [settings setValue :[NSNumber numberWithInt:kAudioFormatAMR] forKey: AVFormatIDKey];
+    [settings setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey: AVFormatIDKey];
     //采样率
     [settings setValue :[NSNumber numberWithFloat:16000.0] forKey: AVSampleRateKey];//44100.0
     //通道数
@@ -149,7 +164,7 @@
     [settings setValue:[NSNumber numberWithInt:AVAudioQualityMin] forKey:AVEncoderAudioQualityKey];
     
     NSString* filename_caf = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.caf", (long)labelid]];
-    self.current_recordedFile_mp3 = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.mp3", (long)labelid]];
+    self.current_recordedFile_mp3 = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)labelid]];
     self.current_recordedFile_caf = filename_caf;
     [_recordFileDic setObject:self.current_recordedFile_mp3 forKey:[NSNumber numberWithInteger:labelid]];
     NSURL* url = [NSURL URLWithString:filename_caf];
@@ -189,7 +204,8 @@
     if (_opstate == SoundOpRecording) {
         [_recorder stop];
         
-        [self transferPCMtoMP3];
+//        [self transferPCMtoMP3];
+        [self transferPCMtoAMR];
         _recorder = nil;
         
         [_timerForPitch invalidate];
@@ -290,7 +306,7 @@
         return YES;
     }
     else {
-        NSString* path = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.mp3", (long)labelid]];
+        NSString* path = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)labelid]];
         NSLog(@"内存写入磁盘文件%@", path);
         return [data writeToFile:path atomically:YES];
     }

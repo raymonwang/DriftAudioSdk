@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>93AB18CE-C5FB-4FA2-936F-F1A65C568DCA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DriftAudioSdk</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DB56C1CB4B50E31F6133FDF45DA69A5FB65BA61A</key>
+		<string>ssh://180.166.92.227:5678/~/git_repo/driftaudiosdk.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DriftAudioSdk.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DB56C1CB4B50E31F6133FDF45DA69A5FB65BA61A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://180.166.92.227:5678/~/git_repo/driftaudiosdk.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DB56C1CB4B50E31F6133FDF45DA69A5FB65BA61A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DB56C1CB4B50E31F6133FDF45DA69A5FB65BA61A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DriftAudioSdk</string>
+		</dict>
+	</array>
+</dict>
+</plist>

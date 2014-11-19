@@ -73,17 +73,18 @@ void HttpProcess::postContent(const char *urlstr, const StCallBackInfo& info, st
 void HttpProcess::requestContent(const StRequestUrlInfo& urlinfo)
 {
     _isrunning = true;
+    StRequestUrlInfo info = urlinfo;
     
-    NSString* url = [NSString stringWithUTF8String:urlinfo.url.c_str()];
+    NSString* url = [NSString stringWithUTF8String:info.url.c_str()];
     [[CmdHandler sharedInstance] getFile:url reqParams:nil completBlock:^(id res) {
         NSData* data = (NSData*)res;
         if (res == nil) {
             //下载失败
-            _func(HttpProcess_DownLoad, StCallBackInfo(NULL, 0, urlinfo.labelid));
+            _func(HttpProcess_DownLoad, StCallBackInfo(NULL, 0, info.labelid));
         }
         else {
             //下载成功
-            _func(HttpProcess_DownLoad, StCallBackInfo((const char*)[data bytes], [data length], urlinfo.labelid));
+            _func(HttpProcess_DownLoad, StCallBackInfo((const char*)[data bytes], [data length], info.labelid));
         }
         _isrunning = false;
     }];

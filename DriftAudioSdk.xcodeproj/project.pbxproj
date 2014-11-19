@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		437953811A1C4E0600462004 /* audio_format_convert.c in Sources */ = {isa = PBXBuildFile; fileRef = 4379537D1A1C4E0600462004 /* audio_format_convert.c */; };
+		437956161A1C6B4000462004 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956151A1C6B4000462004 /* libopencore-amrnb.a */; };
+		437956191A1C88CE00462004 /* amrnb.c in Sources */ = {isa = PBXBuildFile; fileRef = 437956181A1C88CE00462004 /* amrnb.c */; };
 		439CA59F1A0B31310027DFF3 /* RTChatSDKMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain.mm */; };
 		439CA5A31A0B31F30027DFF3 /* HttpProcess.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess.mm */; };
 		439CA5A61A0B32B30027DFF3 /* CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A51A0B32B30027DFF3 /* CmdHandler.m */; };
@@ -83,6 +86,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4379537C1A1C4E0600462004 /* amrnb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrnb.h; sourceTree = "<group>"; };
+		4379537D1A1C4E0600462004 /* audio_format_convert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio_format_convert.c; sourceTree = "<group>"; };
+		4379537E1A1C4E0600462004 /* audio_format_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_format_convert.h; sourceTree = "<group>"; };
+		4379537F1A1C4E0600462004 /* bs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bs.h; sourceTree = "<group>"; };
+		4379538D1A1C519E00462004 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		4379538E1A1C519E00462004 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		437956151A1C6B4000462004 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		437956181A1C88CE00462004 /* amrnb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = amrnb.c; sourceTree = "<group>"; };
 		439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		439CA59D1A0B31310027DFF3 /* RTChatSDKMain.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTChatSDKMain.mm; sourceTree = "<group>"; tabWidth = 4; wrapsLines = 1; };
 		439CA59E1A0B31310027DFF3 /* RTChatSDKMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSDKMain.h; sourceTree = "<group>"; };
@@ -170,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				439CA5C81A0B55ED0027DFF3 /* libmp3lame.a in Frameworks */,
+				437956161A1C6B4000462004 /* libopencore-amrnb.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +195,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4379537A1A1C4E0600462004 /* amr_codec */ = {
+			isa = PBXGroup;
+			children = (
+				4379538C1A1C519E00462004 /* amrnb */,
+				4379537C1A1C4E0600462004 /* amrnb.h */,
+				437956181A1C88CE00462004 /* amrnb.c */,
+				4379537D1A1C4E0600462004 /* audio_format_convert.c */,
+				4379537E1A1C4E0600462004 /* audio_format_convert.h */,
+				4379537F1A1C4E0600462004 /* bs.h */,
+				437956151A1C6B4000462004 /* libopencore-amrnb.a */,
+			);
+			path = amr_codec;
+			sourceTree = "<group>";
+		};
+		4379538C1A1C519E00462004 /* amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				4379538D1A1C519E00462004 /* interf_dec.h */,
+				4379538E1A1C519E00462004 /* interf_enc.h */,
+			);
+			path = amrnb;
+			sourceTree = "<group>";
+		};
 		439CA55B1A0B30C90027DFF3 = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +248,7 @@
 		439CA59C1A0B31310027DFF3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4379537A1A1C4E0600462004 /* amr_codec */,
 				43AE41C01A10931C0017CFEB /* PhotoModel */,
 				43AE41BA1A106C720017CFEB /* cocos2dx */,
 				439CA5C51A0B55ED0027DFF3 /* lame */,
@@ -467,6 +503,8 @@
 				43AE426B1A10A9410017CFEB /* AppColors.m in Sources */,
 				439CA5C11A0B33100027DFF3 /* AFURLRequestSerialization.m in Sources */,
 				43AE42521A10A9060017CFEB /* PhotoAlbumCell.m in Sources */,
+				437956191A1C88CE00462004 /* amrnb.c in Sources */,
+				437953811A1C4E0600462004 /* audio_format_convert.c in Sources */,
 				43AE42711A10A9410017CFEB /* AppVoiceManager.m in Sources */,
 				439CA5CB1A0B55FF0027DFF3 /* SoundObject.mm in Sources */,
 				43AE42791A10A9410017CFEB /* KeyChainHelper.m in Sources */,
@@ -594,6 +632,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -610,6 +649,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
