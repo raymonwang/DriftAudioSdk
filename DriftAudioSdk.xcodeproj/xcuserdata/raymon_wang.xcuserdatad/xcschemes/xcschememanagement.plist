@@ -14,9 +14,19 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>DriftAudioSdk_sim.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>4379561A1A1C89D900462004</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>439CA5631A0B30C90027DFF3</key>
 		<dict>
 			<key>primary</key>

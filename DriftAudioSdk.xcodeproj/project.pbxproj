@@ -10,6 +10,44 @@
 		437953811A1C4E0600462004 /* audio_format_convert.c in Sources */ = {isa = PBXBuildFile; fileRef = 4379537D1A1C4E0600462004 /* audio_format_convert.c */; };
 		437956161A1C6B4000462004 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956151A1C6B4000462004 /* libopencore-amrnb.a */; };
 		437956191A1C88CE00462004 /* amrnb.c in Sources */ = {isa = PBXBuildFile; fileRef = 437956181A1C88CE00462004 /* amrnb.c */; };
+		4379561C1A1C89D900462004 /* AppNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */; };
+		4379561D1A1C89D900462004 /* BaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42601A10A9410017CFEB /* BaseTools.m */; };
+		4379561E1A1C89D900462004 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A91A0B33100027DFF3 /* AFHTTPRequestOperation.m */; };
+		4379561F1A1C89D900462004 /* DeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42621A10A9410017CFEB /* DeviceHelper.m */; };
+		437956201A1C89D900462004 /* RTChatSDKMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain.mm */; };
+		437956211A1C89D900462004 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5AB1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m */; };
+		437956221A1C89D900462004 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B01A0B33100027DFF3 /* AFNetworkReachabilityManager.m */; };
+		437956231A1C89D900462004 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B81A0B33100027DFF3 /* AFURLResponseSerialization.m */; };
+		437956241A1C89D900462004 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B41A0B33100027DFF3 /* AFURLConnectionOperation.m */; };
+		437956251A1C89D900462004 /* AppImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425A1A10A9410017CFEB /* AppImages.m */; };
+		437956261A1C89D900462004 /* PhotoAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42331A10A7E30017CFEB /* PhotoAlbumsController.m */; };
+		437956271A1C89D900462004 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B21A0B33100027DFF3 /* AFSecurityPolicy.m */; };
+		437956281A1C89D900462004 /* LogicHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42661A10A9410017CFEB /* LogicHelper.m */; };
+		437956291A1C89D900462004 /* AppWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425E1A10A9410017CFEB /* AppWidget.m */; };
+		4379562A1A1C89D900462004 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5AD1A0B33100027DFF3 /* AFHTTPSessionManager.m */; };
+		4379562B1A1C89D900462004 /* MNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE426A1A10A9410017CFEB /* MNCryptor.m */; };
+		4379562C1A1C89D900462004 /* PhotoInPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C51A10950D0017CFEB /* PhotoInPhoneCell.m */; };
+		4379562D1A1C89D900462004 /* AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42561A10A9410017CFEB /* AppColors.m */; };
+		4379562E1A1C89D900462004 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B61A0B33100027DFF3 /* AFURLRequestSerialization.m */; };
+		4379562F1A1C89D900462004 /* PhotoAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42511A10A9060017CFEB /* PhotoAlbumCell.m */; };
+		437956301A1C89D900462004 /* amrnb.c in Sources */ = {isa = PBXBuildFile; fileRef = 437956181A1C88CE00462004 /* amrnb.c */; };
+		437956311A1C89D900462004 /* audio_format_convert.c in Sources */ = {isa = PBXBuildFile; fileRef = 4379537D1A1C4E0600462004 /* audio_format_convert.c */; };
+		437956321A1C89D900462004 /* AppVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425C1A10A9410017CFEB /* AppVoiceManager.m */; };
+		437956331A1C89D900462004 /* SoundObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5CA1A0B55FF0027DFF3 /* SoundObject.mm */; };
+		437956341A1C89D900462004 /* KeyChainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42641A10A9410017CFEB /* KeyChainHelper.m */; };
+		437956351A1C89D900462004 /* TestRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42961A10D8F00017CFEB /* TestRootViewController.m */; };
+		437956361A1C89D900462004 /* MNPresentDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42821A10A9920017CFEB /* MNPresentDismissAnimation.m */; };
+		437956371A1C89D900462004 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5BA1A0B33100027DFF3 /* AFURLSessionManager.m */; };
+		437956381A1C89D900462004 /* CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A51A0B32B30027DFF3 /* CmdHandler.m */; };
+		437956391A1C89D900462004 /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42681A10A9410017CFEB /* MNCryptor+MD5.m */; };
+		4379563A1A1C89D900462004 /* HttpProcess.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess.mm */; };
+		4379563B1A1C89D900462004 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42921A10C7570017CFEB /* DataManager.m */; };
+		4379563C1A1C89D900462004 /* PhotoInPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C21A1093490017CFEB /* PhotoInPhoneController.m */; };
+		4379563D1A1C89D900462004 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42581A10A9410017CFEB /* AppHelper.m */; };
+		4379563F1A1C89D900462004 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 439CA5C71A0B55ED0027DFF3 /* libmp3lame.a */; };
+		437956401A1C89D900462004 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956151A1C6B4000462004 /* libopencore-amrnb.a */; };
+		437956421A1C89D900462004 /* RTChatCommonTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5A21A0B31F30027DFF3 /* RTChatCommonTypes.h */; };
+		437956431A1C89D900462004 /* RTChatSdk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */; };
 		439CA59F1A0B31310027DFF3 /* RTChatSDKMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain.mm */; };
 		439CA5A31A0B31F30027DFF3 /* HttpProcess.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess.mm */; };
 		439CA5A61A0B32B30027DFF3 /* CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A51A0B32B30027DFF3 /* CmdHandler.m */; };
@@ -72,6 +110,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		437956411A1C89D900462004 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				437956421A1C89D900462004 /* RTChatCommonTypes.h in CopyFiles */,
+				437956431A1C89D900462004 /* RTChatSdk.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		439CA5621A0B30C90027DFF3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,6 +143,7 @@
 		4379538E1A1C519E00462004 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
 		437956151A1C6B4000462004 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
 		437956181A1C88CE00462004 /* amrnb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = amrnb.c; sourceTree = "<group>"; };
+		437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk_sim.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		439CA59D1A0B31310027DFF3 /* RTChatSDKMain.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTChatSDKMain.mm; sourceTree = "<group>"; tabWidth = 4; wrapsLines = 1; };
 		439CA59E1A0B31310027DFF3 /* RTChatSDKMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSDKMain.h; sourceTree = "<group>"; };
@@ -176,6 +226,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4379563E1A1C89D900462004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4379563F1A1C89D900462004 /* libmp3lame.a in Frameworks */,
+				437956401A1C89D900462004 /* libopencore-amrnb.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		439CA5611A0B30C90027DFF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +291,7 @@
 			children = (
 				439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */,
 				43AE42051A1098A40017CFEB /* DriftAudioSdkTest.app */,
+				437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,6 +455,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4379561A1A1C89D900462004 /* DriftAudioSdk_sim */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 437956441A1C89D900462004 /* Build configuration list for PBXNativeTarget "DriftAudioSdk_sim" */;
+			buildPhases = (
+				4379561B1A1C89D900462004 /* Sources */,
+				4379563E1A1C89D900462004 /* Frameworks */,
+				437956411A1C89D900462004 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DriftAudioSdk_sim;
+			productName = DriftAudioSdk;
+			productReference = 437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		439CA5631A0B30C90027DFF3 /* DriftAudioSdk */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 439CA5781A0B30C90027DFF3 /* Build configuration list for PBXNativeTarget "DriftAudioSdk" */;
@@ -461,6 +538,7 @@
 			targets = (
 				439CA5631A0B30C90027DFF3 /* DriftAudioSdk */,
 				43AE42041A1098A40017CFEB /* DriftAudioSdkTest */,
+				4379561A1A1C89D900462004 /* DriftAudioSdk_sim */,
 			);
 		};
 /* End PBXProject section */
@@ -479,6 +557,47 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4379561B1A1C89D900462004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4379561C1A1C89D900462004 /* AppNotificationCenter.m in Sources */,
+				4379561D1A1C89D900462004 /* BaseTools.m in Sources */,
+				4379561E1A1C89D900462004 /* AFHTTPRequestOperation.m in Sources */,
+				4379561F1A1C89D900462004 /* DeviceHelper.m in Sources */,
+				437956201A1C89D900462004 /* RTChatSDKMain.mm in Sources */,
+				437956211A1C89D900462004 /* AFHTTPRequestOperationManager.m in Sources */,
+				437956221A1C89D900462004 /* AFNetworkReachabilityManager.m in Sources */,
+				437956231A1C89D900462004 /* AFURLResponseSerialization.m in Sources */,
+				437956241A1C89D900462004 /* AFURLConnectionOperation.m in Sources */,
+				437956251A1C89D900462004 /* AppImages.m in Sources */,
+				437956261A1C89D900462004 /* PhotoAlbumsController.m in Sources */,
+				437956271A1C89D900462004 /* AFSecurityPolicy.m in Sources */,
+				437956281A1C89D900462004 /* LogicHelper.m in Sources */,
+				437956291A1C89D900462004 /* AppWidget.m in Sources */,
+				4379562A1A1C89D900462004 /* AFHTTPSessionManager.m in Sources */,
+				4379562B1A1C89D900462004 /* MNCryptor.m in Sources */,
+				4379562C1A1C89D900462004 /* PhotoInPhoneCell.m in Sources */,
+				4379562D1A1C89D900462004 /* AppColors.m in Sources */,
+				4379562E1A1C89D900462004 /* AFURLRequestSerialization.m in Sources */,
+				4379562F1A1C89D900462004 /* PhotoAlbumCell.m in Sources */,
+				437956301A1C89D900462004 /* amrnb.c in Sources */,
+				437956311A1C89D900462004 /* audio_format_convert.c in Sources */,
+				437956321A1C89D900462004 /* AppVoiceManager.m in Sources */,
+				437956331A1C89D900462004 /* SoundObject.mm in Sources */,
+				437956341A1C89D900462004 /* KeyChainHelper.m in Sources */,
+				437956351A1C89D900462004 /* TestRootViewController.m in Sources */,
+				437956361A1C89D900462004 /* MNPresentDismissAnimation.m in Sources */,
+				437956371A1C89D900462004 /* AFURLSessionManager.m in Sources */,
+				437956381A1C89D900462004 /* CmdHandler.m in Sources */,
+				437956391A1C89D900462004 /* MNCryptor+MD5.m in Sources */,
+				4379563A1A1C89D900462004 /* HttpProcess.mm in Sources */,
+				4379563B1A1C89D900462004 /* DataManager.m in Sources */,
+				4379563C1A1C89D900462004 /* PhotoInPhoneController.m in Sources */,
+				4379563D1A1C89D900462004 /* AppHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		439CA5601A0B30C90027DFF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -551,6 +670,39 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		437956451A1C89D900462004 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DriftAudioSdk_sim;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		437956461A1C89D900462004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DriftAudioSdk_sim;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
 		439CA5761A0B30C90027DFF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -638,7 +790,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s i386";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -654,7 +806,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s i386";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -696,6 +848,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		437956441A1C89D900462004 /* Build configuration list for PBXNativeTarget "DriftAudioSdk_sim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				437956451A1C89D900462004 /* Debug */,
+				437956461A1C89D900462004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		439CA55F1A0B30C90027DFF3 /* Build configuration list for PBXProject "DriftAudioSdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
