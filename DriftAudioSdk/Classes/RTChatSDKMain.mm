@@ -176,7 +176,6 @@ namespace rtchatsdk {
     //http请求回调函数(主线程工作)
     void RTChatSDKMain::httpRequestCallBack(HttpDirection direction, const StCallBackInfo& info)
     {
-        static int aaa = 100;
         if (direction == HttpProcess_Upload) {
             if (!info.ptr) {
                 //失败
@@ -186,7 +185,6 @@ namespace rtchatsdk {
                 NSUInteger duration = MAX(1, [[SoundObject sharedInstance] getRecordDuration:info.labelid]);
                 std::string jsondata = constructJsonFromData(info.ptr, info.size, duration);
                 _func(enRequestRec, OPERATION_OK, jsondata);
-                startPlayLocalVoice(aaa++, info.ptr);
             }
         }
         else {
