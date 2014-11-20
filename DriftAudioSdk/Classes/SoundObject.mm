@@ -92,13 +92,11 @@
 
 - (BOOL)transferPCMtoAMR
 {
-//    return !pcm2amr([self.current_recordedFile_caf UTF8String], [self.current_recordedFile_mp3 UTF8String], 1);
-    return [VoiceConverter wavToAmr:self.current_recordedFile_caf amrSavePath:self.current_recordedFile_mp3];
+    return ![VoiceConverter wavToAmr:self.current_recordedFile_caf amrSavePath:self.current_recordedFile_mp3];
 }
 
 - (BOOL)transferAMRtoPCM:(NSString*)infilename outfilename:(NSString*)outfilename
 {
-//    return !amr2pcm([infilename UTF8String], [outfilename UTF8String], 1);
     return [VoiceConverter amrToWav:infilename wavSavePath:outfilename];
 }
 
@@ -173,7 +171,7 @@
     NSString* filename_caf = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.caf", labelid]];
     self.current_recordedFile_mp3 = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", labelid]];
     self.current_recordedFile_caf = filename_caf;
-    [_recordFileDic setObject:self.current_recordedFile_mp3 forKey:[NSNumber numberWithInteger:labelid]];
+    [_recordFileDic setObject:self.current_recordedFile_caf forKey:[NSNumber numberWithInteger:labelid]];
     NSURL* url = [NSURL URLWithString:filename_caf];
     _recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:nil];
     if (_recorder) {
@@ -346,7 +344,7 @@
 {
     NSFileManager* fileManager=[NSFileManager defaultManager];
     for (id name in _recordFileDic) {
-        if([fileManager removeItemAtPath:name error:nil])
+        if([fileManager removeItemAtPath:[_recordFileDic objectForKey:name] error:nil])
         {
             NSLog(@"删除老的录制文件: %@", name);
         }
@@ -356,8 +354,8 @@
     NSArray* array = [fileManager contentsOfDirectoryAtPath:NSTemporaryDirectory() error:nil];
     for (NSString* path in array) {
         NSString* extenstion = [path pathExtension];
-        if ([extenstion isEqualToString:@"mp3"] || [extenstion isEqualToString:@"caf"]) {
-            [fileManager removeItemAtPath:path error:nil];
+        if ([extenstion isEqualToString:@"amr"] || [extenstion isEqualToString:@"caf"]) {
+            [fileManager removeItemAtPath:[NSTemporaryDirectory() stringByAppendingString:path] error:nil];
         }
     }
 }
