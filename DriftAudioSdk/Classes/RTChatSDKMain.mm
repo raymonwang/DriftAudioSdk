@@ -103,7 +103,9 @@ namespace rtchatsdk {
     /// 开始播放录制数据
     bool RTChatSDKMain::startPlayLocalVoice(unsigned int labelid, const char *voiceUrl)
     {
+        NSLog(@"in RTChatSDKMain::startPlayLocalVoice. labelid=%u, url = %s", labelid, voiceUrl);
         if (NSString* filename = [[SoundObject sharedInstance] haveLabelId:labelid]) {
+            NSLog(@"找到文件，直接播放");
             [[SoundObject sharedInstance] beginPlayLocalFile:filename];
             _func(enRequestPlay, OPERATION_OK, "");
         }
@@ -140,6 +142,12 @@ namespace rtchatsdk {
         _func(enNotifyRecordPower, OPERATION_OK, buff);
     }
     
+    /// 底层播放结束通知
+    void RTChatSDKMain::onVoicePlayOver()
+    {
+        _func(enNotifyPlayOver, OPERATION_OK, "");
+    }
+    
     
     //上传录制的语音数据
     void RTChatSDKMain::uploadVoiceData(const char *data, unsigned long datasize, unsigned int labelid)
@@ -155,12 +163,12 @@ namespace rtchatsdk {
     }
     
     /// 构造JSON结构数据
-    std::string RTChatSDKMain::constructJsonFromData(const char* data, unsigned int size, unsigned int duration)
+    std::string RTChatSDKMain::constructJsonFromData(const char* data, unsigned int size, unsigned long duration)
     {
         static char buff[1024] = {0};
         bzero(buff, 1024);
         
-        snprintf(buff, 1023, "{\"isok\":\"true\", \"url\":\"%s\", \"duration\":\"%u\"}", data, duration);
+        snprintf(buff, 1023, "{\"isok\":\"true\", \"url\":\"%s\", \"duration\":\"%lu\"}", data, duration);
         
         return buff;
     }
@@ -168,15 +176,17 @@ namespace rtchatsdk {
     //http请求回调函数(主线程工作)
     void RTChatSDKMain::httpRequestCallBack(HttpDirection direction, const StCallBackInfo& info)
     {
+        static int aaa = 100;
         if (direction == HttpProcess_Upload) {
             if (!info.ptr) {
                 //失败
                 _func(enRequestRec, OPERATION_FAILED, "");
             }
             else {
-                NSInteger duration = [[SoundObject sharedInstance] getRecordDuration:info.labelid];
+                NSUInteger duration = MAX(1, [[SoundObject sharedInstance] getRecordDuration:info.labelid]);
                 std::string jsondata = constructJsonFromData(info.ptr, info.size, duration);
                 _func(enRequestRec, OPERATION_OK, jsondata);
+                startPlayLocalVoice(aaa++, info.ptr);
             }
         }
         else {
@@ -188,10 +198,13 @@ namespace rtchatsdk {
             else {
                 NSData* data = [NSData dataWithBytes:info.ptr length:info.size];
                 
-                [[SoundObject sharedInstance] saveCacheToDiskFile:info.labelid data:data];
-                
-                [[SoundObject sharedInstance] beginPlay:data];
-                _func(enRequestPlay, OPERATION_OK, "");
+                NSString* outfilename = [[NSString alloc]init];
+                [[SoundObject sharedInstance] saveCacheToDiskFile:info.labelid data:data filename:&outfilename];
+                NSString* pcmfilename = [[SoundObject sharedInstance]transferAmrToPcmFile:outfilename];
+                if (pcmfilename) {
+                    [[SoundObject sharedInstance] beginPlayLocalFile:pcmfilename];
+                    _func(enRequestPlay, OPERATION_OK, "");
+                }
             }
         }
     }

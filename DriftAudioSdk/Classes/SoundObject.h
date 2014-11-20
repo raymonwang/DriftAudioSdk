@@ -49,7 +49,10 @@ enum SoundOpState {
 -(void)beginPlayLocalFile:(NSString*)filename;
 
 /// 保存内存录音数据为本地磁盘文件
--(BOOL)saveCacheToDiskFile:(NSInteger)labelid data:(NSData*)data;
+-(BOOL)saveCacheToDiskFile:(NSInteger)labelid data:(NSData*)data filename:(NSString**)filename;
+
+/// 转换amr文件为磁盘上的pcm文件
+-(NSString*)transferAmrToPcmFile:(NSString*)amrfilename;
 
 /// 清除缓冲的录音文件
 -(void)clearAllCachedFile;

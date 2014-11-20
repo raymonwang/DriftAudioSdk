@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4379561A1A1C89D900462004"
-               BuildableName = "libDriftAudioSdk copy.a"
+               BuildableName = "libDriftAudioSdk_sim.a"
                BlueprintName = "DriftAudioSdk_sim"
                ReferencedContainer = "container:DriftAudioSdk.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4379561A1A1C89D900462004"
-            BuildableName = "libDriftAudioSdk copy.a"
+            BuildableName = "libDriftAudioSdk_sim.a"
             BlueprintName = "DriftAudioSdk_sim"
             ReferencedContainer = "container:DriftAudioSdk.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4379561A1A1C89D900462004"
-            BuildableName = "libDriftAudioSdk copy.a"
+            BuildableName = "libDriftAudioSdk_sim.a"
             BlueprintName = "DriftAudioSdk_sim"
             ReferencedContainer = "container:DriftAudioSdk.xcodeproj">
          </BuildableReference>

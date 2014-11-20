@@ -56,6 +56,9 @@ public:
     /// 底层音量等级通知
     void voiceLevelNotify(float power);
     
+    /// 底层播放结束通知
+    void onVoicePlayOver();
+    
     //http请求回调函数
     void httpRequestCallBack(HttpDirection direction, const StCallBackInfo& info);
     
@@ -68,7 +71,7 @@ protected:
     void recordTimeExceed(int time);
     
     /// 构造JSON结构数据
-    std::string constructJsonFromData(const char* data, unsigned int size, unsigned int duration);
+    std::string constructJsonFromData(const char* data, unsigned int size, unsigned long duration);
     
 private:
     std::string         _appid;

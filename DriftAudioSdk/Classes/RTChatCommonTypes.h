@@ -163,6 +163,9 @@ enum SdkResponseCmd {
     
     /// 通知即时录音音量
     enNotifyRecordPower = 34,
+    
+    /// 通知播放停止
+    enNotifyPlayOver = 35,
 };
 
 enum SdkErrorCode {

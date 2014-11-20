@@ -9,7 +9,7 @@
 #import "SoundObject.h"
 #import "lame.h"
 #import "RTChatSDKMain.h"
-#import "amr_codec/audio_format_convert.h"
+#import "VoiceConvert/VoiceConverter.h"
 
 @interface SoundObject ()
 
@@ -92,7 +92,14 @@
 
 - (BOOL)transferPCMtoAMR
 {
-    return !pcm2amr([self.current_recordedFile_caf UTF8String], [self.current_recordedFile_mp3 UTF8String], 1);
+//    return !pcm2amr([self.current_recordedFile_caf UTF8String], [self.current_recordedFile_mp3 UTF8String], 1);
+    return [VoiceConverter wavToAmr:self.current_recordedFile_caf amrSavePath:self.current_recordedFile_mp3];
+}
+
+- (BOOL)transferAMRtoPCM:(NSString*)infilename outfilename:(NSString*)outfilename
+{
+//    return !amr2pcm([infilename UTF8String], [outfilename UTF8String], 1);
+    return [VoiceConverter amrToWav:infilename wavSavePath:outfilename];
 }
 
 -(instancetype)init
@@ -163,8 +170,8 @@
     //音频质量,采样质量
     [settings setValue:[NSNumber numberWithInt:AVAudioQualityMin] forKey:AVEncoderAudioQualityKey];
     
-    NSString* filename_caf = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.caf", (long)labelid]];
-    self.current_recordedFile_mp3 = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)labelid]];
+    NSString* filename_caf = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.caf", labelid]];
+    self.current_recordedFile_mp3 = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", labelid]];
     self.current_recordedFile_caf = filename_caf;
     [_recordFileDic setObject:self.current_recordedFile_mp3 forKey:[NSNumber numberWithInteger:labelid]];
     NSURL* url = [NSURL URLWithString:filename_caf];
@@ -205,8 +212,16 @@
         [_recorder stop];
         
 //        [self transferPCMtoMP3];
-        [self transferPCMtoAMR];
+        if ([self transferPCMtoAMR]) {
+            NSLog(@"amr文件压缩成功");
+        }
+        else {
+            NSLog(@"amr文件压缩失败");
+        }
+        
         _recorder = nil;
+        
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
         
         [_timerForPitch invalidate];
         _timerForPitch = nil;
@@ -214,7 +229,7 @@
         _opstate = SoundOpReady;
         NSLog(@"out stopRecord");
         
-        *filename = self.current_recordedFile_caf;
+        *filename = self.current_recordedFile_mp3;
         
         return self.current_record_labelid;
     }
@@ -238,12 +253,11 @@
     }
     
     NSError *playerError;
-    self.player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
+    
+    self.player = [[AVAudioPlayer alloc]initWithData:data error:&playerError];
     if (_player) {
-        [_player setDelegate:self];
-        [_player setVolume:1.0];
-        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategorySoloAmbient error: nil];
-        [_player play];
+        [self.player setDelegate:self];
+        [self.player play];
         NSLog(@"播放开始");
     }
     else {
@@ -290,6 +304,7 @@
 /// 播放本地文件
 -(void)beginPlayLocalFile:(NSString*)filename
 {
+    NSLog(@"in beginPlayLocalFile:%@", filename);
     if (!filename) {
         return;
     }
@@ -299,16 +314,30 @@
 }
 
 /// 保存内存录音数据为本地磁盘文件
--(BOOL)saveCacheToDiskFile:(NSInteger)labelid data:(NSData *)data
+-(BOOL)saveCacheToDiskFile:(NSInteger)labelid data:(NSData *)data filename:(NSString**)filename
 {
     NSString* filepath = [self haveLabelId:labelid];
+    NSLog(@"缓冲数据写入磁盘文件%@", filepath);
     if (filepath) {
         return YES;
     }
     else {
         NSString* path = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)labelid]];
         NSLog(@"内存写入磁盘文件%@", path);
-        return [data writeToFile:path atomically:YES];
+        *filename = path;
+        return [data writeToFile:path atomically:NO];
+    }
+}
+
+/// 转换amr文件为磁盘上的pcm文件
+-(NSString*)transferAmrToPcmFile:(NSString*)amrfilename
+{
+    NSString* pcmfilename = [amrfilename stringByReplacingOccurrencesOfString:@"amr" withString:@"caf"];
+    if ([self transferAMRtoPCM:amrfilename outfilename:pcmfilename]) {
+        return pcmfilename;
+    }
+    else {
+        return nil;
     }
 }
 
@@ -335,8 +364,9 @@
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
-    _opstate = SoundOpReady;
     NSLog(@"播放完成");
+    _opstate = SoundOpReady;
+    rtchatsdk::RTChatSDKMain::sharedInstance().onVoicePlayOver();
 }
 
 @end
