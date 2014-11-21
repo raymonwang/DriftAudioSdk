@@ -108,6 +108,7 @@
     }
     
     self.recordFileDic = [[NSMutableDictionary alloc] init];
+    _uniquelabelid = 1;
     
     [self clearAllCachedFile];
     
@@ -168,21 +169,21 @@
     //音频质量,采样质量
     [settings setValue:[NSNumber numberWithInt:AVAudioQualityMin] forKey:AVEncoderAudioQualityKey];
     
-    NSString* filename_caf = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.caf", labelid]];
-    self.current_recordedFile_mp3 = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", labelid]];
+    NSString* filename_caf = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.caf", (long)_uniquelabelid]];
+    self.current_recordedFile_mp3 = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)_uniquelabelid]];
     self.current_recordedFile_caf = filename_caf;
-    [_recordFileDic setObject:self.current_recordedFile_caf forKey:[NSNumber numberWithInteger:labelid]];
     NSURL* url = [NSURL URLWithString:filename_caf];
     _recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:nil];
     if (_recorder) {
         NSLog(@"启动录音");
         [_recorder setMeteringEnabled:YES];
-        self.current_record_labelid = labelid;
         [_recorder prepareToRecord];
         [_recorder record];
         
         self.timerForPitch = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(levelTimerCallback:) userInfo:nil repeats:YES];
     }
+    
+    _uniquelabelid++;
     
     return YES;
 }
@@ -203,10 +204,11 @@
 }
 
 /// 停止录音
--(NSInteger)stopRecord:(NSString**)filename
+-(NSInteger)stopRecord:(NSString **)filename duration:(NSInteger *)duration
 {
     NSLog(@"in stopRecord");
     if (_opstate == SoundOpRecording) {
+        *duration = [_recorder currentTime];
         [_recorder stop];
         
 //        [self transferPCMtoMP3];
@@ -229,7 +231,7 @@
         
         *filename = self.current_recordedFile_mp3;
         
-        return self.current_record_labelid;
+        return self.uniquelabelid;
     }
     else {
         NSLog(@"不在录音状态，stopRecord直接返回");
@@ -276,13 +278,22 @@
 }
 
 /// 是否已经下载过对应标签的文件
--(NSString*)haveLabelId:(NSInteger)labelid
+//-(NSString*)haveLabelId:(NSInteger)labelid
+//{
+//    if (!_recordFileDic) {
+//        return nil;
+//    }
+//    
+//    return [_recordFileDic objectForKey:[NSNumber numberWithInteger:labelid]];
+//}
+
+-(NSString*)haveDownloadedurl:(NSString*)url
 {
     if (!_recordFileDic) {
         return nil;
     }
     
-    return [_recordFileDic objectForKey:[NSNumber numberWithInteger:labelid]];
+    return [_recordFileDic objectForKey:url];
 }
 
 /// 根据标签ID获取录音时长
@@ -312,26 +323,32 @@
 }
 
 /// 保存内存录音数据为本地磁盘文件
--(BOOL)saveCacheToDiskFile:(NSInteger)labelid data:(NSData *)data filename:(NSString**)filename
+-(BOOL)saveCacheToDiskFile:(NSString*)url data:(NSData *)data filename:(NSString**)filename
 {
-    NSString* filepath = [self haveLabelId:labelid];
-    NSLog(@"缓冲数据写入磁盘文件%@", filepath);
-    if (filepath) {
+//    NSString* filepath = [self haveLabelId:labelid];
+//    NSLog(@"缓冲数据写入磁盘文件%@", filepath);
+    if ([_recordFileDic objectForKey:url]) {
         return YES;
     }
     else {
-        NSString* path = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)labelid]];
+        NSString* path = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)_uniquelabelid++]];
         NSLog(@"内存写入磁盘文件%@", path);
         *filename = path;
-        return [data writeToFile:path atomically:NO];
+        if ([data writeToFile:path atomically:NO]) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
     }
 }
 
 /// 转换amr文件为磁盘上的pcm文件
--(NSString*)transferAmrToPcmFile:(NSString*)amrfilename
+-(NSString*)transferAmrToPcmFile:(NSString *)amrfilename url:(NSString *)url
 {
     NSString* pcmfilename = [amrfilename stringByReplacingOccurrencesOfString:@"amr" withString:@"caf"];
     if ([self transferAMRtoPCM:amrfilename outfilename:pcmfilename]) {
+        [_recordFileDic setObject:pcmfilename forKey:url];
         return pcmfilename;
     }
     else {
@@ -344,8 +361,7 @@
 {
     NSFileManager* fileManager=[NSFileManager defaultManager];
     for (id name in _recordFileDic) {
-        if([fileManager removeItemAtPath:[_recordFileDic objectForKey:name] error:nil])
-        {
+        if([fileManager removeItemAtPath:[_recordFileDic objectForKey:name] error:nil]) {
             NSLog(@"删除老的录制文件: %@", name);
         }
     }

@@ -29,14 +29,18 @@ namespace rtchatsdk {
     };
     
     struct StCallBackInfo {
-        StCallBackInfo(const char* p1, size_t p2, unsigned int p3) {
+        StCallBackInfo(const char* p1, size_t p2, unsigned int p3, const char* cUrl, unsigned int p4 = 0) {
             ptr = p1;
             size = p2;
             labelid = p3;
+            url = cUrl;
+            duration = p4;
         }
         const char* ptr;
         size_t size;
         unsigned int labelid;
+        std::string url;
+        unsigned int duration;
     };
 
     typedef std::function<void (HttpDirection direction, const StCallBackInfo& info)> CallBackFunc;

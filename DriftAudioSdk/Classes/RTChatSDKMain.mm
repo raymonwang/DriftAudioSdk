@@ -90,10 +90,11 @@ namespace rtchatsdk {
     bool RTChatSDKMain::stopRecordVoice()
     {
         NSString* recordFilePath = [[NSString alloc] init];
-        NSInteger labelid = [[SoundObject sharedInstance] stopRecord:&recordFilePath];
+        NSInteger duration;
+        NSInteger labelid = [[SoundObject sharedInstance] stopRecord:&recordFilePath duration:&duration];
         if (labelid >= 0 && [recordFilePath length] > 0) {
             NSData* data = [NSData dataWithContentsOfFile:recordFilePath];
-            uploadVoiceData((const char *)[data bytes], [data length], labelid);
+            uploadVoiceData((const char *)[data bytes], [data length], (unsigned int)labelid, (unsigned int)duration);
             return true;
         }
         
@@ -103,8 +104,8 @@ namespace rtchatsdk {
     /// 开始播放录制数据
     bool RTChatSDKMain::startPlayLocalVoice(unsigned int labelid, const char *voiceUrl)
     {
-        NSLog(@"in RTChatSDKMain::startPlayLocalVoice. labelid=%ld, url = %s", labelid, voiceUrl);
-        if (NSString* filename = [[SoundObject sharedInstance] haveLabelId:labelid]) {
+        NSLog(@"in RTChatSDKMain::startPlayLocalVoice. labelid=%u, url = %s", labelid, voiceUrl);
+        if (NSString* filename = [[SoundObject sharedInstance] haveDownloadedurl:[NSString stringWithUTF8String:voiceUrl]]) { 
             NSLog(@"找到文件，直接播放");
             [[SoundObject sharedInstance] beginPlayLocalFile:filename];
             _func(enRequestPlay, OPERATION_OK, "");
@@ -128,7 +129,7 @@ namespace rtchatsdk {
     /// 取消当前录音
     bool RTChatSDKMain::cancelRecordedVoice()
     {
-        [[SoundObject sharedInstance] stopRecord:nil];
+        [[SoundObject sharedInstance] stopRecord:nil duration:0];
         
         return true;
     }
@@ -150,10 +151,10 @@ namespace rtchatsdk {
     
     
     //上传录制的语音数据
-    void RTChatSDKMain::uploadVoiceData(const char *data, unsigned long datasize, unsigned int labelid)
+    void RTChatSDKMain::uploadVoiceData(const char *data, unsigned long datasize, unsigned int labelid, unsigned int duration)
     {
         std::map<const char*, const char*> param;
-        HttpProcess::instance().postContent(VoiceUpLoadUrlHead, StCallBackInfo(data, datasize, labelid), param);
+        HttpProcess::instance().postContent(VoiceUpLoadUrlHead, StCallBackInfo(data, datasize, labelid, VoiceUpLoadUrlHead, duration), param);
     }
 
     //录音超过最大时间回调
@@ -176,18 +177,17 @@ namespace rtchatsdk {
     //http请求回调函数(主线程工作)
     void RTChatSDKMain::httpRequestCallBack(HttpDirection direction, const StCallBackInfo& info)
     {
-        static int tempid = 0;
+//        static int tempid = 0;
         if (direction == HttpProcess_Upload) {
             if (!info.ptr) {
                 //失败
                 _func(enRequestRec, OPERATION_FAILED, "");
             }
             else {
-                NSUInteger duration = MAX(1, [[SoundObject sharedInstance] getRecordDuration:info.labelid]);
-                std::string jsondata = constructJsonFromData(info.ptr, info.size, duration);
+                std::string jsondata = constructJsonFromData(info.ptr, info.size, info.duration);
                 _func(enRequestRec, OPERATION_OK, jsondata);
                 
-                startPlayLocalVoice(tempid++, info.ptr);
+//                startPlayLocalVoice(tempid++, info.ptr);
             }
         }
         else {
@@ -200,8 +200,8 @@ namespace rtchatsdk {
                 NSData* data = [NSData dataWithBytes:info.ptr length:info.size];
                 
                 NSString* outfilename = [[NSString alloc]init];
-                [[SoundObject sharedInstance] saveCacheToDiskFile:info.labelid data:data filename:&outfilename];
-                NSString* pcmfilename = [[SoundObject sharedInstance]transferAmrToPcmFile:outfilename];
+                [[SoundObject sharedInstance] saveCacheToDiskFile:[NSString stringWithUTF8String:info.url.c_str()] data:data filename:&outfilename];
+                NSString* pcmfilename = [[SoundObject sharedInstance]transferAmrToPcmFile:outfilename url:[NSString stringWithUTF8String:info.url.c_str()]];
                 if (pcmfilename) {
                     [[SoundObject sharedInstance] beginPlayLocalFile:pcmfilename];
                     _func(enRequestPlay, OPERATION_OK, "");

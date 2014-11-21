@@ -56,14 +56,14 @@ void HttpProcess::postContent(const char *urlstr, const StCallBackInfo& info, st
         if (res == nil) {
             //上传失败
             if (needcallback) {
-                _func(HttpProcess_Upload, StCallBackInfo(NULL, 0, 0));
+                _func(HttpProcess_Upload, StCallBackInfo(NULL, 0, 0, NULL));
             }
         }
         else {
             //上传成功
             if (needcallback) {
                 NSString* string = res;
-                _func(HttpProcess_Upload, StCallBackInfo([string UTF8String], [string length], info.labelid));
+                _func(HttpProcess_Upload, StCallBackInfo([string UTF8String], [string length], info.labelid, urlstr, info.duration));
             }
         }
         _isrunning = false;
@@ -80,11 +80,11 @@ void HttpProcess::requestContent(const StRequestUrlInfo& urlinfo)
         NSData* data = (NSData*)res;
         if (res == nil) {
             //下载失败
-            _func(HttpProcess_DownLoad, StCallBackInfo(NULL, 0, info.labelid));
+            _func(HttpProcess_DownLoad, StCallBackInfo(NULL, 0, info.labelid, NULL));
         }
         else {
             //下载成功
-            _func(HttpProcess_DownLoad, StCallBackInfo((const char*)[data bytes], [data length], info.labelid));
+            _func(HttpProcess_DownLoad, StCallBackInfo((const char*)[data bytes], [data length], info.labelid, info.url.c_str()));
         }
         _isrunning = false;
     }];

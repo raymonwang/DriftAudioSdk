@@ -65,7 +65,7 @@ public:
 protected:
     
     //上传录制的语音数据
-    void uploadVoiceData(const char *data, unsigned long datasize, unsigned int labelid);
+    void uploadVoiceData(const char *data, unsigned long datasize, unsigned int labelid, unsigned int duration);
     
     //录音超过最大时间回调
     void recordTimeExceed(int time);
