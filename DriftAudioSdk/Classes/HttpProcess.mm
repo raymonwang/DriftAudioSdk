@@ -37,9 +37,10 @@ void HttpProcess::registerCallBack(const CallBackFunc &func)
     _func = func;
 }
 
-void HttpProcess::postContent(const char *urlstr, const StCallBackInfo& info, std::map<const char*, const char*>& params, bool needcallback)
+void HttpProcess::postContent(const char *urlstr, const StCallBackInfo& urlinfo, std::map<const char*, const char*>& params, bool needcallback)
 {
     _isrunning = true;
+    StCallBackInfo info = urlinfo;
     
     NSString* url = [NSString stringWithFormat:@"%s", urlstr];
     NSData* content = [NSData dataWithBytes:info.ptr length:info.size];

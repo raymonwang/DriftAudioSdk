@@ -54,7 +54,7 @@ namespace rtchatsdk {
         
         void registerCallBack(const CallBackFunc& func);
         
-        void postContent(const char* urlstr, const StCallBackInfo& info, std::map<const char*, const char*>& params, bool needcallback = true);
+        void postContent(const char* urlstr, const StCallBackInfo& urlinfo, std::map<const char*, const char*>& params, bool needcallback = true);
         
         void requestContent(const StRequestUrlInfo& urlinfo);
         
