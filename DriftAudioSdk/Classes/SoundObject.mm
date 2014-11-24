@@ -208,7 +208,9 @@
 {
     NSLog(@"in stopRecord");
     if (_opstate == SoundOpRecording) {
-        *duration = [_recorder currentTime];
+        if (duration) {
+            *duration = [_recorder currentTime];
+        }
         [_recorder stop];
         
 //        [self transferPCMtoMP3];
@@ -229,7 +231,9 @@
         _opstate = SoundOpReady;
         NSLog(@"out stopRecord");
         
-        *filename = self.current_recordedFile_mp3;
+        if (filename) {
+            *filename = self.current_recordedFile_mp3;
+        }
         
         return self.uniquelabelid;
     }

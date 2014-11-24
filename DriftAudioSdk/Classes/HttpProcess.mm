@@ -57,7 +57,7 @@ void HttpProcess::postContent(const char *urlstr, const StCallBackInfo& urlinfo,
         if (res == nil) {
             //上传失败
             if (needcallback) {
-                _func(HttpProcess_Upload, StCallBackInfo(NULL, 0, 0, NULL));
+                _func(HttpProcess_Upload, StCallBackInfo("", 0, 0, ""));
             }
         }
         else {
