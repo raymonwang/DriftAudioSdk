@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43358EC31A24629E00DD301C /* VideoCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 43358EC21A24629E00DD301C /* VideoCamera.m */; };
 		4379561C1A1C89D900462004 /* AppNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */; };
 		4379561D1A1C89D900462004 /* BaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42601A10A9410017CFEB /* BaseTools.m */; };
 		4379561E1A1C89D900462004 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A91A0B33100027DFF3 /* AFHTTPRequestOperation.m */; };
@@ -139,6 +140,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		43358EC11A24629E00DD301C /* VideoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCamera.h; sourceTree = "<group>"; };
+		43358EC21A24629E00DD301C /* VideoCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCamera.m; sourceTree = "<group>"; };
 		437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk_sim.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4379564D1A1DC5BD00462004 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		4379564E1A1DC5BD00462004 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				439CA59E1A0B31310027DFF3 /* RTChatSDKMain.h */,
 				439CA5C91A0B55FF0027DFF3 /* SoundObject.h */,
 				439CA5CA1A0B55FF0027DFF3 /* SoundObject.mm */,
+				43358EC11A24629E00DD301C /* VideoCamera.h */,
+				43358EC21A24629E00DD301C /* VideoCamera.m */,
 				439CA5C41A0B34440027DFF3 /* defines.h */,
 				439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */,
 			);
@@ -641,6 +646,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43358EC31A24629E00DD301C /* VideoCamera.m in Sources */,
 				43AE42871A10AA7F0017CFEB /* AppNotificationCenter.m in Sources */,
 				43AE42751A10A9410017CFEB /* BaseTools.m in Sources */,
 				439CA5BB1A0B33100027DFF3 /* AFHTTPRequestOperation.m in Sources */,

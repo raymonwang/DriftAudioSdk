@@ -51,6 +51,12 @@ public:
     /// 取消当前录音
     bool cancelRecordedVoice();
     
+    /// 设置头像
+    bool setAvater(unsigned int uid, int type);
+    
+    /// 获取头像
+    bool getAvater(unsigned int uid, int type, const char* imageUrl);
+    
     /*******************需要暴露给用户的接口结束**********************/
     
     /// 底层音量等级通知

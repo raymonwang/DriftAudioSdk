@@ -14,6 +14,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include "VideoCamera.h"
 
 namespace rtchatsdk {
     
@@ -131,6 +132,25 @@ namespace rtchatsdk {
     {
         [[SoundObject sharedInstance] stopRecord:nil duration:0];
         
+        return true;
+    }
+    
+    /// 设置头像
+    bool RTChatSDKMain::setAvater(unsigned int uid, int type)
+    {
+        VideoCamera* vc = [[VideoCamera alloc] init];
+        UIViewController* p_parentVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+        if (p_parentVC && vc) {
+            [p_parentVC presentViewController:vc animated:YES completion:^{
+                [vc startCamera];
+            }];
+        }
+        return true;
+    }
+    
+    /// 获取头像
+    bool RTChatSDKMain::getAvater(unsigned int uid,int type,const char* imageUrl)
+    {
         return true;
     }
     
