@@ -13,18 +13,21 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface VideoCamera : UIViewController<UIImagePickerControllerDelegate> {
-	UIImageView *imageView;
-	
+@interface VideoCamera : UIImagePickerController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
 	NSURL *targetURL;
 	BOOL isCamera;
 }
+
+@property(nonatomic)NSInteger   uid;
+@property(nonatomic)NSInteger   itype;
 
 -(void)startCamera;
 -(void)getPreViewImg:(NSURL *)url;
 
 -(NSString *)getFileName:(NSString *)fileName;
--(NSString *)timeStampAsString;
++(NSString *)timeStampAsString;
 
--(void)uploadImg:(UIImage*)image;
+-(void)uploadImgData:(NSData*)imageData filename:(NSString*)filename;
++(void)downloadImgData:(NSString*)url uid:(NSInteger)uid type:(NSInteger)type;
+
 @end

@@ -65,8 +65,14 @@ public:
     /// 底层播放结束通知
     void onVoicePlayOver();
     
-    //http请求回调函数
+    /// http请求回调函数
     void httpRequestCallBack(HttpDirection direction, const StCallBackInfo& info);
+    
+    /// 拍照上传回调接口
+    void onImageUploadOver(bool issuccess, unsigned int uid, int type, const std::string& filename, const std::string& url);
+    
+    /// 图片取回接口
+    void onImageDownloadOver(bool issuccess, unsigned int uid, int type, const std::string& fileName);
     
 protected:
     

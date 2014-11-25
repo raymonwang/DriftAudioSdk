@@ -2,12 +2,13 @@
 //  VideoCamera.m
 //  VideoCamera2
 //
-//  Created by matao.ct@gmail.com on 12-6-4.
-//  Copyright 2012 __福州微泰网络__. All rights reserved.
+//  Created by wang3140@hotmail.com on 12-6-4.
+//  Copyright 2012 __巨人网络__. All rights reserved.
 //
 
 #import "VideoCamera.h"
 #import "CmdHandler.h"
+#import "RTChatSDKMain.h"
 
 @implementation VideoCamera
 
@@ -24,10 +25,26 @@
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-	targetURL = [[NSURL alloc] init];
-	isCamera = FALSE;
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
+    targetURL = [[NSURL alloc] init];
+    isCamera = FALSE;
+    self.allowsEditing = YES;
+    self.delegate = self;
+
+    //检查摄像头是否支持摄像机模式
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        self.sourceType = UIImagePickerControllerSourceTypeCamera;
+        //		camera.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+    }
+    else
+    {
+        NSLog(@"Camera not exist");
+        return;
+    }
 }
 
 
@@ -92,7 +109,7 @@
         }
         else
         {
-            fileName = [self timeStampAsString];
+            fileName = [VideoCamera timeStampAsString];
         }
 		
         NSUserDefaults *myDefault = [NSUserDefaults standardUserDefaults];
@@ -106,10 +123,13 @@
 									  orientation:(ALAssetOrientation)[editedImage imageOrientation]
 								  completionBlock:nil];
 		}
-		
-		[self performSelector:@selector(saveImg:) withObject:editedImage afterDelay:0.0];
         
-        [self uploadImg:editedImage];
+        NSData* data = UIImageJPEGRepresentation(editedImage, 0.3);
+		
+//		[self performSelector:@selector(saveImg:) withObject:data afterDelay:0.0];
+        [VideoCamera saveImg:data filename:fileName];
+        
+        [self uploadImgData:data filename:fileName];
 	}
 	else
 	{
@@ -156,13 +176,16 @@
 	return name;
 }
 
--(void)saveImg:(UIImage *) image
++(void)saveImg:(NSData*)imageData filename:(NSString*)filename
 {
-	NSLog(@"Review Image");
-	imageView.image = image;
+	NSLog(@"save Image to disk");
+    
+    if (imageData) {
+        [imageData writeToFile:filename atomically:YES];
+    }
 }
 
--(NSString *)timeStampAsString
++(NSString *)timeStampAsString
 {
     NSDate *nowDate = [NSDate date];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -175,22 +198,22 @@
 #pragma mark sendFile
 -(void)startCamera
 {
-	UIImagePickerController *camera = [[UIImagePickerController alloc] init];
-	camera.delegate = self;
-	camera.allowsEditing = YES;
+//	UIImagePickerController *camera = [[UIImagePickerController alloc] init];
+//	camera.delegate = self;
+//	camera.allowsEditing = YES;
 	isCamera = TRUE;
 	
 	//检查摄像头是否支持摄像机模式
-	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-	{		
-		camera.sourceType = UIImagePickerControllerSourceTypeCamera;
+//	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+//	{		
+//		camera.sourceType = UIImagePickerControllerSourceTypeCamera;
 //		camera.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
-	}
-	else 
-	{
-		NSLog(@"Camera not exist");
-		return;
-	}
+//	}
+//	else 
+//	{
+//		NSLog(@"Camera not exist");
+//		return;
+//	}
 	
     //仅对视频拍摄有效
 //	switch (segmentVideoQuality.selectedSegmentIndex) {
@@ -211,7 +234,7 @@
 //			break;
 //	}
 	
-	[self presentModalViewController:camera animated:YES];
+//	[self presentModalViewController:camera animated:YES];
 }
 
 #pragma -
@@ -257,18 +280,36 @@
     
 }
 
--(void)uploadImg:(UIImage *)image
+-(void)uploadImgData:(NSData *)imageData filename:(NSString *)filename
 {
-    if (!image) {
+    if (!imageData) {
         return;
     }
-    NSData* data = UIImageJPEGRepresentation(image, 0.3);
-    [[CmdHandler sharedInstance]postFile:@"http://uploadchat.ztgame.com.cn:10000/wangpan.php" reqParams:[[NSDictionary alloc]init] data:data completBlock:^(id res) {
+    
+    [[CmdHandler sharedInstance]postFile:@"http://uploadchat.ztgame.com.cn:10000/wangpan.php" reqParams:[[NSDictionary alloc]init] data:imageData completBlock:^(id res) {
         if (res == nil) {
             NSLog(@"上传失败");
+            rtchatsdk::RTChatSDKMain::sharedInstance().onImageUploadOver(false, 0, 0, "", "");
         }
         else {
             NSLog(@"%@", res);
+            rtchatsdk::RTChatSDKMain::sharedInstance().onImageUploadOver(true, (unsigned int)_uid, (int)_itype, [filename UTF8String], [res UTF8String]);
+        }
+    }];
+}
+
++(void)downloadImgData:(NSString *)url uid:(NSInteger)uid type:(NSInteger)type
+{
+    [[CmdHandler sharedInstance]getFile:url reqParams:[[NSDictionary alloc] init] completBlock:^(id res) {
+        if (res == nil) {
+            NSLog(@"下载失败");
+        }
+        else {
+            NSLog(@"下载成功");
+            NSString* fileName = [VideoCamera timeStampAsString];
+            NSData* data = res;
+            [self saveImg:data filename:fileName];
+            rtchatsdk::RTChatSDKMain::sharedInstance().onImageDownloadOver(true, (unsigned int)uid, (int)type, [fileName UTF8String]);
         }
     }];
 }

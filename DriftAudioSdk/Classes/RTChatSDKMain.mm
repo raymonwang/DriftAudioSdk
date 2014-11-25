@@ -142,6 +142,8 @@ namespace rtchatsdk {
         UIViewController* p_parentVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
         if (p_parentVC && vc) {
             [p_parentVC presentViewController:vc animated:YES completion:^{
+                vc.uid = uid;
+                vc.itype = type;
                 [vc startCamera];
             }];
         }
@@ -227,6 +229,38 @@ namespace rtchatsdk {
                     _func(enRequestPlay, OPERATION_OK, "");
                 }
             }
+        }
+    }
+    
+    /// 拍照上传回调接口
+    void RTChatSDKMain::onImageUploadOver(bool issuccess, unsigned int uid, int type, const std::string &filename, const std::string &url)
+    {
+        char buff[1024] = {0};
+        bzero(buff, 1024);
+        
+        snprintf(buff, 1023, "{\"isok\":\"true\", \"url\":\"%s\", \"filepath\":\"%s\", \"uid\":\"%u\", \"itype\":\"%d\"}", url.c_str(), url.c_str(), uid, type);
+        
+        if (issuccess) {
+            _func(enReqSetAvaterResult, OPERATION_OK, buff);
+        }
+        else {
+            _func(enReqSetAvaterResult, OPERATION_FAILED, "");
+        }
+    }
+    
+    /// 图片取回接口
+    void RTChatSDKMain::onImageDownloadOver(bool issuccess, unsigned int uid, int type, const std::string& fileName)
+    {
+        char buff[1024] = {0};
+        bzero(buff, 1024);
+        
+        snprintf(buff, 1023, "{\"isok\":\"true\", \"filepath\":\"%s\", \"uid\":\"%u\", \"itype\":\"%d\"}", fileName.c_str(), uid, type);
+        
+        if (issuccess) {
+            _func(enReqSetAvaterResult, OPERATION_OK, buff);
+        }
+        else {
+            _func(enReqSetAvaterResult, OPERATION_FAILED, "");
         }
     }
 
