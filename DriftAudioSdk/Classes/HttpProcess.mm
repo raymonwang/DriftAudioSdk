@@ -81,7 +81,7 @@ void HttpProcess::requestContent(const StRequestUrlInfo& urlinfo)
         NSData* data = (NSData*)res;
         if (res == nil) {
             //下载失败
-            _func(HttpProcess_DownLoad, StCallBackInfo(NULL, 0, info.labelid, NULL));
+            _func(HttpProcess_DownLoad, StCallBackInfo(NULL, 0, info.labelid, ""));
         }
         else {
             //下载成功
