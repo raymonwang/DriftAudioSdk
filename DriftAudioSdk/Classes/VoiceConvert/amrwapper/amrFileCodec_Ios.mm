@@ -6,7 +6,7 @@
 //  Copyright 2011 test. All rights reserved.
 //
 
-#include "amrFileCodec.h"
+#include "amrFileCodec_Ios.h"
 #include <Foundation/Foundation.h>
 
 int amrEncodeMode[] = {4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200}; // amr 编码方式

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 RTChatTeam. All rights reserved.
 //
 
-#include "RTChatSDKMain.h"
+#include "RTChatSDKMain_Ios.h"
 #include "defines.h"
 #include "SoundObject.h"
 #include <sys/types.h>
@@ -14,7 +14,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include "VideoCamera.h"
+//#include "VideoCamera.h"
 
 namespace rtchatsdk {
     
@@ -106,7 +106,7 @@ namespace rtchatsdk {
     bool RTChatSDKMain::startPlayLocalVoice(unsigned int labelid, const char *voiceUrl)
     {
         NSLog(@"in RTChatSDKMain::startPlayLocalVoice. labelid=%u, url = %s", labelid, voiceUrl);
-        if (NSString* filename = [[SoundObject sharedInstance] haveDownloadedurl:[NSString stringWithUTF8String:voiceUrl]]) { 
+        if (NSString* filename = [[SoundObject sharedInstance] haveDownloadedurl:[NSString stringWithUTF8String:voiceUrl]]) {
             NSLog(@"找到文件，直接播放");
             [[SoundObject sharedInstance] beginPlayLocalFile:filename];
             _func(enRequestPlay, OPERATION_OK, "");
@@ -138,21 +138,22 @@ namespace rtchatsdk {
     /// 设置头像
     bool RTChatSDKMain::setAvater(unsigned int uid, int type)
     {
-        VideoCamera* vc = [[VideoCamera alloc] init];
-        UIViewController* p_parentVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-        if (p_parentVC && vc) {
-            [p_parentVC presentViewController:vc animated:YES completion:^{
-                vc.uid = uid;
-                vc.itype = type;
-                [vc startCamera];
-            }];
-        }
+//        VideoCamera* vc = [[VideoCamera alloc] init];
+//        UIViewController* p_parentVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+//        if (p_parentVC && vc) {
+//            [p_parentVC presentViewController:vc animated:YES completion:^{
+//                vc.uid = uid;
+//                vc.itype = type;
+//                [vc startCamera];
+//            }];
+//        }
         return true;
     }
     
     /// 获取头像
     bool RTChatSDKMain::getAvater(unsigned int uid,int type,const char* imageUrl)
     {
+//        [VideoCamera downloadImgData:[NSString stringWithUTF8String:imageUrl] uid:uid type:type];
         return true;
     }
     
@@ -186,12 +187,12 @@ namespace rtchatsdk {
     }
     
     /// 构造JSON结构数据
-    std::string RTChatSDKMain::constructJsonFromData(const char* data, unsigned int size, unsigned long duration)
+    std::string RTChatSDKMain::constructJsonFromData(const StCallBackInfo& info)
     {
         static char buff[1024] = {0};
         bzero(buff, 1024);
         
-        snprintf(buff, 1023, "{\"isok\":\"true\", \"url\":\"%s\", \"duration\":\"%lu\"}", data, duration);
+        snprintf(buff, 1023, "{\"isok\":\"true\", \"url\":\"%s\", \"duration\":\"%u\", \"labelid\":\"%u\"}", info.ptr, info.duration, info.labelid);
         
         return buff;
     }
@@ -206,7 +207,7 @@ namespace rtchatsdk {
                 _func(enRequestRec, OPERATION_FAILED, "");
             }
             else {
-                std::string jsondata = constructJsonFromData(info.ptr, info.size, info.duration);
+                std::string jsondata = constructJsonFromData(info);
                 _func(enRequestRec, OPERATION_OK, jsondata);
                 
 //                startPlayLocalVoice(tempid++, info.ptr);
@@ -238,7 +239,7 @@ namespace rtchatsdk {
         char buff[1024] = {0};
         bzero(buff, 1024);
         
-        snprintf(buff, 1023, "{\"isok\":\"true\", \"url\":\"%s\", \"filepath\":\"%s\", \"uid\":\"%u\", \"itype\":\"%d\"}", url.c_str(), url.c_str(), uid, type);
+        snprintf(buff, 1023, "{\"isok\":\"true\", \"url\":\"%s\", \"filepath\":\"%s\", \"uid\":\"%u\", \"itype\":\"%d\"}", url.c_str(), filename.c_str(), uid, type);
         
         if (issuccess) {
             _func(enReqSetAvaterResult, OPERATION_OK, buff);
@@ -257,10 +258,12 @@ namespace rtchatsdk {
         snprintf(buff, 1023, "{\"isok\":\"true\", \"filepath\":\"%s\", \"uid\":\"%u\", \"itype\":\"%d\"}", fileName.c_str(), uid, type);
         
         if (issuccess) {
-            _func(enReqSetAvaterResult, OPERATION_OK, buff);
+            NSLog(@"in onImageDownloadOver success");
+            _func(enReqGetAvaterResult, OPERATION_OK, buff);
         }
         else {
-            _func(enReqSetAvaterResult, OPERATION_FAILED, "");
+            NSLog(@"in onImageDownloadOver failure");
+            _func(enReqGetAvaterResult, OPERATION_FAILED, "");
         }
     }
 

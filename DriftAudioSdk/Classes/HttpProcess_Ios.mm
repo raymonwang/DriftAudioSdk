@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 RTChatTeam. All rights reserved.
 //
 
-#include "HttpProcess.h"
+#include "HttpProcess_Ios.h"
 #include "CmdHandler.h"
 
 namespace rtchatsdk {

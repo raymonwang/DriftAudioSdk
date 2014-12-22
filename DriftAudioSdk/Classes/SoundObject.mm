@@ -8,7 +8,7 @@
 
 #import "SoundObject.h"
 #import "lame.h"
-#import "RTChatSDKMain.h"
+#import "RTChatSDKMain_Ios.h"
 #import "VoiceConvert/VoiceConverter.h"
 
 @interface SoundObject ()

@@ -12,7 +12,7 @@
 		4379561D1A1C89D900462004 /* BaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42601A10A9410017CFEB /* BaseTools.m */; };
 		4379561E1A1C89D900462004 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A91A0B33100027DFF3 /* AFHTTPRequestOperation.m */; };
 		4379561F1A1C89D900462004 /* DeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42621A10A9410017CFEB /* DeviceHelper.m */; };
-		437956201A1C89D900462004 /* RTChatSDKMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain.mm */; };
+		437956201A1C89D900462004 /* RTChatSDKMain_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */; };
 		437956211A1C89D900462004 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5AB1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m */; };
 		437956221A1C89D900462004 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B01A0B33100027DFF3 /* AFNetworkReachabilityManager.m */; };
 		437956231A1C89D900462004 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B81A0B33100027DFF3 /* AFURLResponseSerialization.m */; };
@@ -36,15 +36,15 @@
 		437956371A1C89D900462004 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5BA1A0B33100027DFF3 /* AFURLSessionManager.m */; };
 		437956381A1C89D900462004 /* CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A51A0B32B30027DFF3 /* CmdHandler.m */; };
 		437956391A1C89D900462004 /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42681A10A9410017CFEB /* MNCryptor+MD5.m */; };
-		4379563A1A1C89D900462004 /* HttpProcess.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess.mm */; };
+		4379563A1A1C89D900462004 /* HttpProcess_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess_Ios.mm */; };
 		4379563B1A1C89D900462004 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42921A10C7570017CFEB /* DataManager.m */; };
 		4379563C1A1C89D900462004 /* PhotoInPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C21A1093490017CFEB /* PhotoInPhoneController.m */; };
 		4379563D1A1C89D900462004 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42581A10A9410017CFEB /* AppHelper.m */; };
 		4379563F1A1C89D900462004 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 439CA5C71A0B55ED0027DFF3 /* libmp3lame.a */; };
 		437956421A1C89D900462004 /* RTChatCommonTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5A21A0B31F30027DFF3 /* RTChatCommonTypes.h */; };
 		437956431A1C89D900462004 /* RTChatSdk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */; };
-		4379565C1A1DC5BD00462004 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379564E1A1DC5BD00462004 /* amrFileCodec.mm */; };
-		4379565D1A1DC5BD00462004 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379564E1A1DC5BD00462004 /* amrFileCodec.mm */; };
+		4379565C1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */; };
+		4379565D1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */; };
 		4379565E1A1DC5BD00462004 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 437956501A1DC5BD00462004 /* wav.mm */; };
 		4379565F1A1DC5BD00462004 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 437956501A1DC5BD00462004 /* wav.mm */; };
 		437956601A1DC5BD00462004 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956521A1DC5BD00462004 /* libopencore-amrnb.a */; };
@@ -53,8 +53,8 @@
 		437956631A1DC5BE00462004 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956531A1DC5BD00462004 /* libopencore-amrwb.a */; };
 		437956641A1DC5BE00462004 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379565B1A1DC5BD00462004 /* VoiceConverter.mm */; };
 		437956651A1DC5BE00462004 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379565B1A1DC5BD00462004 /* VoiceConverter.mm */; };
-		439CA59F1A0B31310027DFF3 /* RTChatSDKMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain.mm */; };
-		439CA5A31A0B31F30027DFF3 /* HttpProcess.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess.mm */; };
+		439CA59F1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */; };
+		439CA5A31A0B31F30027DFF3 /* HttpProcess_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess_Ios.mm */; };
 		439CA5A61A0B32B30027DFF3 /* CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A51A0B32B30027DFF3 /* CmdHandler.m */; };
 		439CA5BB1A0B33100027DFF3 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A91A0B33100027DFF3 /* AFHTTPRequestOperation.m */; };
 		439CA5BC1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5AB1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m */; };
@@ -143,8 +143,8 @@
 		43358EC11A24629E00DD301C /* VideoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCamera.h; sourceTree = "<group>"; };
 		43358EC21A24629E00DD301C /* VideoCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoCamera.mm; sourceTree = "<group>"; };
 		437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk_sim.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4379564D1A1DC5BD00462004 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
-		4379564E1A1DC5BD00462004 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		4379564D1A1DC5BD00462004 /* amrFileCodec_Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec_Ios.h; sourceTree = "<group>"; };
+		4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec_Ios.mm; sourceTree = "<group>"; };
 		4379564F1A1DC5BD00462004 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
 		437956501A1DC5BD00462004 /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
 		437956521A1DC5BD00462004 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
@@ -156,10 +156,10 @@
 		4379565A1A1DC5BD00462004 /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
 		4379565B1A1DC5BD00462004 /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
 		439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		439CA59D1A0B31310027DFF3 /* RTChatSDKMain.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTChatSDKMain.mm; sourceTree = "<group>"; tabWidth = 4; wrapsLines = 1; };
-		439CA59E1A0B31310027DFF3 /* RTChatSDKMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSDKMain.h; sourceTree = "<group>"; };
-		439CA5A01A0B31F30027DFF3 /* HttpProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpProcess.h; sourceTree = "<group>"; };
-		439CA5A11A0B31F30027DFF3 /* HttpProcess.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HttpProcess.mm; sourceTree = "<group>"; };
+		439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTChatSDKMain_Ios.mm; sourceTree = "<group>"; tabWidth = 4; wrapsLines = 1; };
+		439CA59E1A0B31310027DFF3 /* RTChatSDKMain_Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSDKMain_Ios.h; sourceTree = "<group>"; };
+		439CA5A01A0B31F30027DFF3 /* HttpProcess_Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpProcess_Ios.h; sourceTree = "<group>"; };
+		439CA5A11A0B31F30027DFF3 /* HttpProcess_Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HttpProcess_Ios.mm; sourceTree = "<group>"; };
 		439CA5A21A0B31F30027DFF3 /* RTChatCommonTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatCommonTypes.h; sourceTree = "<group>"; };
 		439CA5A41A0B32B30027DFF3 /* CmdHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdHandler.h; sourceTree = "<group>"; };
 		439CA5A51A0B32B30027DFF3 /* CmdHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CmdHandler.m; sourceTree = "<group>"; };
@@ -283,8 +283,8 @@
 		4379564C1A1DC5BD00462004 /* amrwapper */ = {
 			isa = PBXGroup;
 			children = (
-				4379564D1A1DC5BD00462004 /* amrFileCodec.h */,
-				4379564E1A1DC5BD00462004 /* amrFileCodec.mm */,
+				4379564D1A1DC5BD00462004 /* amrFileCodec_Ios.h */,
+				4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */,
 				4379564F1A1DC5BD00462004 /* wav.h */,
 				437956501A1DC5BD00462004 /* wav.mm */,
 			);
@@ -356,11 +356,11 @@
 				439CA5A71A0B33100027DFF3 /* AFNetworking */,
 				439CA5A41A0B32B30027DFF3 /* CmdHandler.h */,
 				439CA5A51A0B32B30027DFF3 /* CmdHandler.m */,
-				439CA5A01A0B31F30027DFF3 /* HttpProcess.h */,
-				439CA5A11A0B31F30027DFF3 /* HttpProcess.mm */,
+				439CA5A01A0B31F30027DFF3 /* HttpProcess_Ios.h */,
+				439CA5A11A0B31F30027DFF3 /* HttpProcess_Ios.mm */,
 				439CA5A21A0B31F30027DFF3 /* RTChatCommonTypes.h */,
-				439CA59D1A0B31310027DFF3 /* RTChatSDKMain.mm */,
-				439CA59E1A0B31310027DFF3 /* RTChatSDKMain.h */,
+				439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */,
+				439CA59E1A0B31310027DFF3 /* RTChatSDKMain_Ios.h */,
 				439CA5C91A0B55FF0027DFF3 /* SoundObject.h */,
 				439CA5CA1A0B55FF0027DFF3 /* SoundObject.mm */,
 				43358EC11A24629E00DD301C /* VideoCamera.h */,
@@ -608,7 +608,7 @@
 				4379561D1A1C89D900462004 /* BaseTools.m in Sources */,
 				4379561E1A1C89D900462004 /* AFHTTPRequestOperation.m in Sources */,
 				4379561F1A1C89D900462004 /* DeviceHelper.m in Sources */,
-				437956201A1C89D900462004 /* RTChatSDKMain.mm in Sources */,
+				437956201A1C89D900462004 /* RTChatSDKMain_Ios.mm in Sources */,
 				437956211A1C89D900462004 /* AFHTTPRequestOperationManager.m in Sources */,
 				437956221A1C89D900462004 /* AFNetworkReachabilityManager.m in Sources */,
 				437956231A1C89D900462004 /* AFURLResponseSerialization.m in Sources */,
@@ -618,7 +618,7 @@
 				437956271A1C89D900462004 /* AFSecurityPolicy.m in Sources */,
 				437956281A1C89D900462004 /* LogicHelper.m in Sources */,
 				437956291A1C89D900462004 /* AppWidget.m in Sources */,
-				4379565D1A1DC5BD00462004 /* amrFileCodec.mm in Sources */,
+				4379565D1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */,
 				4379562A1A1C89D900462004 /* AFHTTPSessionManager.m in Sources */,
 				4379565F1A1DC5BD00462004 /* wav.mm in Sources */,
 				4379562B1A1C89D900462004 /* MNCryptor.m in Sources */,
@@ -635,7 +635,7 @@
 				437956371A1C89D900462004 /* AFURLSessionManager.m in Sources */,
 				437956381A1C89D900462004 /* CmdHandler.m in Sources */,
 				437956391A1C89D900462004 /* MNCryptor+MD5.m in Sources */,
-				4379563A1A1C89D900462004 /* HttpProcess.mm in Sources */,
+				4379563A1A1C89D900462004 /* HttpProcess_Ios.mm in Sources */,
 				4379563B1A1C89D900462004 /* DataManager.m in Sources */,
 				4379563C1A1C89D900462004 /* PhotoInPhoneController.m in Sources */,
 				4379563D1A1C89D900462004 /* AppHelper.m in Sources */,
@@ -651,7 +651,7 @@
 				43AE42751A10A9410017CFEB /* BaseTools.m in Sources */,
 				439CA5BB1A0B33100027DFF3 /* AFHTTPRequestOperation.m in Sources */,
 				43AE42771A10A9410017CFEB /* DeviceHelper.m in Sources */,
-				439CA59F1A0B31310027DFF3 /* RTChatSDKMain.mm in Sources */,
+				439CA59F1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm in Sources */,
 				439CA5BC1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m in Sources */,
 				439CA5BE1A0B33100027DFF3 /* AFNetworkReachabilityManager.m in Sources */,
 				439CA5C21A0B33100027DFF3 /* AFURLResponseSerialization.m in Sources */,
@@ -661,7 +661,7 @@
 				439CA5BF1A0B33100027DFF3 /* AFSecurityPolicy.m in Sources */,
 				43AE427B1A10A9410017CFEB /* LogicHelper.m in Sources */,
 				43AE42731A10A9410017CFEB /* AppWidget.m in Sources */,
-				4379565C1A1DC5BD00462004 /* amrFileCodec.mm in Sources */,
+				4379565C1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */,
 				439CA5BD1A0B33100027DFF3 /* AFHTTPSessionManager.m in Sources */,
 				4379565E1A1DC5BD00462004 /* wav.mm in Sources */,
 				43AE427F1A10A9410017CFEB /* MNCryptor.m in Sources */,
@@ -678,7 +678,7 @@
 				439CA5C31A0B33100027DFF3 /* AFURLSessionManager.m in Sources */,
 				439CA5A61A0B32B30027DFF3 /* CmdHandler.m in Sources */,
 				43AE427D1A10A9410017CFEB /* MNCryptor+MD5.m in Sources */,
-				439CA5A31A0B31F30027DFF3 /* HttpProcess.mm in Sources */,
+				439CA5A31A0B31F30027DFF3 /* HttpProcess_Ios.mm in Sources */,
 				43AE42931A10C7570017CFEB /* DataManager.m in Sources */,
 				43AE41C31A1093490017CFEB /* PhotoInPhoneController.m in Sources */,
 				43AE426D1A10A9410017CFEB /* AppHelper.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "VideoCamera.h"
 #import "CmdHandler.h"
-#import "RTChatSDKMain.h"
+#import "RTChatSDKMain_Ios.h"
 
 @implementation VideoCamera
 

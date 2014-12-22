@@ -12,7 +12,7 @@
 #include <iostream>
 #include <map>
 #include "RTChatCommonTypes.h"
-#include "HttpProcess.h"
+#include "HttpProcess_Ios.h"
 
 namespace rtchatsdk {
     
@@ -83,7 +83,7 @@ protected:
     void recordTimeExceed(int time);
     
     /// 构造JSON结构数据
-    std::string constructJsonFromData(const char* data, unsigned int size, unsigned long duration);
+    std::string constructJsonFromData(const StCallBackInfo& info);
     
 private:
     std::string         _appid;
