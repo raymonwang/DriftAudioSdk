@@ -108,7 +108,7 @@
     }
     
     self.recordFileDic = [[NSMutableDictionary alloc] init];
-    _uniquelabelid = 1;
+    _uniquefileid = 1;
     
     [self clearAllCachedFile];
     
@@ -132,11 +132,13 @@
 /// 开始录音
 -(BOOL)beginRecord:(NSInteger)labelid
 {
-    NSLog(@"in beginRecord");
+    NSLog(@"in beginRecord, labelid = %d", labelid);
     if (_opstate != SoundOpReady) {
         NSLog(@"状态不对，返回");
         return NO;
     }
+
+    _currentlabelid = labelid;
     
     _opstate = SoundOpRecording;
     
@@ -169,8 +171,8 @@
     //音频质量,采样质量
     [settings setValue:[NSNumber numberWithInt:AVAudioQualityMin] forKey:AVEncoderAudioQualityKey];
     
-    NSString* filename_caf = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.caf", (long)_uniquelabelid]];
-    self.current_recordedFile_mp3 = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)_uniquelabelid]];
+    NSString* filename_caf = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile.caf"]];
+    self.current_recordedFile_mp3 = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile.amr"]];
     self.current_recordedFile_caf = filename_caf;
     NSURL* url = [NSURL URLWithString:filename_caf];
     _recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:nil];
@@ -183,7 +185,7 @@
         self.timerForPitch = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(levelTimerCallback:) userInfo:nil repeats:YES];
     }
     
-    _uniquelabelid++;
+//    _uniquelabelid++;
     
     return YES;
 }
@@ -235,7 +237,7 @@
             *filename = self.current_recordedFile_mp3;
         }
         
-        return self.uniquelabelid;
+        return self.currentlabelid;
     }
     else {
         NSLog(@"不在录音状态，stopRecord直接返回");
@@ -335,7 +337,7 @@
         return YES;
     }
     else {
-        NSString* path = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)_uniquelabelid++]];
+        NSString* path = [NSTemporaryDirectory() stringByAppendingString:[NSString stringWithFormat:@"recordfile_%ld.amr", (long)_uniquefileid++]];
         NSLog(@"内存写入磁盘文件%@", path);
         *filename = path;
         if ([data writeToFile:path atomically:NO]) {

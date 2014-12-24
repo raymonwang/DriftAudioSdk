@@ -23,7 +23,8 @@ enum SoundOpState {
 @property (nonatomic, strong) NSString*    current_recordedFile_caf;
 @property (nonatomic, strong) NSString*    current_recordedFile_mp3;
 @property (nonatomic, strong) NSMutableDictionary*  recordFileDic;
-@property (nonatomic) NSInteger  uniquelabelid;
+@property (nonatomic) NSInteger  uniquefileid;
+@property (nonatomic) NSInteger  currentlabelid;
 
 + (SoundObject *) sharedInstance;
 
