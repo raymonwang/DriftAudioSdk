@@ -153,6 +153,7 @@ namespace rtchatsdk {
     /// 获取头像
     bool RTChatSDKMain::getAvater(unsigned int uid,int type,const char* imageUrl)
     {
+        [VideoCamera downloadImgData:[NSString stringWithUTF8String:imageUrl] uid:uid type:type];
         return true;
     }
     
