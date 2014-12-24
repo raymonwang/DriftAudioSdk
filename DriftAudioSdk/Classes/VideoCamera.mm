@@ -126,6 +126,7 @@
         
         NSData* data = UIImageJPEGRepresentation(editedImage, 0.3);
 		
+        fileName = [NSTemporaryDirectory() stringByAppendingString:fileName];
 //		[self performSelector:@selector(saveImg:) withObject:data afterDelay:0.0];
         [VideoCamera saveImg:data filename:fileName];
         
@@ -181,7 +182,12 @@
 	NSLog(@"save Image to disk");
     
     if (imageData) {
-        [imageData writeToFile:filename atomically:YES];
+        if ([imageData writeToFile:filename atomically:YES]) {
+            NSLog(@"图片写入磁盘成功");
+        }
+        else {
+            NSLog(@"图片写入磁盘失败");
+        }
     }
 }
 
@@ -189,7 +195,7 @@
 {
     NSDate *nowDate = [NSDate date];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"EEE-MMM-d"];
+    [df setDateFormat:@"EEE-MMM-d-h-m-s"];
     NSString *locationString = [df stringFromDate:nowDate];
     return [locationString stringByAppendingFormat:@".png"];
 }
@@ -306,7 +312,7 @@
         }
         else {
             NSLog(@"下载成功");
-            NSString* fileName = [VideoCamera timeStampAsString];
+            NSString* fileName = [NSTemporaryDirectory() stringByAppendingString:[VideoCamera timeStampAsString]];
             NSData* data = res;
             [self saveImg:data filename:fileName];
             rtchatsdk::RTChatSDKMain::sharedInstance().onImageDownloadOver(true, (unsigned int)uid, (int)type, [fileName UTF8String]);
