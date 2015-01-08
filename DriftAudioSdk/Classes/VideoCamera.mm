@@ -195,8 +195,8 @@
 {
     NSDate *nowDate = [NSDate date];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"EEE-MMM-d-h-m-s"];
-    NSString *locationString = [df stringFromDate:nowDate];
+    [df setDateFormat:@"MMM-d-h-m-s"];
+    NSString *locationString = [NSString stringWithFormat:@"%@-%d", [df stringFromDate:nowDate], rand()];
     return [locationString stringByAppendingFormat:@".png"];
 }
 
