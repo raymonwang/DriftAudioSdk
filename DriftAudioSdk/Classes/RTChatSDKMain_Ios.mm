@@ -15,6 +15,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include "VideoCamera.h"
+#import "iflyMSC/IFlySpeechUtility.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 namespace rtchatsdk {
     
@@ -72,6 +74,12 @@ namespace rtchatsdk {
         
         HttpProcess::instance().registerCallBack(std::bind(&RTChatSDKMain::httpRequestCallBack, this, std::placeholders::_1, std::placeholders::_2));
         
+        //创建语音配置,appid必须要传入，仅执行一次则可
+        NSString *initString = [[NSString alloc] initWithFormat:VoiceToTextAppStr];
+        
+        //所有服务启动前，需要确保执行createUtility
+        [IFlySpeechUtility createUtility:initString];
+        
         return OPERATION_OK;
     }
 
@@ -112,7 +120,7 @@ namespace rtchatsdk {
             _func(enRequestPlay, OPERATION_OK, "");
         }
         else {
-            StRequestUrlInfo info(labelid, voiceUrl);
+            StRequestUrlInfo info(labelid, voiceUrl, VoiceType);
             HttpProcess::instance().requestContent(info);
         }
         
@@ -141,6 +149,7 @@ namespace rtchatsdk {
         VideoCamera* vc = [[VideoCamera alloc] init];
         UIViewController* p_parentVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
         if (p_parentVC && vc) {
+            [vc setCameraMode:EnuImageMode];
             [p_parentVC presentViewController:vc animated:YES completion:^{
                 vc.uid = uid;
                 vc.itype = type;
@@ -154,6 +163,32 @@ namespace rtchatsdk {
     bool RTChatSDKMain::getAvater(unsigned int uid,int type,const char* imageUrl)
     {
         [VideoCamera downloadImgData:[NSString stringWithUTF8String:imageUrl] uid:uid type:type];
+        return true;
+    }
+    
+    ///开始摄像
+    bool RTChatSDKMain::startRecordVideo(unsigned int labelid, int type)
+    {
+        VideoCamera* vc = [[VideoCamera alloc] init];
+        UIViewController* p_parentVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+        if (p_parentVC && vc) {
+            [vc setCameraMode:EnuVideoMode];
+            [p_parentVC presentViewController:vc animated:YES completion:^{
+                vc.uid = labelid;
+                vc.itype = type;
+                [vc startCameraContinuity];
+            }];
+        }
+
+        return true;
+    }
+    
+    ///播放视频
+    bool RTChatSDKMain::playVideo(unsigned int labelid, const char* videoUrl)
+    {
+//        playVideo(videoUrl);
+        StRequestUrlInfo info(labelid, videoUrl, VideoType);
+        HttpProcess::instance().requestContent(info);
         return true;
     }
     
@@ -196,6 +231,35 @@ namespace rtchatsdk {
         
         return buff;
     }
+    
+    void RTChatSDKMain::playVideo(const char *fileFullPath)
+    {
+        MPMoviePlayerViewController* playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:fileFullPath]]];
+        UIViewController* p_parentVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+        if (p_parentVC && playerView) {
+            [p_parentVC presentViewController:playerView animated:YES completion:nil];
+        }
+    }
+    
+    ///开始语音识别
+    bool RTChatSDKMain::startVoiceToText()
+    {
+        if (_isrecording) {
+            NSLog(@"正在执行识别操作，禁止点击");
+            return false;
+        }
+        [[SoundObject sharedInstance] beginSoundRecognize];
+        _isrecording = true;
+        return true;
+    }
+    
+    ///停止语音识别
+    bool RTChatSDKMain::stopVoiceToText()
+    {
+        [[SoundObject sharedInstance] stopSoundRecognize];
+        _isrecording = false;
+        return true;
+    }
 
     //http请求回调函数(主线程工作)
     void RTChatSDKMain::httpRequestCallBack(HttpDirection direction, const StCallBackInfo& info)
@@ -222,12 +286,20 @@ namespace rtchatsdk {
             else {
                 NSData* data = [NSData dataWithBytes:info.ptr length:info.size];
                 
-                NSString* outfilename = [[NSString alloc]init];
-                [[SoundObject sharedInstance] saveCacheToDiskFile:[NSString stringWithUTF8String:info.url.c_str()] data:data filename:&outfilename];
-                NSString* pcmfilename = [[SoundObject sharedInstance]transferAmrToPcmFile:outfilename url:[NSString stringWithUTF8String:info.url.c_str()]];
-                if (pcmfilename) {
-                    [[SoundObject sharedInstance] beginPlayLocalFile:pcmfilename];
-                    _func(enRequestPlay, OPERATION_OK, "");
+                if (info.type == VoiceType) {
+                    NSString* outfilename = [[NSString alloc]init];
+                    [[SoundObject sharedInstance] saveCacheToDiskFile:[NSString stringWithUTF8String:info.url.c_str()] data:data filename:&outfilename];
+                    NSString* pcmfilename = [[SoundObject sharedInstance]transferAmrToPcmFile:outfilename url:[NSString stringWithUTF8String:info.url.c_str()]];
+                    if (pcmfilename) {
+                        [[SoundObject sharedInstance] beginPlayLocalFile:pcmfilename];
+                        _func(enRequestPlay, OPERATION_OK, "");
+                    }
+                }
+                else if (info.type == VideoType) {
+                    NSString* fileFullPath = [NSTemporaryDirectory() stringByAppendingFormat:@"recordfile.mp4" ];
+                    if ([data writeToFile:fileFullPath atomically:NO]) {
+                        playVideo([fileFullPath UTF8String]);
+                    }
                 }
             }
         }
@@ -265,6 +337,16 @@ namespace rtchatsdk {
             NSLog(@"in onImageDownloadOver failure");
             _func(enReqGetAvaterResult, OPERATION_FAILED, "");
         }
+    }
+    
+    /// 语音听写底层回调
+    void RTChatSDKMain::onReceiveVoiceTextResult(const std::string& text)
+    {
+        char buff[1024] = {0};
+        bzero(buff, 1024);
+        
+        snprintf(buff, 1023, "{\"isok\":\"true\", \"content\":\"%s\"}", text.c_str());
+        _func(enNotifyVoiceTextResult, OPERATION_OK, buff);
     }
 
     

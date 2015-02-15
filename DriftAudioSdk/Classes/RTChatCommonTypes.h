@@ -172,6 +172,12 @@ enum SdkResponseCmd {
     
     /// 通知播放停止
     enNotifyPlayOver = 35,
+    
+    /// 通知视频回调
+    enNotifyRecordVideoOver = 36,
+    
+    ///通知语音识别文本结果回调
+    enNotifyVoiceTextResult = 37,
 };
 
 enum SdkErrorCode {

@@ -13,16 +13,25 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
+typedef enum : NSUInteger {
+    EnuPhotoMode,
+    EnuImageMode,
+    EnuVideoMode,
+} CameraMode;
+
 @interface VideoCamera : UIImagePickerController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
-	NSURL *targetURL;
-	BOOL isCamera;
+	
 }
 
 @property(nonatomic)NSInteger   uid;
 @property(nonatomic)NSInteger   itype;
 
+-(void)setCameraMode:(CameraMode)inmode;
+
 -(void)startCamera;
 -(void)getPreViewImg:(NSURL *)url;
+
+-(void)startCameraContinuity;
 
 -(NSString *)getFileName:(NSString *)fileName;
 +(NSString *)timeStampAsString;

@@ -10,10 +10,12 @@
 #import "lame.h"
 #import "RTChatSDKMain_Ios.h"
 #import "VoiceConvert/VoiceConverter.h"
+#import "SoundRecognize.h"
 
 @interface SoundObject ()
 
 @property(nonatomic, strong)NSTimer *timerForPitch;
+@property(nonatomic, strong)SoundRecognize* soundRecognize;
 
 @end
 
@@ -111,6 +113,8 @@
     _uniquefileid = 1;
     
     [self clearAllCachedFile];
+    
+    self.soundRecognize = [[SoundRecognize alloc] init];
     
     return self;
 }
@@ -215,7 +219,6 @@
         }
         [_recorder stop];
         
-//        [self transferPCMtoMP3];
         if ([self transferPCMtoAMR]) {
             NSLog(@"amr文件压缩成功");
         }
@@ -243,6 +246,18 @@
         NSLog(@"不在录音状态，stopRecord直接返回");
         return -1;
     }
+}
+
+///开始语音识别
+-(void)beginSoundRecognize
+{
+    [self.soundRecognize startListenMic];
+}
+
+///停止语音识别
+-(void)stopSoundRecognize
+{
+    [self.soundRecognize stopListenMic];
 }
 
 /// 开始播放内存中的音频

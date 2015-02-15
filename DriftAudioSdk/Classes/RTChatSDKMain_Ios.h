@@ -57,6 +57,18 @@ public:
     /// 获取头像
     bool getAvater(unsigned int uid, int type, const char* imageUrl);
     
+    ///开始摄像
+    bool startRecordVideo(unsigned int labelid, int type);
+    
+    ///播放视频
+    bool playVideo(unsigned int labelid, const char* videoUrl);
+    
+    ///开始语音识别
+    bool startVoiceToText();
+    
+    ///停止语音识别
+    bool stopVoiceToText();
+    
     /*******************需要暴露给用户的接口结束**********************/
     
     /// 底层音量等级通知
@@ -74,6 +86,9 @@ public:
     /// 图片取回接口
     void onImageDownloadOver(bool issuccess, unsigned int uid, int type, const std::string& fileName);
     
+    /// 语音听写底层回调
+    void onReceiveVoiceTextResult(const std::string& text);
+    
 protected:
     
     //上传录制的语音数据
@@ -84,6 +99,9 @@ protected:
     
     /// 构造JSON结构数据
     std::string constructJsonFromData(const StCallBackInfo& info);
+    
+    ///
+    void playVideo(const char* fileFullPath);
     
 private:
     std::string         _appid;
@@ -97,7 +115,7 @@ private:
     
     pMsgCallFunc        _func;          //回调函数
 
-    const char*             _downloadingfileurl; //临时存放下载中的文件名
+    const char*         _downloadingfileurl; //临时存放下载中的文件名
     
     bool                _isrecording;       //录音标志
 };

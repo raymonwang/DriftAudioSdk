@@ -39,6 +39,8 @@ inline void constructDynamic(T *ptr) {
 #else
     #define ControlServerAddr   "rtchatrelease.ztgame.com.cn:18000"
 #endif
+    
+#define VoiceToTextAppStr    @"appid=54acafe7,timeout=200000"
 }
 
 #endif

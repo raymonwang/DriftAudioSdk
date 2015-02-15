@@ -53,6 +53,28 @@
 		437956631A1DC5BE00462004 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956531A1DC5BD00462004 /* libopencore-amrwb.a */; };
 		437956641A1DC5BE00462004 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379565B1A1DC5BD00462004 /* VoiceConverter.mm */; };
 		437956651A1DC5BE00462004 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379565B1A1DC5BD00462004 /* VoiceConverter.mm */; };
+		4392CBC71A5E79C600CD0405 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392CBC31A5E79C600CD0405 /* iflyMSC.framework */; };
+		4392CBC81A5E79C600CD0405 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392CBC31A5E79C600CD0405 /* iflyMSC.framework */; };
+		4392CBC91A5E79C600CD0405 /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392CBC61A5E79C600CD0405 /* libSunFlower.a */; };
+		4392CBCA1A5E79C600CD0405 /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392CBC61A5E79C600CD0405 /* libSunFlower.a */; };
+		4392CBCD1A5E80CC00CD0405 /* SoundRecognize.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBCC1A5E80CC00CD0405 /* SoundRecognize.mm */; };
+		4392CBCE1A5E80CC00CD0405 /* SoundRecognize.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBCC1A5E80CC00CD0405 /* SoundRecognize.mm */; };
+		4392CBD11A5E883000CD0405 /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD01A5E883000CD0405 /* ISRDataHelper.m */; };
+		4392CBD21A5E883000CD0405 /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD01A5E883000CD0405 /* ISRDataHelper.m */; };
+		4392CBE31A5E886500CD0405 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD61A5E886500CD0405 /* SBJson4Parser.m */; };
+		4392CBE41A5E886500CD0405 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD61A5E886500CD0405 /* SBJson4Parser.m */; };
+		4392CBE51A5E886500CD0405 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD81A5E886500CD0405 /* SBJson4StreamParser.m */; };
+		4392CBE61A5E886500CD0405 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD81A5E886500CD0405 /* SBJson4StreamParser.m */; };
+		4392CBE71A5E886500CD0405 /* SBJson4StreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDA1A5E886500CD0405 /* SBJson4StreamParserState.m */; };
+		4392CBE81A5E886500CD0405 /* SBJson4StreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDA1A5E886500CD0405 /* SBJson4StreamParserState.m */; };
+		4392CBE91A5E886500CD0405 /* SBJson4StreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDC1A5E886500CD0405 /* SBJson4StreamTokeniser.m */; };
+		4392CBEA1A5E886500CD0405 /* SBJson4StreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDC1A5E886500CD0405 /* SBJson4StreamTokeniser.m */; };
+		4392CBEB1A5E886500CD0405 /* SBJson4StreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDE1A5E886500CD0405 /* SBJson4StreamWriter.m */; };
+		4392CBEC1A5E886500CD0405 /* SBJson4StreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDE1A5E886500CD0405 /* SBJson4StreamWriter.m */; };
+		4392CBED1A5E886500CD0405 /* SBJson4StreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBE01A5E886500CD0405 /* SBJson4StreamWriterState.m */; };
+		4392CBEE1A5E886500CD0405 /* SBJson4StreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBE01A5E886500CD0405 /* SBJson4StreamWriterState.m */; };
+		4392CBEF1A5E886500CD0405 /* SBJson4Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBE21A5E886500CD0405 /* SBJson4Writer.m */; };
+		4392CBF01A5E886500CD0405 /* SBJson4Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBE21A5E886500CD0405 /* SBJson4Writer.m */; };
 		439CA59F1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */; };
 		439CA5A31A0B31F30027DFF3 /* HttpProcess_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess_Ios.mm */; };
 		439CA5A61A0B32B30027DFF3 /* CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A51A0B32B30027DFF3 /* CmdHandler.m */; };
@@ -71,47 +93,23 @@
 		439CA5D61A0B7C870027DFF3 /* RTChatSdk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */; };
 		43AE41C31A1093490017CFEB /* PhotoInPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C21A1093490017CFEB /* PhotoInPhoneController.m */; };
 		43AE41C61A10950D0017CFEB /* PhotoInPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C51A10950D0017CFEB /* PhotoInPhoneCell.m */; };
-		43AE42291A10996D0017CFEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42261A10996D0017CFEB /* AppDelegate.m */; };
-		43AE422A1A10996D0017CFEB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43AE42271A10996D0017CFEB /* Info.plist */; };
-		43AE422B1A10996D0017CFEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42281A10996D0017CFEB /* main.m */; };
-		43AE422D1A109DFA0017CFEB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43AE41BF1A1091FC0017CFEB /* MainStoryboard.storyboard */; };
-		43AE422E1A109E840017CFEB /* PhotoInPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C51A10950D0017CFEB /* PhotoInPhoneCell.m */; };
-		43AE422F1A109E840017CFEB /* PhotoInPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C21A1093490017CFEB /* PhotoInPhoneController.m */; };
-		43AE42311A109F7C0017CFEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43AE41C71A1095810017CFEB /* Images.xcassets */; };
 		43AE42341A10A7E30017CFEB /* PhotoAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42331A10A7E30017CFEB /* PhotoAlbumsController.m */; };
-		43AE42351A10A7E30017CFEB /* PhotoAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42331A10A7E30017CFEB /* PhotoAlbumsController.m */; };
 		43AE42521A10A9060017CFEB /* PhotoAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42511A10A9060017CFEB /* PhotoAlbumCell.m */; };
-		43AE42531A10A9060017CFEB /* PhotoAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42511A10A9060017CFEB /* PhotoAlbumCell.m */; };
 		43AE426B1A10A9410017CFEB /* AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42561A10A9410017CFEB /* AppColors.m */; };
-		43AE426C1A10A9410017CFEB /* AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42561A10A9410017CFEB /* AppColors.m */; };
 		43AE426D1A10A9410017CFEB /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42581A10A9410017CFEB /* AppHelper.m */; };
-		43AE426E1A10A9410017CFEB /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42581A10A9410017CFEB /* AppHelper.m */; };
 		43AE426F1A10A9410017CFEB /* AppImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425A1A10A9410017CFEB /* AppImages.m */; };
-		43AE42701A10A9410017CFEB /* AppImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425A1A10A9410017CFEB /* AppImages.m */; };
 		43AE42711A10A9410017CFEB /* AppVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425C1A10A9410017CFEB /* AppVoiceManager.m */; };
-		43AE42721A10A9410017CFEB /* AppVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425C1A10A9410017CFEB /* AppVoiceManager.m */; };
 		43AE42731A10A9410017CFEB /* AppWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425E1A10A9410017CFEB /* AppWidget.m */; };
-		43AE42741A10A9410017CFEB /* AppWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425E1A10A9410017CFEB /* AppWidget.m */; };
 		43AE42751A10A9410017CFEB /* BaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42601A10A9410017CFEB /* BaseTools.m */; };
-		43AE42761A10A9410017CFEB /* BaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42601A10A9410017CFEB /* BaseTools.m */; };
 		43AE42771A10A9410017CFEB /* DeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42621A10A9410017CFEB /* DeviceHelper.m */; };
-		43AE42781A10A9410017CFEB /* DeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42621A10A9410017CFEB /* DeviceHelper.m */; };
 		43AE42791A10A9410017CFEB /* KeyChainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42641A10A9410017CFEB /* KeyChainHelper.m */; };
-		43AE427A1A10A9410017CFEB /* KeyChainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42641A10A9410017CFEB /* KeyChainHelper.m */; };
 		43AE427B1A10A9410017CFEB /* LogicHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42661A10A9410017CFEB /* LogicHelper.m */; };
-		43AE427C1A10A9410017CFEB /* LogicHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42661A10A9410017CFEB /* LogicHelper.m */; };
 		43AE427D1A10A9410017CFEB /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42681A10A9410017CFEB /* MNCryptor+MD5.m */; };
-		43AE427E1A10A9410017CFEB /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42681A10A9410017CFEB /* MNCryptor+MD5.m */; };
 		43AE427F1A10A9410017CFEB /* MNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE426A1A10A9410017CFEB /* MNCryptor.m */; };
-		43AE42801A10A9410017CFEB /* MNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE426A1A10A9410017CFEB /* MNCryptor.m */; };
 		43AE42831A10A9920017CFEB /* MNPresentDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42821A10A9920017CFEB /* MNPresentDismissAnimation.m */; };
-		43AE42841A10A9920017CFEB /* MNPresentDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42821A10A9920017CFEB /* MNPresentDismissAnimation.m */; };
 		43AE42871A10AA7F0017CFEB /* AppNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */; };
-		43AE42881A10AA7F0017CFEB /* AppNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */; };
 		43AE42931A10C7570017CFEB /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42921A10C7570017CFEB /* DataManager.m */; };
-		43AE42941A10C7570017CFEB /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42921A10C7570017CFEB /* DataManager.m */; };
 		43AE42971A10D8F00017CFEB /* TestRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42961A10D8F00017CFEB /* TestRootViewController.m */; };
-		43AE42981A10D8F00017CFEB /* TestRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42961A10D8F00017CFEB /* TestRootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -155,6 +153,28 @@
 		437956591A1DC5BD00462004 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
 		4379565A1A1DC5BD00462004 /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
 		4379565B1A1DC5BD00462004 /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
+		4392CBC31A5E79C600CD0405 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		4392CBC51A5E79C600CD0405 /* IFlyFlowerCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFlowerCollector.h; sourceTree = "<group>"; };
+		4392CBC61A5E79C600CD0405 /* libSunFlower.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSunFlower.a; sourceTree = "<group>"; };
+		4392CBCB1A5E80CC00CD0405 /* SoundRecognize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundRecognize.h; sourceTree = "<group>"; };
+		4392CBCC1A5E80CC00CD0405 /* SoundRecognize.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundRecognize.mm; sourceTree = "<group>"; };
+		4392CBCF1A5E883000CD0405 /* ISRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISRDataHelper.h; sourceTree = "<group>"; };
+		4392CBD01A5E883000CD0405 /* ISRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRDataHelper.m; sourceTree = "<group>"; };
+		4392CBD41A5E886500CD0405 /* SBJson4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4.h; sourceTree = "<group>"; };
+		4392CBD51A5E886500CD0405 /* SBJson4Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Parser.h; sourceTree = "<group>"; };
+		4392CBD61A5E886500CD0405 /* SBJson4Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Parser.m; sourceTree = "<group>"; };
+		4392CBD71A5E886500CD0405 /* SBJson4StreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamParser.h; sourceTree = "<group>"; };
+		4392CBD81A5E886500CD0405 /* SBJson4StreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamParser.m; sourceTree = "<group>"; };
+		4392CBD91A5E886500CD0405 /* SBJson4StreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamParserState.h; sourceTree = "<group>"; };
+		4392CBDA1A5E886500CD0405 /* SBJson4StreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamParserState.m; sourceTree = "<group>"; };
+		4392CBDB1A5E886500CD0405 /* SBJson4StreamTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamTokeniser.h; sourceTree = "<group>"; };
+		4392CBDC1A5E886500CD0405 /* SBJson4StreamTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamTokeniser.m; sourceTree = "<group>"; };
+		4392CBDD1A5E886500CD0405 /* SBJson4StreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamWriter.h; sourceTree = "<group>"; };
+		4392CBDE1A5E886500CD0405 /* SBJson4StreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamWriter.m; sourceTree = "<group>"; };
+		4392CBDF1A5E886500CD0405 /* SBJson4StreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamWriterState.h; sourceTree = "<group>"; };
+		4392CBE01A5E886500CD0405 /* SBJson4StreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamWriterState.m; sourceTree = "<group>"; };
+		4392CBE11A5E886500CD0405 /* SBJson4Writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Writer.h; sourceTree = "<group>"; };
+		4392CBE21A5E886500CD0405 /* SBJson4Writer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Writer.m; sourceTree = "<group>"; };
 		439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTChatSDKMain_Ios.mm; sourceTree = "<group>"; tabWidth = 4; wrapsLines = 1; };
 		439CA59E1A0B31310027DFF3 /* RTChatSDKMain_Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSDKMain_Ios.h; sourceTree = "<group>"; };
@@ -196,11 +216,6 @@
 		43AE41C41A10950D0017CFEB /* PhotoInPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoInPhoneCell.h; sourceTree = "<group>"; };
 		43AE41C51A10950D0017CFEB /* PhotoInPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoInPhoneCell.m; sourceTree = "<group>"; };
 		43AE41C71A1095810017CFEB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		43AE42051A1098A40017CFEB /* DriftAudioSdkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DriftAudioSdkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		43AE42251A10996D0017CFEB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		43AE42261A10996D0017CFEB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		43AE42271A10996D0017CFEB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43AE42281A10996D0017CFEB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		43AE42321A10A7E30017CFEB /* PhotoAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAlbumsController.h; sourceTree = "<group>"; };
 		43AE42331A10A7E30017CFEB /* PhotoAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAlbumsController.m; sourceTree = "<group>"; };
 		43AE42501A10A9060017CFEB /* PhotoAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAlbumCell.h; sourceTree = "<group>"; };
@@ -241,9 +256,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4392CBC81A5E79C600CD0405 /* iflyMSC.framework in Frameworks */,
 				4379563F1A1C89D900462004 /* libmp3lame.a in Frameworks */,
 				437956631A1DC5BE00462004 /* libopencore-amrwb.a in Frameworks */,
 				437956611A1DC5BE00462004 /* libopencore-amrnb.a in Frameworks */,
+				4392CBCA1A5E79C600CD0405 /* libSunFlower.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,16 +268,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4392CBC71A5E79C600CD0405 /* iflyMSC.framework in Frameworks */,
 				439CA5C81A0B55ED0027DFF3 /* libmp3lame.a in Frameworks */,
 				437956621A1DC5BE00462004 /* libopencore-amrwb.a in Frameworks */,
 				437956601A1DC5BD00462004 /* libopencore-amrnb.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		43AE42021A1098A40017CFEB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				4392CBC91A5E79C600CD0405 /* libSunFlower.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,10 +330,49 @@
 			path = "opencore-amrwb";
 			sourceTree = "<group>";
 		};
+		4392CBC21A5E79C600CD0405 /* xunfei */ = {
+			isa = PBXGroup;
+			children = (
+				4392CBC31A5E79C600CD0405 /* iflyMSC.framework */,
+				4392CBC41A5E79C600CD0405 /* sunflower */,
+			);
+			path = xunfei;
+			sourceTree = "<group>";
+		};
+		4392CBC41A5E79C600CD0405 /* sunflower */ = {
+			isa = PBXGroup;
+			children = (
+				4392CBC51A5E79C600CD0405 /* IFlyFlowerCollector.h */,
+				4392CBC61A5E79C600CD0405 /* libSunFlower.a */,
+			);
+			path = sunflower;
+			sourceTree = "<group>";
+		};
+		4392CBD31A5E886500CD0405 /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				4392CBD41A5E886500CD0405 /* SBJson4.h */,
+				4392CBD51A5E886500CD0405 /* SBJson4Parser.h */,
+				4392CBD61A5E886500CD0405 /* SBJson4Parser.m */,
+				4392CBD71A5E886500CD0405 /* SBJson4StreamParser.h */,
+				4392CBD81A5E886500CD0405 /* SBJson4StreamParser.m */,
+				4392CBD91A5E886500CD0405 /* SBJson4StreamParserState.h */,
+				4392CBDA1A5E886500CD0405 /* SBJson4StreamParserState.m */,
+				4392CBDB1A5E886500CD0405 /* SBJson4StreamTokeniser.h */,
+				4392CBDC1A5E886500CD0405 /* SBJson4StreamTokeniser.m */,
+				4392CBDD1A5E886500CD0405 /* SBJson4StreamWriter.h */,
+				4392CBDE1A5E886500CD0405 /* SBJson4StreamWriter.m */,
+				4392CBDF1A5E886500CD0405 /* SBJson4StreamWriterState.h */,
+				4392CBE01A5E886500CD0405 /* SBJson4StreamWriterState.m */,
+				4392CBE11A5E886500CD0405 /* SBJson4Writer.h */,
+				4392CBE21A5E886500CD0405 /* SBJson4Writer.m */,
+			);
+			path = SBJson;
+			sourceTree = "<group>";
+		};
 		439CA55B1A0B30C90027DFF3 = {
 			isa = PBXGroup;
 			children = (
-				43AE41C81A10980D0017CFEB /* DriftAudioSdkTest */,
 				439CA5661A0B30C90027DFF3 /* DriftAudioSdk */,
 				439CA5651A0B30C90027DFF3 /* Products */,
 			);
@@ -331,7 +382,6 @@
 			isa = PBXGroup;
 			children = (
 				439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */,
-				43AE42051A1098A40017CFEB /* DriftAudioSdkTest.app */,
 				437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */,
 			);
 			name = Products;
@@ -349,6 +399,8 @@
 		439CA59C1A0B31310027DFF3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4392CBD31A5E886500CD0405 /* SBJson */,
+				4392CBC21A5E79C600CD0405 /* xunfei */,
 				4379564B1A1DC5BD00462004 /* VoiceConvert */,
 				43AE41C01A10931C0017CFEB /* PhotoModel */,
 				43AE41BA1A106C720017CFEB /* cocos2dx */,
@@ -363,6 +415,10 @@
 				439CA59E1A0B31310027DFF3 /* RTChatSDKMain_Ios.h */,
 				439CA5C91A0B55FF0027DFF3 /* SoundObject.h */,
 				439CA5CA1A0B55FF0027DFF3 /* SoundObject.mm */,
+				4392CBCB1A5E80CC00CD0405 /* SoundRecognize.h */,
+				4392CBCC1A5E80CC00CD0405 /* SoundRecognize.mm */,
+				4392CBCF1A5E883000CD0405 /* ISRDataHelper.h */,
+				4392CBD01A5E883000CD0405 /* ISRDataHelper.m */,
 				43358EC11A24629E00DD301C /* VideoCamera.h */,
 				43358EC21A24629E00DD301C /* VideoCamera.mm */,
 				439CA5C41A0B34440027DFF3 /* defines.h */,
@@ -448,17 +504,6 @@
 			path = PhotoModel;
 			sourceTree = "<group>";
 		};
-		43AE41C81A10980D0017CFEB /* DriftAudioSdkTest */ = {
-			isa = PBXGroup;
-			children = (
-				43AE42251A10996D0017CFEB /* AppDelegate.h */,
-				43AE42261A10996D0017CFEB /* AppDelegate.m */,
-				43AE42271A10996D0017CFEB /* Info.plist */,
-				43AE42281A10996D0017CFEB /* main.m */,
-			);
-			path = DriftAudioSdkTest;
-			sourceTree = "<group>";
-		};
 		43AE42541A10A9410017CFEB /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,23 +577,6 @@
 			productReference = 439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		43AE42041A1098A40017CFEB /* DriftAudioSdkTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 43AE421F1A1098A40017CFEB /* Build configuration list for PBXNativeTarget "DriftAudioSdkTest" */;
-			buildPhases = (
-				43AE42011A1098A40017CFEB /* Sources */,
-				43AE42021A1098A40017CFEB /* Frameworks */,
-				43AE42031A1098A40017CFEB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DriftAudioSdkTest;
-			productName = DriftAudioSdkTest;
-			productReference = 43AE42051A1098A40017CFEB /* DriftAudioSdkTest.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -559,9 +587,6 @@
 				ORGANIZATIONNAME = "wang3140@hotmail.com";
 				TargetAttributes = {
 					439CA5631A0B30C90027DFF3 = {
-						CreatedOnToolsVersion = 6.1;
-					};
-					43AE42041A1098A40017CFEB = {
 						CreatedOnToolsVersion = 6.1;
 					};
 				};
@@ -580,24 +605,10 @@
 			projectRoot = "";
 			targets = (
 				439CA5631A0B30C90027DFF3 /* DriftAudioSdk */,
-				43AE42041A1098A40017CFEB /* DriftAudioSdkTest */,
 				4379561A1A1C89D900462004 /* DriftAudioSdk_sim */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		43AE42031A1098A40017CFEB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				43AE42311A109F7C0017CFEB /* Images.xcassets in Resources */,
-				43AE422D1A109DFA0017CFEB /* MainStoryboard.storyboard in Resources */,
-				43AE422A1A10996D0017CFEB /* Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4379561B1A1C89D900462004 /* Sources */ = {
@@ -612,13 +623,18 @@
 				437956211A1C89D900462004 /* AFHTTPRequestOperationManager.m in Sources */,
 				437956221A1C89D900462004 /* AFNetworkReachabilityManager.m in Sources */,
 				437956231A1C89D900462004 /* AFURLResponseSerialization.m in Sources */,
+				4392CBEC1A5E886500CD0405 /* SBJson4StreamWriter.m in Sources */,
 				437956241A1C89D900462004 /* AFURLConnectionOperation.m in Sources */,
 				437956251A1C89D900462004 /* AppImages.m in Sources */,
 				437956261A1C89D900462004 /* PhotoAlbumsController.m in Sources */,
 				437956271A1C89D900462004 /* AFSecurityPolicy.m in Sources */,
+				4392CBD21A5E883000CD0405 /* ISRDataHelper.m in Sources */,
+				4392CBF01A5E886500CD0405 /* SBJson4Writer.m in Sources */,
 				437956281A1C89D900462004 /* LogicHelper.m in Sources */,
 				437956291A1C89D900462004 /* AppWidget.m in Sources */,
 				4379565D1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */,
+				4392CBE41A5E886500CD0405 /* SBJson4Parser.m in Sources */,
+				4392CBE61A5E886500CD0405 /* SBJson4StreamParser.m in Sources */,
 				4379562A1A1C89D900462004 /* AFHTTPSessionManager.m in Sources */,
 				4379565F1A1DC5BD00462004 /* wav.mm in Sources */,
 				4379562B1A1C89D900462004 /* MNCryptor.m in Sources */,
@@ -626,6 +642,7 @@
 				4379562D1A1C89D900462004 /* AppColors.m in Sources */,
 				4379562E1A1C89D900462004 /* AFURLRequestSerialization.m in Sources */,
 				4379562F1A1C89D900462004 /* PhotoAlbumCell.m in Sources */,
+				4392CBCE1A5E80CC00CD0405 /* SoundRecognize.mm in Sources */,
 				437956651A1DC5BE00462004 /* VoiceConverter.mm in Sources */,
 				437956321A1C89D900462004 /* AppVoiceManager.m in Sources */,
 				437956331A1C89D900462004 /* SoundObject.mm in Sources */,
@@ -633,10 +650,13 @@
 				437956351A1C89D900462004 /* TestRootViewController.m in Sources */,
 				437956361A1C89D900462004 /* MNPresentDismissAnimation.m in Sources */,
 				437956371A1C89D900462004 /* AFURLSessionManager.m in Sources */,
+				4392CBEA1A5E886500CD0405 /* SBJson4StreamTokeniser.m in Sources */,
 				437956381A1C89D900462004 /* CmdHandler.m in Sources */,
+				4392CBE81A5E886500CD0405 /* SBJson4StreamParserState.m in Sources */,
 				437956391A1C89D900462004 /* MNCryptor+MD5.m in Sources */,
 				4379563A1A1C89D900462004 /* HttpProcess_Ios.mm in Sources */,
 				4379563B1A1C89D900462004 /* DataManager.m in Sources */,
+				4392CBEE1A5E886500CD0405 /* SBJson4StreamWriterState.m in Sources */,
 				4379563C1A1C89D900462004 /* PhotoInPhoneController.m in Sources */,
 				4379563D1A1C89D900462004 /* AppHelper.m in Sources */,
 			);
@@ -648,29 +668,37 @@
 			files = (
 				43358EC31A24629E00DD301C /* VideoCamera.mm in Sources */,
 				43AE42871A10AA7F0017CFEB /* AppNotificationCenter.m in Sources */,
+				4392CBE91A5E886500CD0405 /* SBJson4StreamTokeniser.m in Sources */,
 				43AE42751A10A9410017CFEB /* BaseTools.m in Sources */,
+				4392CBEF1A5E886500CD0405 /* SBJson4Writer.m in Sources */,
 				439CA5BB1A0B33100027DFF3 /* AFHTTPRequestOperation.m in Sources */,
 				43AE42771A10A9410017CFEB /* DeviceHelper.m in Sources */,
 				439CA59F1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm in Sources */,
+				4392CBD11A5E883000CD0405 /* ISRDataHelper.m in Sources */,
 				439CA5BC1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m in Sources */,
 				439CA5BE1A0B33100027DFF3 /* AFNetworkReachabilityManager.m in Sources */,
 				439CA5C21A0B33100027DFF3 /* AFURLResponseSerialization.m in Sources */,
 				439CA5C01A0B33100027DFF3 /* AFURLConnectionOperation.m in Sources */,
 				43AE426F1A10A9410017CFEB /* AppImages.m in Sources */,
 				43AE42341A10A7E30017CFEB /* PhotoAlbumsController.m in Sources */,
+				4392CBEB1A5E886500CD0405 /* SBJson4StreamWriter.m in Sources */,
 				439CA5BF1A0B33100027DFF3 /* AFSecurityPolicy.m in Sources */,
 				43AE427B1A10A9410017CFEB /* LogicHelper.m in Sources */,
 				43AE42731A10A9410017CFEB /* AppWidget.m in Sources */,
 				4379565C1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */,
 				439CA5BD1A0B33100027DFF3 /* AFHTTPSessionManager.m in Sources */,
+				4392CBE31A5E886500CD0405 /* SBJson4Parser.m in Sources */,
 				4379565E1A1DC5BD00462004 /* wav.mm in Sources */,
+				4392CBE51A5E886500CD0405 /* SBJson4StreamParser.m in Sources */,
 				43AE427F1A10A9410017CFEB /* MNCryptor.m in Sources */,
+				4392CBE71A5E886500CD0405 /* SBJson4StreamParserState.m in Sources */,
 				43AE41C61A10950D0017CFEB /* PhotoInPhoneCell.m in Sources */,
 				43AE426B1A10A9410017CFEB /* AppColors.m in Sources */,
 				439CA5C11A0B33100027DFF3 /* AFURLRequestSerialization.m in Sources */,
 				43AE42521A10A9060017CFEB /* PhotoAlbumCell.m in Sources */,
 				437956641A1DC5BE00462004 /* VoiceConverter.mm in Sources */,
 				43AE42711A10A9410017CFEB /* AppVoiceManager.m in Sources */,
+				4392CBCD1A5E80CC00CD0405 /* SoundRecognize.mm in Sources */,
 				439CA5CB1A0B55FF0027DFF3 /* SoundObject.mm in Sources */,
 				43AE42791A10A9410017CFEB /* KeyChainHelper.m in Sources */,
 				43AE42971A10D8F00017CFEB /* TestRootViewController.m in Sources */,
@@ -681,35 +709,8 @@
 				439CA5A31A0B31F30027DFF3 /* HttpProcess_Ios.mm in Sources */,
 				43AE42931A10C7570017CFEB /* DataManager.m in Sources */,
 				43AE41C31A1093490017CFEB /* PhotoInPhoneController.m in Sources */,
+				4392CBED1A5E886500CD0405 /* SBJson4StreamWriterState.m in Sources */,
 				43AE426D1A10A9410017CFEB /* AppHelper.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		43AE42011A1098A40017CFEB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				43AE42781A10A9410017CFEB /* DeviceHelper.m in Sources */,
-				43AE42941A10C7570017CFEB /* DataManager.m in Sources */,
-				43AE42761A10A9410017CFEB /* BaseTools.m in Sources */,
-				43AE427A1A10A9410017CFEB /* KeyChainHelper.m in Sources */,
-				43AE422E1A109E840017CFEB /* PhotoInPhoneCell.m in Sources */,
-				43AE42981A10D8F00017CFEB /* TestRootViewController.m in Sources */,
-				43AE42531A10A9060017CFEB /* PhotoAlbumCell.m in Sources */,
-				43AE426E1A10A9410017CFEB /* AppHelper.m in Sources */,
-				43AE42701A10A9410017CFEB /* AppImages.m in Sources */,
-				43AE422F1A109E840017CFEB /* PhotoInPhoneController.m in Sources */,
-				43AE426C1A10A9410017CFEB /* AppColors.m in Sources */,
-				43AE427C1A10A9410017CFEB /* LogicHelper.m in Sources */,
-				43AE42351A10A7E30017CFEB /* PhotoAlbumsController.m in Sources */,
-				43AE42841A10A9920017CFEB /* MNPresentDismissAnimation.m in Sources */,
-				43AE422B1A10996D0017CFEB /* main.m in Sources */,
-				43AE427E1A10A9410017CFEB /* MNCryptor+MD5.m in Sources */,
-				43AE42741A10A9410017CFEB /* AppWidget.m in Sources */,
-				43AE42801A10A9410017CFEB /* MNCryptor.m in Sources */,
-				43AE42881A10AA7F0017CFEB /* AppNotificationCenter.m in Sources */,
-				43AE42291A10996D0017CFEB /* AppDelegate.m in Sources */,
-				43AE42721A10A9410017CFEB /* AppVoiceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,12 +720,17 @@
 		437956451A1C89D900462004 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/VoiceConvert/lib",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei/sunflower",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -737,12 +743,17 @@
 		437956461A1C89D900462004 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/VoiceConvert/lib",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei/sunflower",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = DriftAudioSdk_sim;
@@ -786,7 +797,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -828,12 +839,17 @@
 		439CA5791A0B30C90027DFF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/VoiceConvert/lib",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei/sunflower",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -846,52 +862,22 @@
 		439CA57A1A0B30C90027DFF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
 					"$(PROJECT_DIR)/DriftAudioSdk/Classes/VoiceConvert/lib",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei/sunflower",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";
-			};
-			name = Release;
-		};
-		43AE42201A1098A40017CFEB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DriftAudioSdkTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		43AE42211A1098A40017CFEB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				INFOPLIST_FILE = DriftAudioSdkTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -921,15 +907,6 @@
 			buildConfigurations = (
 				439CA5791A0B30C90027DFF3 /* Debug */,
 				439CA57A1A0B30C90027DFF3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		43AE421F1A1098A40017CFEB /* Build configuration list for PBXNativeTarget "DriftAudioSdkTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				43AE42201A1098A40017CFEB /* Debug */,
-				43AE42211A1098A40017CFEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

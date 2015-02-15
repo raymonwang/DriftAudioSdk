@@ -81,11 +81,11 @@ void HttpProcess::requestContent(const StRequestUrlInfo& urlinfo)
         NSData* data = (NSData*)res;
         if (res == nil) {
             //下载失败
-            _func(HttpProcess_DownLoad, StCallBackInfo(NULL, 0, info.labelid, ""));
+            _func(HttpProcess_DownLoad, StCallBackInfo(NULL, 0, info.labelid, "", 0, info.type));
         }
         else {
             //下载成功
-            _func(HttpProcess_DownLoad, StCallBackInfo((const char*)[data bytes], [data length], info.labelid, info.url.c_str()));
+            _func(HttpProcess_DownLoad, StCallBackInfo((const char*)[data bytes], [data length], info.labelid, info.url.c_str(), 0, info.type));
         }
         _isrunning = false;
     }];

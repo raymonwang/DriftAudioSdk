@@ -63,11 +63,23 @@ public:
     /// 取消当前录音
     bool cancelRecordedVoice();
 
-        //设置头像
+    ///设置头像
     bool setAvater(unsigned int uid,int type);
 
-    //获取头像
+    ///获取头像
     bool getAvater(unsigned int uid,int type,const char* imageUrl);
+    
+    ///开始摄像
+    bool startRecordVideo(unsigned int labelid, int type);
+    
+    ///播放视频
+    bool playVideo(unsigned int labelid, const char* videoUrl);
+    
+    ///开始语音识别
+    bool startVoiceToText();
+    
+    ///停止语音识别
+    bool stopVoiceToText();
 
 public:
 	cocos2d::LUA_FUNCTION mVoiceOperatCB;

@@ -116,5 +116,29 @@ bool DriftAudioSdkCocos2dxHelper::cancelRecordedVoice()
     return RTChatSDKMain::sharedInstance().cancelRecordedVoice();
 }
 
+///开始摄像
+bool DriftAudioSdkCocos2dxHelper::startRecordVideo(unsigned int labelid, int type)
+{
+    return RTChatSDKMain::sharedInstance().startRecordVideo(labelid, type);
+}
+
+///播放视频
+bool DriftAudioSdkCocos2dxHelper::playVideo(unsigned int labelid, const char* videoUrl)
+{
+    return RTChatSDKMain::sharedInstance().playVideo(labelid, videoUrl);
+}
+
+///开始语音识别
+bool DriftAudioSdkCocos2dxHelper::startVoiceToText()
+{
+    return RTChatSDKMain::sharedInstance().startVoiceToText();
+}
+
+///停止语音识别
+bool DriftAudioSdkCocos2dxHelper::stopVoiceToText()
+{
+    return RTChatSDKMain::sharedInstance().stopVoiceToText();
+}
+
 
 

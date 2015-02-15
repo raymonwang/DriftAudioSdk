@@ -10,6 +10,16 @@
 #import "CmdHandler.h"
 #import "RTChatSDKMain_Ios.h"
 
+@interface VideoCamera () {
+    NSURL *targetURL;
+    BOOL isCamera;
+    CameraMode mode;
+}
+
+@property(strong) NSString* mp4FullPath;
+
+@end
+
 @implementation VideoCamera
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -23,6 +33,11 @@
 }
 */
 
+-(void)setCameraMode:(CameraMode)inmode
+{
+    mode = inmode;
+}
+
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
@@ -33,17 +48,23 @@
     isCamera = FALSE;
     self.allowsEditing = YES;
     self.delegate = self;
-
-    //检查摄像头是否支持摄像机模式
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        self.sourceType = UIImagePickerControllerSourceTypeCamera;
-        //		camera.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
-    }
-    else
-    {
-        NSLog(@"Camera not exist");
-        return;
+    
+    switch (mode) {
+        case EnuPhotoMode:
+            self.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            break;
+        case EnuImageMode:
+            self.sourceType = UIImagePickerControllerSourceTypeCamera;
+            break;
+        case EnuVideoMode:
+        {
+            self.sourceType = UIImagePickerControllerSourceTypeCamera;
+            NSArray* availableMedia = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+            self.mediaTypes = [NSArray arrayWithObject:availableMedia[1]];
+            break;
+        }
+        default:
+            break;
     }
 }
 
@@ -91,9 +112,11 @@
 			ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
 			[library writeVideoAtPathToSavedPhotosAlbum:url completionBlock:nil];
 		}
+        
+        [self encodeVideo:targetURL];
 		
 		//获取视频的某一帧作为预览
-        [self getPreViewImg:url];
+//        [self getPreViewImg:url];
 	}
 	else if([mediaType isEqualToString:@"public.image"])	//被选中的是图片
 	{
@@ -126,7 +149,7 @@
         
         NSData* data = UIImageJPEGRepresentation(editedImage, 0.3);
 		
-        fileName = [NSTemporaryDirectory() stringByAppendingString:fileName];
+        fileName = [NSTemporaryDirectory() stringByAppendingFormat:@"/picture/%@", fileName];
 //		[self performSelector:@selector(saveImg:) withObject:data afterDelay:0.0];
         [VideoCamera saveImg:data filename:fileName];
         
@@ -191,6 +214,75 @@
     }
 }
 
+-(void)encodeVideo:(NSURL*)videoUrl
+{
+    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:videoUrl options:nil];
+    NSArray *compatiblePresets = [AVAssetExportSession exportPresetsCompatibleWithAsset:avAsset];
+    
+    if ([compatiblePresets containsObject:AVAssetExportPresetMediumQuality])
+        
+    {
+        UIAlertView* alert = [[UIAlertView alloc] init];
+        [alert setTitle:@"Waiting.."];
+        
+        UIActivityIndicatorView* activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        activity.frame = CGRectMake(140,
+                                    80,
+                                    CGRectGetWidth(alert.frame),
+                                    CGRectGetHeight(alert.frame));
+        [alert addSubview:activity];
+        [activity startAnimating];
+        [alert show];
+        
+        AVAssetExportSession *exportSession = [[AVAssetExportSession alloc]initWithAsset:avAsset
+                                                                              presetName:AVAssetExportPresetMediumQuality];
+        NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+        [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
+        self.mp4FullPath = [NSTemporaryDirectory() stringByAppendingFormat:@"output-%@.mp4", [formater stringFromDate:[NSDate date]]];
+        
+        exportSession.outputURL = [NSURL fileURLWithPath: _mp4FullPath];
+        exportSession.shouldOptimizeForNetworkUse = FALSE;
+        exportSession.outputFileType = AVFileTypeMPEG4;
+        [exportSession exportAsynchronouslyWithCompletionHandler:^{
+            switch ([exportSession status]) {
+                case AVAssetExportSessionStatusFailed:
+                {
+                    [alert dismissWithClickedButtonIndex:0 animated:NO];
+                    UIAlertView* newalert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                    message:[[exportSession error] localizedDescription]
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles: nil];
+                    [newalert show];
+                    break;
+                }
+                    
+                case AVAssetExportSessionStatusCancelled:
+                    NSLog(@"Export canceled");
+                    [alert dismissWithClickedButtonIndex:0
+                                                 animated:YES];
+                    break;
+                case AVAssetExportSessionStatusCompleted:
+                    NSLog(@"Successful!");
+                    [alert dismissWithClickedButtonIndex:0 animated:NO];
+                    [self performSelectorOnMainThread:@selector(convertFinish:) withObject:alert waitUntilDone:NO];
+                    break;
+                default:
+                    break;
+            }
+        }];
+    }
+    else
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"AVAsset doesn't support mp4 quality"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+    }
+}
+
 +(NSString *)timeStampAsString
 {
     NSDate *nowDate = [NSDate date];
@@ -200,47 +292,45 @@
     return [locationString stringByAppendingFormat:@".png"];
 }
 
+-(void)convertFinish:(id)alert
+{
+    NSData* data = [NSData dataWithContentsOfFile:_mp4FullPath];
+    [self uploadImgData:data filename:_mp4FullPath];
+}
+
 #pragma mark -
 #pragma mark sendFile
 -(void)startCamera
 {
-//	UIImagePickerController *camera = [[UIImagePickerController alloc] init];
-//	camera.delegate = self;
-//	camera.allowsEditing = YES;
 	isCamera = TRUE;
-	
-	//检查摄像头是否支持摄像机模式
+    
+    //检查摄像头是否支持摄像机模式
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+//    {
+//        self.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    }
+//    else
+//    {
+//        NSLog(@"Camera not exist");
+//        return;
+//    }
+}
+
+-(void)startCameraContinuity
+{
+    //检查摄像头是否支持摄像机模式
 //	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-//	{		
-//		camera.sourceType = UIImagePickerControllerSourceTypeCamera;
-//		camera.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+//	{
+//		self.sourceType = UIImagePickerControllerSourceTypeCamera;
+//        NSArray* availableMedia = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+//        self.mediaTypes = [NSArray arrayWithObject:availableMedia[1]];
+//        self.videoMaximumDuration = 10;
 //	}
-//	else 
+//	else
 //	{
 //		NSLog(@"Camera not exist");
 //		return;
 //	}
-	
-    //仅对视频拍摄有效
-//	switch (segmentVideoQuality.selectedSegmentIndex) {
-//		case 0:
-//			camera.videoQuality = UIImagePickerControllerQualityTypeHigh;
-//			break;
-//		case 1:
-//			camera.videoQuality = UIImagePickerControllerQualityType640x480;
-//			break;
-//		case 2:
-//			camera.videoQuality = UIImagePickerControllerQualityTypeMedium;
-//			break;
-//		case 3:
-//			camera.videoQuality = UIImagePickerControllerQualityTypeLow;
-//			break;
-//		default:
-//			camera.videoQuality = UIImagePickerControllerQualityTypeMedium;
-//			break;
-//	}
-	
-//	[self presentModalViewController:camera animated:YES];
 }
 
 #pragma -
@@ -312,7 +402,7 @@
         }
         else {
             NSLog(@"下载成功");
-            NSString* fileName = [NSTemporaryDirectory() stringByAppendingString:[VideoCamera timeStampAsString]];
+            NSString* fileName = [NSTemporaryDirectory() stringByAppendingFormat:@"%@", [VideoCamera timeStampAsString]];
             NSData* data = res;
             [self saveImg:data filename:fileName];
             rtchatsdk::RTChatSDKMain::sharedInstance().onImageDownloadOver(true, (unsigned int)uid, (int)type, [fileName UTF8String]);

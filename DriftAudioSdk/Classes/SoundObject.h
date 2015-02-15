@@ -34,6 +34,12 @@ enum SoundOpState {
 /// 停止录音
 -(NSInteger)stopRecord:(NSString**)filename duration:(NSInteger*)duration;
 
+///开始语音识别
+-(void)beginSoundRecognize;
+
+///停止语音识别
+-(void)stopSoundRecognize;
+
 /// 开始播放内存中的音频
 -(BOOL)beginPlay:(NSData*)data;
 

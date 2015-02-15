@@ -19,28 +19,38 @@ namespace rtchatsdk {
         HttpProcess_Upload,
     };
     
+    enum DownloadDataType {
+        VoiceType = 1,
+        VideoType = 2,
+        PictureType = 3,
+    };
+    
     struct StRequestUrlInfo {
-        StRequestUrlInfo(unsigned int id, const char* str) {
+        StRequestUrlInfo(unsigned int id, const char* str, DownloadDataType inType) {
             labelid = id;
             url = str;
+            type = inType;
         }
         unsigned int labelid;
         std::string url;
+        DownloadDataType type;
     };
     
     struct StCallBackInfo {
-        StCallBackInfo(const char* p1, size_t p2, unsigned int p3, const char* cUrl, unsigned int p4 = 0) {
+        StCallBackInfo(const char* p1, size_t p2, unsigned int p3, const char* cUrl, unsigned int p4 = 0, DownloadDataType inType = VoiceType) {
             ptr = p1;
             size = p2;
             labelid = p3;
             url = cUrl;
             duration = p4;
+            type = inType;
         }
         const char* ptr;
         size_t size;
         unsigned int labelid;
         std::string url;
         unsigned int duration;
+        DownloadDataType type;
     };
 
     typedef std::function<void (HttpDirection direction, const StCallBackInfo& info)> CallBackFunc;
