@@ -144,6 +144,8 @@
 		43358EC21A24629E00DD301C /* VideoCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoCamera.mm; sourceTree = "<group>"; };
 		4369110B1AA01DC300E9BFEE /* LocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationHelper.h; sourceTree = "<group>"; };
 		4369110C1AA01DC300E9BFEE /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
+		436911121AA08A7500E9BFEE /* RTChatSdkAndroidIpml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RTChatSdkAndroidIpml.cpp; path = helper/RTChatSdkAndroidIpml.cpp; sourceTree = "<group>"; };
+		436911131AA08A7500E9BFEE /* RTChatSdkAndroidIpml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RTChatSdkAndroidIpml.h; path = helper/RTChatSdkAndroidIpml.h; sourceTree = "<group>"; };
 		437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk_sim.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4379564D1A1DC5BD00462004 /* amrFileCodec_Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec_Ios.h; sourceTree = "<group>"; };
 		4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec_Ios.mm; sourceTree = "<group>"; };
@@ -479,6 +481,8 @@
 		43AE41BA1A106C720017CFEB /* cocos2dx */ = {
 			isa = PBXGroup;
 			children = (
+				436911121AA08A7500E9BFEE /* RTChatSdkAndroidIpml.cpp */,
+				436911131AA08A7500E9BFEE /* RTChatSdkAndroidIpml.h */,
 				43AE41BB1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.cpp */,
 				43AE41BC1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.h */,
 			);
