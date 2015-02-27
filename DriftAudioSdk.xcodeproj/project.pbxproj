@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		43358EC31A24629E00DD301C /* VideoCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43358EC21A24629E00DD301C /* VideoCamera.mm */; };
+		4369110D1AA01DC300E9BFEE /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4369110C1AA01DC300E9BFEE /* LocationHelper.m */; };
+		4369110E1AA01DC300E9BFEE /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4369110C1AA01DC300E9BFEE /* LocationHelper.m */; };
 		4379561C1A1C89D900462004 /* AppNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */; };
 		4379561D1A1C89D900462004 /* BaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42601A10A9410017CFEB /* BaseTools.m */; };
 		4379561E1A1C89D900462004 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A91A0B33100027DFF3 /* AFHTTPRequestOperation.m */; };
@@ -140,6 +142,8 @@
 /* Begin PBXFileReference section */
 		43358EC11A24629E00DD301C /* VideoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCamera.h; sourceTree = "<group>"; };
 		43358EC21A24629E00DD301C /* VideoCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoCamera.mm; sourceTree = "<group>"; };
+		4369110B1AA01DC300E9BFEE /* LocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationHelper.h; sourceTree = "<group>"; };
+		4369110C1AA01DC300E9BFEE /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
 		437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk_sim.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4379564D1A1DC5BD00462004 /* amrFileCodec_Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec_Ios.h; sourceTree = "<group>"; };
 		4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec_Ios.mm; sourceTree = "<group>"; };
@@ -279,6 +283,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4369110A1AA01D8F00E9BFEE /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4369110B1AA01DC300E9BFEE /* LocationHelper.h */,
+				4369110C1AA01DC300E9BFEE /* LocationHelper.m */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
 		4379564B1A1DC5BD00462004 /* VoiceConvert */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +412,7 @@
 		439CA59C1A0B31310027DFF3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4369110A1AA01D8F00E9BFEE /* Location */,
 				4392CBD31A5E886500CD0405 /* SBJson */,
 				4392CBC21A5E79C600CD0405 /* xunfei */,
 				4379564B1A1DC5BD00462004 /* VoiceConvert */,
@@ -628,6 +642,7 @@
 				437956251A1C89D900462004 /* AppImages.m in Sources */,
 				437956261A1C89D900462004 /* PhotoAlbumsController.m in Sources */,
 				437956271A1C89D900462004 /* AFSecurityPolicy.m in Sources */,
+				4369110E1AA01DC300E9BFEE /* LocationHelper.m in Sources */,
 				4392CBD21A5E883000CD0405 /* ISRDataHelper.m in Sources */,
 				4392CBF01A5E886500CD0405 /* SBJson4Writer.m in Sources */,
 				437956281A1C89D900462004 /* LogicHelper.m in Sources */,
@@ -670,6 +685,7 @@
 				43AE42871A10AA7F0017CFEB /* AppNotificationCenter.m in Sources */,
 				4392CBE91A5E886500CD0405 /* SBJson4StreamTokeniser.m in Sources */,
 				43AE42751A10A9410017CFEB /* BaseTools.m in Sources */,
+				4369110D1AA01DC300E9BFEE /* LocationHelper.m in Sources */,
 				4392CBEF1A5E886500CD0405 /* SBJson4Writer.m in Sources */,
 				439CA5BB1A0B33100027DFF3 /* AFHTTPRequestOperation.m in Sources */,
 				43AE42771A10A9410017CFEB /* DeviceHelper.m in Sources */,

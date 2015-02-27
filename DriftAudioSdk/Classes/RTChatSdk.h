@@ -61,6 +61,9 @@ public:
     
     ///停止语音识别
     bool stopVoiceToText();
+    
+    /// 获取当前地理位置信息
+    bool startGetCurrentCoordinate();
 };
     
 }

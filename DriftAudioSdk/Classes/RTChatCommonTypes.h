@@ -178,6 +178,9 @@ enum SdkResponseCmd {
     
     ///通知语音识别文本结果回调
     enNotifyVoiceTextResult = 37,
+    
+    ///通知经纬度定位回调
+    enNotifyCoodinateInfo = 38,
 };
 
 enum SdkErrorCode {

@@ -14,6 +14,8 @@
 #include "RTChatCommonTypes.h"
 #include "HttpProcess_Ios.h"
 
+@class LocationHelper;
+
 namespace rtchatsdk {
     
 typedef std::function<void (SdkResponseCmd cmdType, SdkErrorCode error, const std::string& msgStr)> pMsgCallFunc;
@@ -69,6 +71,9 @@ public:
     ///停止语音识别
     bool stopVoiceToText();
     
+    /// 获取当前地理位置信息
+    bool startGetCurrentCoordinate();
+    
     /*******************需要暴露给用户的接口结束**********************/
     
     /// 底层音量等级通知
@@ -118,6 +123,8 @@ private:
     const char*         _downloadingfileurl; //临时存放下载中的文件名
     
     bool                _isrecording;       //录音标志
+    
+    LocationHelper*     _lohelper;
 };
     
 }

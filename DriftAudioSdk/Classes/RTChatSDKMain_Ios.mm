@@ -15,8 +15,9 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include "VideoCamera.h"
-#import "iflyMSC/IFlySpeechUtility.h"
-#import <MediaPlayer/MediaPlayer.h>
+#include "iflyMSC/IFlySpeechUtility.h"
+#include "LocationHelper.h"
+#include <MediaPlayer/MediaPlayer.h>
 
 namespace rtchatsdk {
     
@@ -258,6 +259,21 @@ namespace rtchatsdk {
     {
         [[SoundObject sharedInstance] stopSoundRecognize];
         _isrecording = false;
+        return true;
+    }
+    
+    /// 获取当前地理位置信息
+    bool RTChatSDKMain::startGetCurrentCoordinate()
+    {
+        _lohelper = [[LocationHelper alloc] init];
+        if (_lohelper) {
+            [_lohelper requestCurrentEarthPosition:^(NSString *callbackdata) {
+                NSLog(@"%@", callbackdata);
+                _func(enNotifyCoodinateInfo, OPERATION_OK, [callbackdata UTF8String]);
+                _lohelper = nil;
+            }];
+        }
+        
         return true;
     }
 
