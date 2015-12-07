@@ -29,6 +29,9 @@ namespace rtchatsdk {
         //注册消息回调(主线程)
         void registerMsgCallback(const pMsgCallFunc& func);
         
+        /// 设置自定义参数
+        void setParams(const std::string& voiceUploadUrl, const char* xunfeiAppID);
+        
         //获取SDK当前操作状态，用户发起操作前可以检测一下状态判断可否继续
         SdkOpState getSdkState();
         

@@ -94,6 +94,26 @@ namespace rtchatsdk {
     }
 
 
+    /// 设置自定义参数
+    void RTChatSDKMain::setParams(const std::string& voiceUploadUrl, const char* xunfeiAppID)
+    {
+        cocos2d::JniMethodInfo voemethodInfo;
+        if (! cocos2d::JniHelper::getStaticMethodInfo(voemethodInfo,CLASS_NAME, "SetParams", "(Ljava/lang/String;Ljava/lang/String;)V"))
+        {
+            return NULL;
+        }
+        
+        jstring jurl;
+        jurl = voemethodInfo.env->NewStringUTF(voiceUploadUrl.c_str());
+        
+        jstring jXunfei;
+        if (xunfeiAppID != NULL) {
+            jXunfei = voemethodInfo.env->NewStringUTF(xunfeiAppID);
+        }
+        voemethodInfo.env->CallStaticObjectMethod(voemethodInfo.classID, voemethodInfo.methodID, jurl, jXunfei);
+        
+        return true;
+    }
      
         //开始录制麦克风数据
     bool RTChatSDKMain::startRecordVoice(unsigned int labelid)
@@ -184,7 +204,7 @@ namespace rtchatsdk {
     bool RTChatSDKMain::getAvater(unsigned int uid,int type,const char* imageUrl)
     {
 
-         cocos2d::JniMethodInfo imgmethodInfo;
+        cocos2d::JniMethodInfo imgmethodInfo;
         if (! cocos2d::JniHelper::getStaticMethodInfo(imgmethodInfo,AVATAR_CLASS_NAME, "GetAvaterWithUid", "(IILjava/lang/String;)V"))
         {
           return NULL;
