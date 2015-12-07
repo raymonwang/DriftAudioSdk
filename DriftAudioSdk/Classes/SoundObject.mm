@@ -35,61 +35,62 @@
 
 - (BOOL)transferPCMtoMP3
 {
-    NSFileManager* fileManager=[NSFileManager defaultManager];
-    if([fileManager removeItemAtPath:self.current_recordedFile_mp3 error:nil])
-    {
-        NSLog(@"删除老的录制文件");
-    }
-    
-    @try {
-        NSLog(@"启动mp3压缩");
-        size_t read, write;
-        
-        FILE *pcm = fopen([self.current_recordedFile_caf cStringUsingEncoding:1], "rb");  //source 被转换的音频文件位置
-        if (!pcm) {
-            NSLog(@"原始录音文件打开失败");
-            return NO;
-        }
-        fseek(pcm, 4*1024, SEEK_CUR);                                   //skip file header
-        FILE *mp3 = fopen([self.current_recordedFile_mp3 cStringUsingEncoding:1], "wb");  //output 输出生成的Mp3文件位置
-        if (!mp3) {
-            NSLog(@"生成压缩文件失败");
-            fclose(pcm);
-            return NO;
-        }
-        
-        const int PCM_SIZE = 8192;
-        const int MP3_SIZE = 8192;
-        short int pcm_buffer[PCM_SIZE*2];
-        unsigned char mp3_buffer[MP3_SIZE];
-        
-        lame_t lame = lame_init();
-        lame_set_in_samplerate(lame, 8000.0);
-        lame_set_num_channels(lame, 1);
-        lame_set_brate(lame, 8);
-        lame_set_mode(lame, MONO);
-        lame_set_quality(lame, 7);
-        lame_set_VBR(lame, vbr_default);
-        lame_init_params(lame);
-        
-        do {
-            read = fread(pcm_buffer, 2*sizeof(short int), (size_t)PCM_SIZE, pcm);
-            if (read == 0)
-                write = lame_encode_flush(lame, mp3_buffer, MP3_SIZE);
-            else
-                write = lame_encode_buffer_interleaved(lame, pcm_buffer, (int)read, mp3_buffer, MP3_SIZE);
-            
-            fwrite(mp3_buffer, write, 1, mp3);
-            
-        } while (read != 0);
-        
-        lame_close(lame);
-        fclose(mp3);
-        fclose(pcm);
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",[exception description]);
-    }
+    return true;
+//    NSFileManager* fileManager=[NSFileManager defaultManager];
+//    if([fileManager removeItemAtPath:self.current_recordedFile_mp3 error:nil])
+//    {
+//        NSLog(@"删除老的录制文件");
+//    }
+//    
+//    @try {
+//        NSLog(@"启动mp3压缩");
+//        size_t read, write;
+//        
+//        FILE *pcm = fopen([self.current_recordedFile_caf cStringUsingEncoding:1], "rb");  //source 被转换的音频文件位置
+//        if (!pcm) {
+//            NSLog(@"原始录音文件打开失败");
+//            return NO;
+//        }
+//        fseek(pcm, 4*1024, SEEK_CUR);                                   //skip file header
+//        FILE *mp3 = fopen([self.current_recordedFile_mp3 cStringUsingEncoding:1], "wb");  //output 输出生成的Mp3文件位置
+//        if (!mp3) {
+//            NSLog(@"生成压缩文件失败");
+//            fclose(pcm);
+//            return NO;
+//        }
+//        
+//        const int PCM_SIZE = 8192;
+//        const int MP3_SIZE = 8192;
+//        short int pcm_buffer[PCM_SIZE*2];
+//        unsigned char mp3_buffer[MP3_SIZE];
+//        
+//        lame_t lame = lame_init();
+//        lame_set_in_samplerate(lame, 8000.0);
+//        lame_set_num_channels(lame, 1);
+//        lame_set_brate(lame, 8);
+//        lame_set_mode(lame, MONO);
+//        lame_set_quality(lame, 7);
+//        lame_set_VBR(lame, vbr_default);
+//        lame_init_params(lame);
+//        
+//        do {
+//            read = fread(pcm_buffer, 2*sizeof(short int), (size_t)PCM_SIZE, pcm);
+//            if (read == 0)
+//                write = lame_encode_flush(lame, mp3_buffer, MP3_SIZE);
+//            else
+//                write = lame_encode_buffer_interleaved(lame, pcm_buffer, (int)read, mp3_buffer, MP3_SIZE);
+//            
+//            fwrite(mp3_buffer, write, 1, mp3);
+//            
+//        } while (read != 0);
+//        
+//        lame_close(lame);
+//        fclose(mp3);
+//        fclose(pcm);
+//    }
+//    @catch (NSException *exception) {
+//        NSLog(@"%@",[exception description]);
+//    }
 }
 
 - (BOOL)transferPCMtoAMR

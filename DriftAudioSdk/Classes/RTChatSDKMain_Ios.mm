@@ -75,13 +75,24 @@ namespace rtchatsdk {
         
         HttpProcess::instance().registerCallBack(std::bind(&RTChatSDKMain::httpRequestCallBack, this, std::placeholders::_1, std::placeholders::_2));
         
-        //创建语音配置,appid必须要传入，仅执行一次则可
-        NSString *initString = [[NSString alloc] initWithFormat:VoiceToTextAppStr];
-        
-        //所有服务启动前，需要确保执行createUtility
-        [IFlySpeechUtility createUtility:initString];
         
         return OPERATION_OK;
+    }
+    
+    /// 设置自定义参数
+    void RTChatSDKMain::setParams(const std::string& voiceUploadUrl, const char* xunfeiAppID)
+    {
+        //创建语音配置,appid必须要传入，仅执行一次则可
+        if (xunfeiAppID) {
+            NSString *initString = [[NSString alloc] initWithFormat:@"appid=%s,timeout=200000", xunfeiAppID];
+            
+            //所有服务启动前，需要确保执行createUtility
+            [IFlySpeechUtility createUtility:initString];
+            
+            _isXunfeiInited = true;
+        }
+        
+        _voiceUploadUrl = voiceUploadUrl;
     }
 
     //注册消息回调
@@ -213,7 +224,7 @@ namespace rtchatsdk {
     void RTChatSDKMain::uploadVoiceData(const char *data, unsigned long datasize, unsigned int labelid, unsigned int duration)
     {
         std::map<const char*, const char*> param;
-        HttpProcess::instance().postContent(VoiceUpLoadUrlHead, StCallBackInfo(data, datasize, labelid, VoiceUpLoadUrlHead, duration), param);
+        HttpProcess::instance().postContent(_voiceUploadUrl.c_str(), StCallBackInfo(data, datasize, labelid, _voiceUploadUrl.c_str(), duration), param);
     }
 
     //录音超过最大时间回调
@@ -245,6 +256,10 @@ namespace rtchatsdk {
     ///开始语音识别
     bool RTChatSDKMain::startVoiceToText()
     {
+        if (!_isXunfeiInited) {
+            NSLog(@"语音识别引擎未初始化，无法执行");
+            return false;
+        }
         if (_isrecording) {
             NSLog(@"正在执行识别操作，禁止点击");
             return false;
@@ -257,6 +272,11 @@ namespace rtchatsdk {
     ///停止语音识别
     bool RTChatSDKMain::stopVoiceToText()
     {
+        if (!_isXunfeiInited) {
+            NSLog(@"语音识别引擎未初始化，无法执行");
+            return false;
+        }
+        
         [[SoundObject sharedInstance] stopSoundRecognize];
         _isrecording = false;
         return true;

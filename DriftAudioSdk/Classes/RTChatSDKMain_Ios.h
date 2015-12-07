@@ -32,6 +32,9 @@ public:
     //sdk初始化，只能调用一次(主线程)
     SdkErrorCode initSDK(const std::string& appid, const std::string& key, const char* uniqueid = NULL);
     
+    /// 设置自定义参数
+    void setParams(const std::string& voiceUploadUrl, const char* xunfeiAppID);
+    
     //注册消息回调(主线程)
     void registerMsgCallback(const pMsgCallFunc& func);
     
@@ -114,6 +117,13 @@ private:
     std::string         _uniqueid;
     std::string         _token;
     std::string         _gateWayIP;       //网关服务器IP
+    
+    /// 录音上传url
+    std::string         _voiceUploadUrl = "";
+    
+    /// 是否能使用讯飞语音的开关
+    bool                _isXunfeiInited = false;
+    
     uint32_t            _gateWayPort;     //网关服务器PORT
     
     SdkOpState          _sdkOpState;    //保存SDK操作状态
