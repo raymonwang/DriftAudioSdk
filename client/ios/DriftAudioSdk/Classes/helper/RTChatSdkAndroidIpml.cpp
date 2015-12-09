@@ -100,7 +100,7 @@ namespace rtchatsdk {
         cocos2d::JniMethodInfo voemethodInfo;
         if (! cocos2d::JniHelper::getStaticMethodInfo(voemethodInfo,CLASS_NAME, "SetParams", "(Ljava/lang/String;Ljava/lang/String;)V"))
         {
-            return NULL;
+            return;
         }
         
         jstring jurl;
@@ -111,8 +111,6 @@ namespace rtchatsdk {
             jXunfei = voemethodInfo.env->NewStringUTF(xunfeiAppID);
         }
         voemethodInfo.env->CallStaticObjectMethod(voemethodInfo.classID, voemethodInfo.methodID, jurl, jXunfei);
-        
-        return true;
     }
      
         //开始录制麦克风数据
