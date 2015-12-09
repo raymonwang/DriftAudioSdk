@@ -1,43 +1,25 @@
 package com.lw.RecordImage;
 
-import java.security.PublicKey;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Environment;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.Toast;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
-import com.iflytek.cloud.LexiconListener;
 import com.iflytek.cloud.RecognizerListener;
 import com.iflytek.cloud.RecognizerResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechRecognizer;
-import com.iflytek.cloud.SpeechUtility;
-import com.iflytek.cloud.ui.RecognizerDialog;
-import com.iflytek.cloud.ui.RecognizerDialogListener;
-import com.iflytek.cloud.util.ContactManager;
-import com.iflytek.cloud.util.ContactManager.ContactListener;
 import com.lw.util.FucUtil;
 import com.lw.util.JsonParser;
+import com.lw.util.LogUtils;
  
 
 /**
@@ -74,10 +56,13 @@ public class SpeechManager {
 		mIat.setParameter(SpeechConstant.DOMAIN, "iat");
 		mIat.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
 		mIat.setParameter(SpeechConstant.ACCENT, "mandarin ");
+		
+		LogUtils.i(TAG, "SpeechManager 初始化 ...");
  
 	}
 	
 	public void recognizeStream(boolean out){
+		LogUtils.i(TAG, "SpeechManager 开始录音 ...");
 		// 设置参数
 		setParam();
 		if (out) {
@@ -105,6 +90,7 @@ public class SpeechManager {
 				}
 			}
 		}else {
+			LogUtils.i(TAG, "SpeechManager 设置监听 ...");
 			ret = mIat.startListening(mRecognizerListener);
 		}
 		
@@ -126,7 +112,7 @@ public class SpeechManager {
 
 		@Override
 		public void onInit(int code) {
-			Log.d(TAG, "SpeechRecognizer init() code = " + code);
+			LogUtils.d(TAG, "SpeechRecognizer init() code = " + code);
 			if (code != ErrorCode.SUCCESS) {
 				showTip("初始化失败，错误码：" + code);
 			}
@@ -162,18 +148,22 @@ public class SpeechManager {
 
 		@Override
 		public void onResult(RecognizerResult results, boolean isLast) {
-			Log.d(TAG, results.getResultString());
-			printResult(results);
-
+			LogUtils.d(TAG, results.getResultString());
+			String result = printResult(results);
+			LogUtils.d(TAG, isLast+ " 说话内容 up："+result);
 			if (isLast) {
-				// TODO 最后的结果
+				LogUtils.d(TAG, "说话内容 up："+result);
+				if (listener!=null) {
+					listener.onResult(result);
+				}
+				LogUtils.d(TAG, "说话内容 end："+result);
 			}
 		}
 
 		@Override
 		public void onVolumeChanged(int volume, byte[] data) {
 			showTip("当前正在说话，音量大小：" + volume);
-			Log.d(TAG, "返回音频数据："+data.length);
+			LogUtils.d(TAG, "返回音频数据："+data.length);
 		}
 
 		@Override
@@ -182,7 +172,7 @@ public class SpeechManager {
 			// 若使用本地能力，会话id为null
 			//	if (SpeechEvent.EVENT_SESSION_ID == eventType) {
 			//		String sid = obj.getString(SpeechEvent.KEY_EVENT_SESSION_ID);
-			//		Log.d(TAG, "session id =" + sid);
+			//		LogUtils.d(TAG, "session id =" + sid);
 			//	}
 		}
 	};
@@ -205,16 +195,14 @@ public class SpeechManager {
 		for (String key : mIatResults.keySet()) {
 			resultBuffer.append(mIatResults.get(key));
 		}
-		if (listener!=null) {
-			listener.onResult(text);
-		}
+		
 		return resultBuffer.toString();
 	}
 
  
 
 	public void showTip(final String str) {
-		System.out.println("=====?>> "+str);
+		LogUtils.i(TAG, str);
 	}
 
  
