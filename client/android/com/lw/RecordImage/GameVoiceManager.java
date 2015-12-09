@@ -21,15 +21,16 @@ import android.util.Log;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.lw.RecordImage.SpeechManager.SpeechListener;
+import com.lw.util.LogUtils;
 
 /**
  * 7/10/14 11:00 AM Created by yibin.
  */
 public class GameVoiceManager {
-
+	 
 	private static final String URL_FILE_DIR = "stvoice/";
 	private String FileURL = "http://uploadchat.ztgame.com.cn:10000/wangpan.php";
-	private final String TAG = "UrlFileHelper";
+	private static final String TAG = "GameVoiceManager";
 	private String cloudfileUrl;
 	private Timer recordingTimer;
 
@@ -43,6 +44,7 @@ public class GameVoiceManager {
 
 	public GameVoiceManager(Activity activity) {
 		mActivity = activity;
+		LogUtils.init(activity);
 		createFileDirectory();
 		mRecorder = new GameVoiceRecorder(this);
 		mPlayer = new GameVoicePlayer(this);
@@ -53,6 +55,7 @@ public class GameVoiceManager {
 				OnReceiveVoiceText(true,text);
 			}
 		});
+		LogUtils.i(TAG, "GameVoiceManager init...");
 	}
 
 	public String getFileDirectory() {
@@ -84,7 +87,7 @@ public class GameVoiceManager {
 				cloudfileUrl = new UrlFileHelper().post(FileURL, null,
 						voicefile);
 				if (cloudfileUrl != null) {
-					Log.d(TAG, "upload file successs  －－－" + cloudfileUrl);
+					LogUtils.d(TAG, "upload file successs  －－－" + cloudfileUrl);
 
 					// 根据上传url 重命名文件
 					String sVoiceindex = recordfile.getName().split("_")[0];
@@ -115,7 +118,7 @@ public class GameVoiceManager {
 
 				} else {
 
-					Log.d(TAG, "upload file fail  －－－" + voicefile);
+					LogUtils.d(TAG, "upload file fail  －－－" + voicefile);
 					JSONObject result = new JSONObject();
 					try {
 
@@ -141,7 +144,7 @@ public class GameVoiceManager {
 		if (mRecorder.mIsRecording) {
 			return false;
 		}
-		Log.d(TAG, "StartRecording----------------");
+		LogUtils.d(TAG, "StartRecording----------------");
 		String voicefile = getFileDirectory() + index + "_temp";
 		File recordfile = new File(voicefile);
 		if (recordfile.exists())
@@ -170,7 +173,7 @@ public class GameVoiceManager {
 			return false;
 		}
 
-		Log.d(TAG, "StopRecording----------------");
+		LogUtils.d(TAG, "StopRecording----------------");
 		if (recordingTimer != null) {
 			recordingTimer.cancel();
 			recordingTimer = null;
@@ -197,7 +200,7 @@ public class GameVoiceManager {
 				cloudfileUrl = new UrlFileHelper().post(FileURL, null,
 						voicefile);
 				if (cloudfileUrl != null) {
-					Log.d(TAG, "upload file successs  －－－" + cloudfileUrl);
+					LogUtils.d(TAG, "upload file successs  －－－" + cloudfileUrl);
 
 					// 根据上传url 重命名文件
 					String sVoiceindex = recordfile.getName().split("_")[0];
@@ -230,7 +233,7 @@ public class GameVoiceManager {
 
 				} else {
 
-					Log.d(TAG, "upload file fail  －－－" + voicefile);
+					LogUtils.d(TAG, "upload file fail  －－－" + voicefile);
 					String sVoiceindex = recordfile.getName().split("_")[0];
 					int voiceindex = Integer.valueOf(sVoiceindex).intValue();
 					final JSONObject result = new JSONObject();
@@ -362,7 +365,7 @@ public class GameVoiceManager {
 							voicefile);
 
 					if (downloadret) {
-						Log.d(TAG, "下载后播放");
+						LogUtils.d(TAG, "下载后播放");
 						File recordfile = new File(voicefile);
 						// long filesize = recordfile
 						// 下载成功，开始播放
@@ -433,7 +436,7 @@ public class GameVoiceManager {
 			return false;
 		}
 
-		Log.d(TAG, "CancelRecordingVoice----------------");
+		LogUtils.d(TAG, "CancelRecordingVoice----------------");
 		if (recordingTimer != null) {
 			recordingTimer.cancel();
 			recordingTimer = null;
@@ -487,7 +490,7 @@ public class GameVoiceManager {
 		if (instance == null) {
 			instance = new GameVoiceManager(activity);
 		}
-
+		LogUtils.i(TAG, "GameVoiceManager instace ...");
 		return instance;
 	}
 
@@ -497,14 +500,17 @@ public class GameVoiceManager {
 	}
 
 	public static void startRecordWithIndex(int index) {
+		LogUtils.i(TAG, "startRecordWithIndex  ...");
 		GameVoiceManager.GetIntance(null).StartRecording(index);
 	}
 
 	public static void stopRecording() {
+		LogUtils.i(TAG, "stopRecording  ...");
 		GameVoiceManager.GetIntance(null).StopRecording();
 	}
 
 	public static void reuploadingRecordingWithIndex(int index) {
+		LogUtils.i(TAG, "reuploadingRecordingWithIndex  ...");
 		GameVoiceManager.GetIntance(null).StartUploadingFile(index);
 	}
 
@@ -527,22 +533,32 @@ public class GameVoiceManager {
 	}
 
 	public static void SetParams(String url,String appid){
+		LogUtils.i(TAG, "SetParams  ..."+"url: "+url+" appid: "+appid+" activity: ");
+		System.out.println();
 		if (appid!=null) {
 			GameVoiceManager.GetIntance(null).setSpeechParams(appid);
 		}
 	}
 	public static void startVoiceToText(){
+		LogUtils.i(TAG, "startVoiceToText  ...");
 		GameVoiceManager.GetIntance(null).startSpeechVoice();
 	}
 	
 	public static void stopVoiceToText(){
+		LogUtils.i(TAG, "stopVoiceToText  ...");
 		GameVoiceManager.GetIntance(null).stopSpeechVoice();
+	}
+	public static void onVoiceDestroy(){
+		LogUtils.i(TAG, "onVoiceDestroy  ...");
+		GameVoiceManager.GetIntance(null).onSpeechDestroy();
 	}
 	
 	public void setSpeechParams(String appid){
 		if (!TextUtils.isEmpty(appid)) {
+			LogUtils.i(TAG, "SpeechUtility  createUtility start ...");
 			SpeechUtility.createUtility(mActivity, SpeechConstant.APPID + "="
 					+ appid);
+			LogUtils.i(TAG, "SpeechUtility  createUtility end ...");
 		}else {
 			SpeechUtility.createUtility(mActivity, SpeechConstant.APPID + "="
 					+ Const.VOICE_APP_ID);
@@ -555,6 +571,9 @@ public class GameVoiceManager {
 	}
 	public void stopSpeechVoice(){
 		speechManager.stopListening();
+	}
+	public void onSpeechDestroy(){
+		speechManager.onDestroy();
 	}
 	
 	public native void OnReceiveVoiceText(boolean isok, String result);
