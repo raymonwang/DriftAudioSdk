@@ -42,7 +42,7 @@ public:
     SdkOpState getSdkState();
     
     /// 开始录制麦克风数据(主线程)
-    bool startRecordVoice(unsigned int labelid);
+    bool startRecordVoice(unsigned int labelid, bool needTranslate = false);
     
     /// 停止录制麦克风数据(主线程)
     bool stopRecordVoice();
@@ -135,6 +135,8 @@ private:
     bool                _isrecording;       //录音标志
     
     LocationHelper*     _lohelper;
+    
+    bool                _isNeedTranslate;   //录音完是否需要翻译
 };
     
 }

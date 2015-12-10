@@ -168,11 +168,11 @@
     //录音格式 无法使用
     [settings setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey: AVFormatIDKey];
     //采样率
-    [settings setValue :[NSNumber numberWithFloat:16000.0] forKey: AVSampleRateKey];//44100.0
+    [settings setValue :[NSNumber numberWithFloat:8000.0] forKey: AVSampleRateKey];//44100.0
     //通道数
     [settings setValue :[NSNumber numberWithInt:1] forKey: AVNumberOfChannelsKey];
     //线性采样位数
-    [settings setValue :[NSNumber numberWithInt:8] forKey: AVLinearPCMBitDepthKey];
+    [settings setValue :[NSNumber numberWithInt:16] forKey: AVLinearPCMBitDepthKey];
     //音频质量,采样质量
     [settings setValue:[NSNumber numberWithInt:AVAudioQualityMin] forKey:AVEncoderAudioQualityKey];
     
@@ -297,6 +297,12 @@
     }
     
     _opstate = SoundOpReady;
+}
+
+/// 开始语音识别流数据
+-(void)translateCurrentVoiceData
+{
+    [self.soundRecognize parseSoundPcmFile:self.current_recordedFile_caf];
 }
 
 /// 是否已经下载过对应标签的文件

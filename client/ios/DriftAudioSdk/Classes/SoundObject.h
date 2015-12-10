@@ -46,6 +46,9 @@ enum SoundOpState {
 /// 停止当前播放
 -(void)stopPlay;
 
+/// 开始语音识别流数据
+-(void)translateCurrentVoiceData;
+
 /// 是否已经下载过对应标签的文件
 //-(NSString*)haveLabelId:(NSInteger)labelid;
 -(NSString*)haveDownloadedurl:(NSString*)url;

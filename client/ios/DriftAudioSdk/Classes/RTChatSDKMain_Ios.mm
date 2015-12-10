@@ -102,8 +102,10 @@ namespace rtchatsdk {
     }
 
     /// 开始录制麦克风数据
-    bool RTChatSDKMain::startRecordVoice(unsigned int labelid)
+    bool RTChatSDKMain::startRecordVoice(unsigned int labelid, bool needTranslate)
     {
+        _isNeedTranslate = needTranslate;
+        
         return [[SoundObject sharedInstance] beginRecord:labelid];
     }
 
@@ -116,6 +118,11 @@ namespace rtchatsdk {
         if (labelid >= 0 && [recordFilePath length] > 0) {
             NSData* data = [NSData dataWithContentsOfFile:recordFilePath];
             uploadVoiceData((const char *)[data bytes], [data length], (unsigned int)labelid, (unsigned int)duration);
+            
+            if (_isNeedTranslate) {
+                [[SoundObject sharedInstance] translateCurrentVoiceData];
+            }
+            
             return true;
         }
         

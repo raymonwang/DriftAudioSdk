@@ -11,9 +11,9 @@
 
 @interface SoundRecognize : NSObject <IFlySpeechRecognizerDelegate>
 
-//-(void)parseSoundData:(NSData*)data;
-//
-//-(void)parseSoundPcmFile:(NSString*)fullfilename;
+-(void)parseSoundData:(NSData*)data;
+
+-(void)parseSoundPcmFile:(NSString*)fullfilename;
 
 -(void)startListenMic;
 
