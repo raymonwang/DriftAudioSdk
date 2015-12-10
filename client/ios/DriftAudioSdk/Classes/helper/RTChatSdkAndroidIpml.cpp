@@ -114,12 +114,12 @@ namespace rtchatsdk {
     }
      
         //开始录制麦克风数据
-    bool RTChatSDKMain::startRecordVoice(unsigned int labelid)
+    bool RTChatSDKMain::startRecordVoice(unsigned int labelid, bool needTranslate)
     {
 
 
         cocos2d::JniMethodInfo voemethodInfo;
-        if (! cocos2d::JniHelper::getStaticMethodInfo(voemethodInfo,CLASS_NAME, "startRecordWithIndex", "(I)V"))
+        if (! cocos2d::JniHelper::getStaticMethodInfo(voemethodInfo,CLASS_NAME, "startRecordWithIndex", "(IZ)V"))
         {
           return NULL;
         }
