@@ -137,6 +137,8 @@ private:
     LocationHelper*     _lohelper;
     
     bool                _isNeedTranslate;   //录音完是否需要翻译
+    
+    unsigned int        _labelid;
 };
     
 }
