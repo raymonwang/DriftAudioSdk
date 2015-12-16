@@ -137,7 +137,7 @@
 /// 开始录音
 -(BOOL)beginRecord:(NSInteger)labelid
 {
-    NSLog(@"in beginRecord, labelid = %d", labelid);
+    NSLog(@"in beginRecord, labelid = %ld", (long)labelid);
     if (_opstate != SoundOpReady) {
         NSLog(@"状态不对，返回");
         return NO;

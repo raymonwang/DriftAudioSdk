@@ -45,7 +45,8 @@ namespace rtchatsdk {
     _gateWayIP(""),
     _gateWayPort(0),
     _func(NULL),
-    _isrecording(false)
+    _isrecording(false),
+    _labelid(0)
     {
 
     }
@@ -104,6 +105,8 @@ namespace rtchatsdk {
     /// 开始录制麦克风数据
     bool RTChatSDKMain::startRecordVoice(unsigned int labelid, bool needTranslate)
     {
+        _labelid = labelid;
+        
         _isNeedTranslate = needTranslate;
         
         return [[SoundObject sharedInstance] beginRecord:labelid];
@@ -388,7 +391,7 @@ namespace rtchatsdk {
         char buff[1024] = {0};
         bzero(buff, 1024);
         
-        snprintf(buff, 1023, "{\"isok\":\"true\", \"content\":\"%s\"}", text.c_str());
+        snprintf(buff, 1023, "{\"isok\":\"true\", \"content\":\"%s\", \"labelid\":\"%u\"}", text.c_str(), _labelid);
         _func(enNotifyVoiceTextResult, OPERATION_OK, buff);
     }
 
