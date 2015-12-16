@@ -165,15 +165,21 @@ namespace rtchatsdk {
         //停止播放数据
     bool RTChatSDKMain::stopPlayLocalVoice()
     {
-       return true;
+		cocos2d::JniMethodInfo voemethodInfo;
+        if (! cocos2d::JniHelper::getStaticMethodInfo(voemethodInfo,CLASS_NAME, "stopPlayingFile", "()V"))
+        {
+          return NULL;
+        }
+        
+        voemethodInfo.env->CallStaticObjectMethod(voemethodInfo.classID, voemethodInfo.methodID);
+		return true;
     }
 
 
     //取消录音
     bool RTChatSDKMain::cancelRecordedVoice()
     {
-
-         cocos2d::JniMethodInfo voemethodInfo;
+		cocos2d::JniMethodInfo voemethodInfo;
         if (! cocos2d::JniHelper::getStaticMethodInfo(voemethodInfo,CLASS_NAME, "cancelRecordingVoice", "()V"))
         {
           return NULL;
