@@ -15,13 +15,17 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Environment;
+import android.os.StatFs;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.lw.RecordImage.SpeechManager.SpeechListener;
+import com.lw.util.FileUtils;
+import com.lw.util.FucUtil;
 import com.lw.util.LogUtils;
+import com.trunkbow.speextest.Speex;
+import com.trunkbow.speextest.WaveSpeex;
 
 /**
  * 7/10/14 11:00 AM Created by yibin.
@@ -29,30 +33,64 @@ import com.lw.util.LogUtils;
 public class GameVoiceManager {
 	 
 	private static final String URL_FILE_DIR = "stvoice/";
-	private String FileURL = "http://uploadchat.ztgame.com.cn:10000/wangpan.php";
+	private static String FileURL = "http://uploadchat.ztgame.com.cn:10000/wangpan.php";
 	private static final String TAG = "GameVoiceManager";
 	private String cloudfileUrl;
 	private Timer recordingTimer;
 
-	private GameVoiceRecorder mRecorder;
 	private GameVoicePlayer mPlayer;
 	
 	private SpeechManager speechManager;
 
 	static GameVoiceManager instance;
 	private Activity mActivity;
+	private WaveSpeex waveSpeex;
+	private static boolean ExistSDCard() {
+		if (android.os.Environment.getExternalStorageState().equals(
+				android.os.Environment.MEDIA_MOUNTED)) {
+			return true;
+		} else
+			return false;
+	}
+
+
+	public long getSDFreeSize() {
+		// 取得SD卡文件路径
+		File path = Environment.getExternalStorageDirectory();
+		StatFs sf = new StatFs(path.getPath());
+		// 获取单个数据块的大小(Byte)
+		long blockSize = sf.getBlockSize();
+		// 空闲的数据块的数量
+		long freeBlocks = sf.getAvailableBlocks();
+		// 返回SD卡空闲大小
+		// return freeBlocks * blockSize; //单位Byte
+		// return (freeBlocks * blockSize)/1024; //单位KB
+		return (freeBlocks * blockSize) / 1024 / 1024; // 单位MB
+	}
+	
+ 
 
 	public GameVoiceManager(Activity activity) {
 		mActivity = activity;
 		LogUtils.init(activity);
 		createFileDirectory();
-		mRecorder = new GameVoiceRecorder(this);
 		mPlayer = new GameVoicePlayer(this);
 		speechManager = new SpeechManager();
+		 
+		waveSpeex = new WaveSpeex();
 		speechManager.setSpeechListener(new SpeechListener() {
 			@Override
 			public void onResult(String text) {
-				OnReceiveVoiceText(true,text);
+				try {
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("labelid", labelid);
+					jsonObject.put("content", text);
+					jsonObject.put("isok", "true");
+					LogUtils.i(TAG, jsonObject.toString());
+					OnReceiveVoiceText(true,jsonObject.toString());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		LogUtils.i(TAG, "GameVoiceManager init...");
@@ -60,8 +98,22 @@ public class GameVoiceManager {
 
 	public String getFileDirectory() {
 		// Should create a folder in /scard/|LOG_DIR|
-		return Environment.getExternalStorageDirectory().toString() + "/"
-				+ URL_FILE_DIR;
+		File file = null;
+		if (ExistSDCard()) {
+			file = new File(Environment.getExternalStorageDirectory().toString() + "/"
+					+ URL_FILE_DIR);
+			if (!file.exists()) {
+				file.mkdir();
+			}
+		}else {
+			file = mActivity.getCacheDir();
+			File dir = new File(file.getAbsoluteFile()+"/"+URL_FILE_DIR);
+			if (!dir.exists()) {
+				dir.mkdir();
+			}
+		}
+		
+		return file.getAbsolutePath()+"/";
 	}
 
 	private boolean createFileDirectory() {
@@ -94,7 +146,7 @@ public class GameVoiceManager {
 					int voiceindex = Integer.valueOf(sVoiceindex).intValue();
 					String hashname = stringToMD5(cloudfileUrl);
 					File sycfile = new File(getFileDirectory() + voiceindex
-							+ "_" + hashname + ".mp3");
+							+ "_" + hashname + ".amr");
 					recordfile.renameTo(sycfile);
 
 					final JSONObject result = new JSONObject();
@@ -138,19 +190,51 @@ public class GameVoiceManager {
 
 		return true;
 	}
-
-	public boolean StartRecording(int index) {
-
-		if (mRecorder.mIsRecording) {
+	private File createFile(String path){
+		File file = new File(path);
+		try {
+			if (file.exists()) {
+				file.delete();
+			}
+			file.createNewFile();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return file;
+	}
+	
+	private boolean isRecoginzed;
+	/**
+	 * 
+	 * @param index
+	 * @param isRecoginzed 是否翻译， true翻译
+	 * @return
+	 */
+	private String wavfilepath;
+	public boolean StartRecording(int index,final boolean isRecoginzed) {
+		this.isRecoginzed = isRecoginzed;
+		if (speechManager.mIsRecording) {
 			return false;
 		}
+//		if (mRecorder.mIsRecording) {
+//			return false;
+//		}
 		LogUtils.d(TAG, "StartRecording----------------");
-		String voicefile = getFileDirectory() + index + "_temp";
-		File recordfile = new File(voicefile);
-		if (recordfile.exists())
-			recordfile.delete();
-
-		mRecorder.startRecording(voicefile);
+//		String rawfilepath = getFileDirectory() + index + "_temp.raw";
+//		 createFile(rawfilepath);
+		 
+		wavfilepath = getFileDirectory() + index +"_"+System.currentTimeMillis() +"_temp_wav.wav";
+		createFile(wavfilepath);
+		
+		mActivity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				speechManager.record(wavfilepath,isRecoginzed);
+			}
+		});
+		
+//		mRecorder.startRecording(voicefile);
+//		mRecorder.startRecordAndFile(rawfilepath,wavfilepath);
 
 		// 启动限时Timer
 		recordingTimer = new Timer(false);
@@ -159,7 +243,7 @@ public class GameVoiceManager {
 			@Override
 			public void run() {
 				recordingTimer = null;
-				StopRecording();
+				StopRecording2();
 			}
 		};
 
@@ -167,73 +251,98 @@ public class GameVoiceManager {
 		return true;
 	}
 
-	public boolean StopRecording() {
+	public boolean StopRecording2() {
 
-		if (mRecorder.mIsRecording == false) {
+		if (speechManager.mIsRecording == false) {
 			return false;
 		}
 
-		LogUtils.d(TAG, "StopRecording----------------");
+		LogUtils.e(TAG, "StopRecording----------------");
 		if (recordingTimer != null) {
 			recordingTimer.cancel();
 			recordingTimer = null;
 		}
 
-		mRecorder.stopRecording();
+		speechManager.stopListening();
+		
+//		mRecorder.stopRecordAndFile();
+//		mRecorder.stopRecording();
 		// 读取上传
-		final String voicefile = mRecorder.GetMp3FilePath();
-		final File recordfile = new File(voicefile);
+//		final String wavfile = mRecorder.getWavFilePath();
+		final File recordfile = new File(wavfilepath);
+		LogUtils.e(TAG, "StopRecording----1------------"+recordfile.length());
 
-		if (!recordfile.exists())
+		while (true) {
+			if (recordfile!=null && recordfile.length()>0) {
+				break;
+			}else {
+				try {
+					Thread.sleep(10);
+				} catch (Exception e) {
+				}
+			}
+		}
+		
+		LogUtils.e(TAG, "StopRecording----2------------"+recordfile.length());
+		final File spxFile = createFile(getFileDirectory()+ System.currentTimeMillis()+"_spx.spx");
+		final File rawFile = createFile(getFileDirectory()+ System.currentTimeMillis()+"_temp_raw.raw");
+	 
+		waveSpeex.wave2spx(wavfilepath,rawFile.getAbsolutePath(), spxFile.getAbsolutePath());
+		LogUtils.d(TAG, "StopRecording-----------spxFilelen: "+spxFile.length()+" rawFilelen: "+rawFile.length());
+		if (!spxFile.exists() || spxFile.length()==0)
 			return false;
 
-		final long filesize = recordfile.length();
+		deleteFile(rawFile.getAbsolutePath());
 
-		final long duration = (int) (filesize / 1500);
+		final long filesize = spxFile.length();
+//		final long duration = (int) (filesize / 1500);
 		// 上传文件开始
-
+	 
+		 LogUtils.i(TAG, "upload file size : "+spxFile.length());
 		Thread postthred = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 
 				cloudfileUrl = new UrlFileHelper().post(FileURL, null,
-						voicefile);
+						spxFile.getAbsolutePath());
 				if (cloudfileUrl != null) {
 					LogUtils.d(TAG, "upload file successs  －－－" + cloudfileUrl);
-
 					// 根据上传url 重命名文件
+					
 					String sVoiceindex = recordfile.getName().split("_")[0];
 					int voiceindex = Integer.valueOf(sVoiceindex).intValue();
 					String hashname = stringToMD5(cloudfileUrl);
 					File sycfile = new File(getFileDirectory() + voiceindex
-							+ "_" + hashname + ".amr");
-					recordfile.renameTo(sycfile);
-
+							+ "_" + hashname + ".spx");
+					spxFile.renameTo(sycfile);
+					
+					File syc2file = new File(getFileDirectory() + voiceindex
+							+ "_" + hashname + ".wav");
+					recordfile.renameTo(syc2file);
+ 
+					LogUtils.d(TAG, "rename----------------"+sycfile.getAbsolutePath());
+					
 					final JSONObject result = new JSONObject();
 					try {
 						result.put("url", cloudfileUrl);
 						result.put("duration", String.valueOf(filesize / 1500));
 						result.put("filesize", String.valueOf(filesize));
 						result.put("labelid", String.valueOf(voiceindex));
-
+ 
+						
 						mActivity.runOnUiThread(new Runnable() {
-
 							@Override
 							public void run() {
-								// TODO Auto-generated method stub
 								RecordingUploadEnd(true, result.toString());
 							}
 						});
-
 					} catch (JSONException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 
 				} else {
-
-					LogUtils.d(TAG, "upload file fail  －－－" + voicefile);
+					LogUtils.d(TAG, "upload file fail  －－－" + recordfile);
 					String sVoiceindex = recordfile.getName().split("_")[0];
 					int voiceindex = Integer.valueOf(sVoiceindex).intValue();
 					final JSONObject result = new JSONObject();
@@ -255,6 +364,7 @@ public class GameVoiceManager {
 					}
 				}
 
+				isRecoginzed = false;
 			}
 		});
 		
@@ -349,8 +459,9 @@ public class GameVoiceManager {
 
 		String formatefileUrl = stringToMD5(url);
 		final String voicefile = getFileDirectory() + index + "_"
-				+ formatefileUrl + ".amr";// "test";//
-
+				+ formatefileUrl + ".spx";// "test";//
+		final String wavfilename = getFileDirectory() +  index + "_"+ formatefileUrl + ".wav";// "test";//
+		final String spxrawname =  getFileDirectory() + index + "_"+ formatefileUrl + "_spx_temp_raw.raw";// "test";//
 		// 判断文件是否在磁盘，不在去下载
 		File recordfile = new File(voicefile);
 		if (!recordfile.exists()) {
@@ -367,6 +478,7 @@ public class GameVoiceManager {
 					if (downloadret) {
 						LogUtils.d(TAG, "下载后播放");
 						File recordfile = new File(voicefile);
+						
 						// long filesize = recordfile
 						// 下载成功，开始播放
 						long filesize = recordfile.length();
@@ -388,8 +500,8 @@ public class GameVoiceManager {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-
-						mPlayer.startPlayFile(voicefile);
+						spx2WavPlay(voicefile, wavfilename, spxrawname);
+//						mPlayer.startPlayFile(voicefile);
 
 					} else {
 
@@ -419,12 +531,47 @@ public class GameVoiceManager {
 			downthred.start();
 		} else {
 			// 开始播放
-			mPlayer.startPlayFile(voicefile);
+//			mPlayer.startPlayFile(voicefile);
+			spx2WavPlay(voicefile, wavfilename, spxrawname);
 		}
 
 		return true;
 	}
 
+	private void spx2WavPlay(String spxPath,String wavfilename,String spxrawname){
+		try {
+			File spxFile = new File(spxPath);
+			File wavFile = new File(wavfilename);
+			if (!wavFile.exists()) {
+				wavFile.createNewFile();
+				File spxRawFile = createFile(spxrawname);
+				LogUtils.i(TAG, "spx to  wav start");
+				waveSpeex.spx2wav(spxFile.getAbsolutePath(), spxRawFile.getAbsolutePath(), wavFile.getAbsolutePath());
+				LogUtils.i(TAG, "spx to  wav end");
+				LogUtils.i(TAG, "play wav start");
+				deleteFile(spxRawFile.getAbsolutePath());
+			}
+			LogUtils.i(TAG, "spxPath: "+spxPath);
+			LogUtils.i(TAG, "wavfile: "+wavfilename);
+			LogUtils.i(TAG, "spxrawname: "+spxrawname);
+			mPlayer.startPlayFile(wavFile.getAbsolutePath());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	private void deleteFile(String deletePath){
+		try {
+			boolean isdelete = FileUtils.deleteFile(deletePath);
+			if (isdelete) {
+				LogUtils.i(TAG, "delete file: "+deletePath);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public boolean StopPlayVoice(String url) {
 		mPlayer.stopPlaying();
 		return true;
@@ -432,7 +579,7 @@ public class GameVoiceManager {
 
 	public boolean CancelRecordingVoice() {
 
-		if (mRecorder.mIsRecording == false) {
+		if (speechManager.mIsRecording == false) {
 			return false;
 		}
 
@@ -442,7 +589,9 @@ public class GameVoiceManager {
 			recordingTimer = null;
 		}
 
-		mRecorder.stopRecording();
+//		mRecorder.stopRecording();
+		speechManager.stopListening();
+//		mRecorder.stopRecordAndFile();
 
 		return true;
 	}
@@ -499,14 +648,16 @@ public class GameVoiceManager {
 		// GameAvatar.GetIntance(null).UploadFileURL = uploadurl;
 	}
 
-	public static void startRecordWithIndex(int index) {
+	public static void startRecordWithIndex(int index,boolean isRecoginzed) {
 		LogUtils.i(TAG, "startRecordWithIndex  ...");
-		GameVoiceManager.GetIntance(null).StartRecording(index);
+		labelid = index;
+		GameVoiceManager.GetIntance(null).StartRecording(index,isRecoginzed);
 	}
+	private  static int labelid ;
 
 	public static void stopRecording() {
 		LogUtils.i(TAG, "stopRecording  ...");
-		GameVoiceManager.GetIntance(null).StopRecording();
+		GameVoiceManager.GetIntance(null).StopRecording2();
 	}
 
 	public static void reuploadingRecordingWithIndex(int index) {
@@ -533,7 +684,8 @@ public class GameVoiceManager {
 	}
 
 	public static void SetParams(String url,String appid){
-		LogUtils.i(TAG, "SetParams  ..."+"url: "+url+" appid: "+appid+" activity: ");
+		FileURL = url;
+		LogUtils.i(TAG, "SetParams  ..."+"FileURL: "+url+" appid: "+appid+" activity: ");
 		System.out.println();
 		if (appid!=null) {
 			GameVoiceManager.GetIntance(null).setSpeechParams(appid);
@@ -567,7 +719,7 @@ public class GameVoiceManager {
 	}
 	
 	public void startSpeechVoice(){
-		speechManager.recognizeStream(false);
+		speechManager.recognizeStream("");
 	}
 	public void stopSpeechVoice(){
 		speechManager.stopListening();

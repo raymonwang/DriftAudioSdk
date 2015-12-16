@@ -1,13 +1,19 @@
 package com.lw.RecordImage;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.iflytek.cloud.ErrorCode;
@@ -17,6 +23,7 @@ import com.iflytek.cloud.RecognizerResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechRecognizer;
+import com.iflytek.cloud.ui.RecognizerDialog;
 import com.lw.util.FucUtil;
 import com.lw.util.JsonParser;
 import com.lw.util.LogUtils;
@@ -28,6 +35,17 @@ import com.lw.util.LogUtils;
  *
  */
 public class SpeechManager {
+	//语音转文字
+	private int SPEEK_TO_TEXT=10;
+	//语音文件转文字
+	private int SPEEK_File_TO_TEXT=12;
+		
+	private int type=0;
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	
 	
 	private Context context;
 	private static String TAG = SpeechManager.class.getSimpleName();
@@ -45,7 +63,9 @@ public class SpeechManager {
 //	ApkInstaller mInstaller;
 	
 	int ret = 0; // 函数调用返回值
-
+	private RecognizerDialog mIatDialog;
+	
+	
 	public void init(Context context) {
 		this.context = context;
 		// 使用SpeechRecognizer对象，可根据回调消息自定义界面；
@@ -55,19 +75,24 @@ public class SpeechManager {
 		
 		mIat.setParameter(SpeechConstant.DOMAIN, "iat");
 		mIat.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
-		mIat.setParameter(SpeechConstant.ACCENT, "mandarin ");
+		mIat.setParameter(SpeechConstant.ACCENT, "mandarin");
 		
+		LogUtils.init(context);
 		LogUtils.i(TAG, "SpeechManager 初始化 ...");
  
 	}
-	
-	public void recognizeStream(boolean out){
+	public void recognizeStream(){
+		recognizeStream(null);
+	}
+	public void recognizeStream(String voicePath){
+		type = SPEEK_File_TO_TEXT;
 		LogUtils.i(TAG, "SpeechManager 开始录音 ...");
 		// 设置参数
 		setParam();
-		if (out) {
+		if (!TextUtils.isEmpty(voicePath)) {
 			// 设置音频来源为外部文件
 			mIat.setParameter(SpeechConstant.AUDIO_SOURCE, "-1");
+//			mIat.setParameter(SpeechConstant.SAMPLE_RATE, "8000");
 			// 也可以像以下这样直接设置音频文件路径识别（要求设置文件在sdcard上的全路径）：
 			// mIat.setParameter(SpeechConstant.AUDIO_SOURCE, "-2");
 			// mIat.setParameter(SpeechConstant.ASR_SOURCE_PATH, "sdcard/XXX/XXX.pcm");
@@ -75,8 +100,12 @@ public class SpeechManager {
 			if (ret != ErrorCode.SUCCESS) {
 				showTip("识别失败,错误码：" + ret);
 			} else {
-				byte[] audioData = FucUtil.readAudioFile(context, "iattest.wav");
-				
+				byte[] audioData   = FucUtil.toByteArray(voicePath);
+				System.out.println("recognizeStream ... 4");
+				if (voicePath.length()==0) {
+					return ;
+				} 
+				System.out.println("recognizeStream ... 4"+voicePath);
 				if (null != audioData) {
 //					showTip(getString(R.string.text_begin_recognizer));
 					// 一次（也可以分多次）写入音频文件数据，数据格式必须是采样率为8KHz或16KHz（本地识别只支持16K采样率，云端都支持），位长16bit，单声道的wav或者pcm
@@ -84,6 +113,7 @@ public class SpeechManager {
 					// 注：当音频过长，静音部分时长超过VAD_EOS将导致静音后面部分不能识别
 					mIat.writeAudio(audioData, 0, audioData.length);
 					mIat.stopListening();
+					System.out.println("stopListening ... 4");
 				} else {
 					mIat.cancel();
 					showTip("读取音频流失败");
@@ -96,15 +126,43 @@ public class SpeechManager {
 		
 	}
 	public void cancel(){
+		mIsRecording = false;
 		mIat.cancel();
 	}
 	
 	public void stopListening(){
+		mIsRecording = false;
 		mIat.stopListening();
 	}
 	
+	public void record(String wavfilepath,final boolean isRecoginzed){
+		try {
+			LogUtils.i(TAG, "开始录音");
+			if (mIatDialog==null) {
+				mIatDialog = new RecognizerDialog(context, mInitListener);
+			}
+			type = SPEEK_TO_TEXT;
+			this.isRecoginzed = isRecoginzed;
+			setParam();
+			// 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
+			// 注：AUDIO_FORMAT参数语记需要更新版本才能生效
+			mIat.setParameter(SpeechConstant.AUDIO_FORMAT,"wav");
+			mIat.setParameter(SpeechConstant.ASR_AUDIO_PATH,wavfilepath);
+			ret = mIat.startListening(mRecognizerListener);
+			if (ret != ErrorCode.SUCCESS) {
+				showTip("听写失败,错误码：" + ret);
+			} else {
+				mIsRecording = true;
+				LogUtils.i(TAG, "正在录音...");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
-
+	public boolean mIsRecording=false;
+	public boolean isRecoginzed=false;
 	/**
 	 * 初始化监听器。
 	 */
@@ -149,15 +207,30 @@ public class SpeechManager {
 		@Override
 		public void onResult(RecognizerResult results, boolean isLast) {
 			LogUtils.d(TAG, results.getResultString());
-			String result = printResult(results);
-			LogUtils.d(TAG, isLast+ " 说话内容 up："+result);
-			if (isLast) {
-				LogUtils.d(TAG, "说话内容 up："+result);
-				if (listener!=null) {
-					listener.onResult(result);
+			 
+			if (type == SPEEK_File_TO_TEXT) {
+				String result = printResult(results);
+				LogUtils.d(TAG, isLast+ " 说话内容 up："+result);
+				if (isLast) {
+					LogUtils.d(TAG, "说话内容 up："+result);
+					if (listener!=null) {
+						listener.onResult(result);
+					}
+					LogUtils.d(TAG, "说话内容 end："+result);
 				}
-				LogUtils.d(TAG, "说话内容 end："+result);
+			}else if (type == SPEEK_TO_TEXT) {
+				Log.d(TAG, "recognizer result：" + results.getResultString());
+				String result = printResult(results);
+				LogUtils.d(TAG, isLast+ " 说话内容 up："+result);
+				if (isLast) {
+					LogUtils.d(TAG, "说话内容 up："+result);
+					if (listener!=null && isRecoginzed) {
+						listener.onResult(result);
+					}
+					LogUtils.d(TAG, "说话内容 end："+result);
+				}
 			}
+			
 		}
 
 		@Override
@@ -251,6 +324,9 @@ public class SpeechManager {
 		// 设置听写结果是否结果动态修正，为“1”则在听写过程中动态递增地返回结果，否则只在听写结束之后返回最终结果
 		// 注：该参数暂时只对在线听写有效
 		mIat.setParameter(SpeechConstant.ASR_DWA, "0");
+		
+		 
+ 
 	}
 
 	public void onDestroy() {
@@ -268,4 +344,203 @@ public class SpeechManager {
 		public void onResult(String text);
 	}
  
+ 
+	
+	
+	/////////////////////////////////// 分段解析  开始 ///////////////////////////////////////////
+
+    public void startSplitRead(String filepath){
+    	try {
+    		
+    		ret1 = new StringBuffer();
+        	ret2 = new StringBuffer();
+        	allreult = new StringBuffer();
+        	recognizertext = new StringBuffer();
+        	byte[] data = readFileFromSDcard(filepath);
+        	if (data==null) {
+				return;
+			}
+        	LogUtils.i("tag", filepath+" "+data.length);
+            ArrayList<byte[]> buffers = splitBuffer(data, data.length, 1280);
+            writeaudio(buffers);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+    }
+   
+    private byte[] readFileFromSDcard(String filepath) {
+        byte[] buffer = null;
+        FileInputStream in = null;
+        try {
+            in = new FileInputStream(filepath);
+            buffer = new byte[in.available()];
+            in.read(buffer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                    in = null;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return buffer;
+    }
+
+  
+    public ArrayList<byte[]> splitBuffer(byte[] buffer, int length, int spsize) {
+        ArrayList<byte[]> array = new ArrayList<byte[]>();
+        if (spsize <= 0 || length <= 0 || buffer == null
+                || buffer.length < length)
+            return array;
+        int size = 0;
+        while (size < length) {
+            int left = length - size;
+            if (spsize < left) {
+                byte[] sdata = new byte[spsize];
+                System.arraycopy(buffer, size, sdata, 0, spsize);
+                array.add(sdata);
+                size += spsize;
+            } else {
+                byte[] sdata = new byte[left];
+                System.arraycopy(buffer, size, sdata, 0, left);
+                array.add(sdata);
+                size += left;
+            }
+        }
+        return array;
+    }
+
+    public void writeaudio(final ArrayList<byte[]> buffers) {
+    	LogUtils.i(TAG, "开启线程进行翻译");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+            	mIat.setParameter(SpeechConstant.DOMAIN, "iat");
+            	mIat.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
+            	mIat.setParameter(SpeechConstant.AUDIO_SOURCE, "-1");
+                // 设置多个候选结果
+            	mIat.setParameter(SpeechConstant.ASR_NBEST, "3");
+            	mIat.setParameter(SpeechConstant.ASR_WBEST, "3");
+
+            	mIat.startListening(mRecognizerListener2);
+                for (int i = 0; i < buffers.size(); i++) {
+                    try {
+                    	mIat.writeAudio(buffers.get(i), 0,
+                                buffers.get(i).length);
+//                        Thread.sleep(40);
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+                mIat.stopListening();
+                LogUtils.i(TAG, "监听停止");
+            }
+
+        }).start();
+    }
+
+ 
+    StringBuffer recognizertext = new StringBuffer();
+    StringBuffer allreult = new StringBuffer();
+    public RecognizerListener mRecognizerListener2 = new RecognizerListener() {
+ 
+        @Override
+        public void onResult(RecognizerResult results, boolean arg1) {
+            // 正确的结果
+            String text = parseIatResult(results.getResultString());
+            recognizertext.append(text);
+            Log.i("joResult", "text=" + text);
+            // 不标准结果
+            allreult.append(ret2.toString());
+
+            if (arg1) {
+               
+                String text1, text2;
+                text1 = recognizertext.toString();
+                text2 = allreult.toString();
+                boolean isequls = text1.regionMatches(true, 0, text2, 0, 0);
+                Log.i("joResult", "isequls=" + isequls);
+                
+                if (listener!=null) {
+                	listener.onResult(recognizertext.toString());
+				}
+                
+            }
+        }
+
+		@Override
+		public void onBeginOfSpeech() {
+			
+		}
+
+		@Override
+		public void onEndOfSpeech() {
+			
+		}
+
+		@Override
+		public void onError(SpeechError arg0) {
+			
+		}
+
+		@Override
+		public void onEvent(int arg0, int arg1, int arg2, Bundle arg3) {
+			
+		}
+
+		@Override
+		public void onVolumeChanged(int arg0, byte[] arg1) {
+			
+		}
+
+    };
+    StringBuffer ret1;
+    StringBuffer ret2;
+    private String parseIatResult(String json) {
+        ret1 = new StringBuffer();
+        ret2 = new StringBuffer();
+        try {
+            JSONTokener tokener = new JSONTokener(json);
+            JSONObject joResult = new JSONObject(tokener);
+            Log.i("joResult", "joResult:" + joResult.toString());
+            JSONArray words = joResult.getJSONArray("ws");
+            for (int i = 0; i < words.length(); i++) {
+                // 转写结果词，默认使用第一个结果
+                JSONArray items = words.getJSONObject(i).getJSONArray("cw");
+
+                JSONObject obj = items.getJSONObject(0);
+                ret1.append(obj.getString("w"));
+                Log.i("joResult", "items.length():" + items.length());
+
+                switch (items.length()) {
+
+                case 1:
+                    JSONObject obj1 = items.getJSONObject(0);
+                    ret2.append(obj1.getString("w"));
+                    break;
+
+                case 2:
+                    JSONObject obj2 = items.getJSONObject(1);
+                    ret2.append(obj2.getString("w"));
+                    break;
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ret1.toString();
+    }
+	
+	/////////////////////////////////// 分段解析  结束 ///////////////////////////////////////////
+	
+	
+	
+	
+	
 }

@@ -53,10 +53,12 @@ public class GameVoiceRecorder {
        /* 设置输出文件的格式：THREE_GPP/MPEG-4/RAW_AMR/Default
         * THREE_GPP(3gp格式，H263视频/ARM音频编码)、MPEG-4、RAW_AMR(只支持音频且音频编码要求为AMR_NB)
         */
-    	mRecorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
+    	mRecorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_WB);
+//    	mRecorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
          
         /* 设置音频文件的编码：AAC/AMR_NB/AMR_MB/Default */
-    	mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+    	mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_WB);
+//    	mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         
    }
     

@@ -43,4 +43,9 @@ public class LogUtils {
 			Log.d(tag, str);
 		}
 	}
+	public static void e(String tag,String str){
+		if (APP_DBG) {
+			Log.e(tag, str);
+		}
+	}
 }
