@@ -1,12 +1,19 @@
 package com.lw.RecordImage;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,10 +29,7 @@ import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.lw.RecordImage.SpeechManager.SpeechListener;
 import com.lw.util.FileUtils;
-import com.lw.util.FucUtil;
 import com.lw.util.LogUtils;
-import com.trunkbow.speextest.Speex;
-import com.trunkbow.speextest.WaveSpeex;
 
 /**
  * 7/10/14 11:00 AM Created by yibin.
@@ -44,7 +48,7 @@ public class GameVoiceManager {
 
 	static GameVoiceManager instance;
 	private Activity mActivity;
-	private WaveSpeex waveSpeex;
+ 
 	private static boolean ExistSDCard() {
 		if (android.os.Environment.getExternalStorageState().equals(
 				android.os.Environment.MEDIA_MOUNTED)) {
@@ -77,13 +81,13 @@ public class GameVoiceManager {
 		mPlayer = new GameVoicePlayer(this);
 		speechManager = new SpeechManager();
 		 
-		waveSpeex = new WaveSpeex();
+		 
 		speechManager.setSpeechListener(new SpeechListener() {
 			@Override
 			public void onResult(String text) {
 				try {
 					JSONObject jsonObject = new JSONObject();
-					jsonObject.put("labelid", labelid);
+					jsonObject.put("labelid",labelid+"");
 					jsonObject.put("content", text);
 					jsonObject.put("isok", "true");
 					LogUtils.i(TAG, jsonObject.toString());
@@ -284,28 +288,29 @@ public class GameVoiceManager {
 		}
 		
 		LogUtils.e(TAG, "StopRecording----2------------"+recordfile.length());
-		final File spxFile = createFile(getFileDirectory()+ System.currentTimeMillis()+"_spx.spx");
-		final File rawFile = createFile(getFileDirectory()+ System.currentTimeMillis()+"_temp_raw.raw");
+		final File amrFile = createFile(getFileDirectory()+ System.currentTimeMillis()+"_amr.amr");
+//		final File rawFile = createFile(getFileDirectory()+ System.currentTimeMillis()+"_temp_raw.raw");
 	 
-		waveSpeex.wave2spx(wavfilepath,rawFile.getAbsolutePath(), spxFile.getAbsolutePath());
-		LogUtils.d(TAG, "StopRecording-----------spxFilelen: "+spxFile.length()+" rawFilelen: "+rawFile.length());
-		if (!spxFile.exists() || spxFile.length()==0)
+//		RemoveWaveHeader(wavfilepath, rawFile.getAbsolutePath());
+		raw2amr(wavfilepath, amrFile.getAbsolutePath());
+	 
+		if (!amrFile.exists() || amrFile.length()==0)
 			return false;
 
-		deleteFile(rawFile.getAbsolutePath());
+//		deleteFile(rawFile.getAbsolutePath());
 
-		final long filesize = spxFile.length();
+		final long filesize = amrFile.length();
 //		final long duration = (int) (filesize / 1500);
 		// 上传文件开始
 	 
-		 LogUtils.i(TAG, "upload file size : "+spxFile.length());
+		 LogUtils.i(TAG, "upload file size : "+amrFile.length());
 		Thread postthred = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 
 				cloudfileUrl = new UrlFileHelper().post(FileURL, null,
-						spxFile.getAbsolutePath());
+						amrFile.getAbsolutePath());
 				if (cloudfileUrl != null) {
 					LogUtils.d(TAG, "upload file successs  －－－" + cloudfileUrl);
 					// 根据上传url 重命名文件
@@ -314,8 +319,8 @@ public class GameVoiceManager {
 					int voiceindex = Integer.valueOf(sVoiceindex).intValue();
 					String hashname = stringToMD5(cloudfileUrl);
 					File sycfile = new File(getFileDirectory() + voiceindex
-							+ "_" + hashname + ".spx");
-					spxFile.renameTo(sycfile);
+							+ "_" + hashname + ".amr");
+					amrFile.renameTo(sycfile);
 					
 					File syc2file = new File(getFileDirectory() + voiceindex
 							+ "_" + hashname + ".wav");
@@ -459,9 +464,7 @@ public class GameVoiceManager {
 
 		String formatefileUrl = stringToMD5(url);
 		final String voicefile = getFileDirectory() + index + "_"
-				+ formatefileUrl + ".spx";// "test";//
-		final String wavfilename = getFileDirectory() +  index + "_"+ formatefileUrl + ".wav";// "test";//
-		final String spxrawname =  getFileDirectory() + index + "_"+ formatefileUrl + "_spx_temp_raw.raw";// "test";//
+				+ formatefileUrl + ".amr";// "test";//
 		// 判断文件是否在磁盘，不在去下载
 		File recordfile = new File(voicefile);
 		if (!recordfile.exists()) {
@@ -500,8 +503,7 @@ public class GameVoiceManager {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						spx2WavPlay(voicefile, wavfilename, spxrawname);
-//						mPlayer.startPlayFile(voicefile);
+						mPlayer.startPlayFile(voicefile);
 
 					} else {
 
@@ -531,35 +533,35 @@ public class GameVoiceManager {
 			downthred.start();
 		} else {
 			// 开始播放
-//			mPlayer.startPlayFile(voicefile);
-			spx2WavPlay(voicefile, wavfilename, spxrawname);
+			mPlayer.startPlayFile(voicefile);
+//			spx2WavPlay(voicefile, wavfilename, spxrawname);
 		}
 
 		return true;
 	}
 
-	private void spx2WavPlay(String spxPath,String wavfilename,String spxrawname){
-		try {
-			File spxFile = new File(spxPath);
-			File wavFile = new File(wavfilename);
-			if (!wavFile.exists()) {
-				wavFile.createNewFile();
-				File spxRawFile = createFile(spxrawname);
-				LogUtils.i(TAG, "spx to  wav start");
-				waveSpeex.spx2wav(spxFile.getAbsolutePath(), spxRawFile.getAbsolutePath(), wavFile.getAbsolutePath());
-				LogUtils.i(TAG, "spx to  wav end");
-				LogUtils.i(TAG, "play wav start");
-				deleteFile(spxRawFile.getAbsolutePath());
-			}
-			LogUtils.i(TAG, "spxPath: "+spxPath);
-			LogUtils.i(TAG, "wavfile: "+wavfilename);
-			LogUtils.i(TAG, "spxrawname: "+spxrawname);
-			mPlayer.startPlayFile(wavFile.getAbsolutePath());
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
+//	private void amr2WavPlay(String spxPath,String wavfilename,String spxrawname){
+//		try {
+//			File spxFile = new File(spxPath);
+//			File wavFile = new File(wavfilename);
+//			if (!wavFile.exists()) {
+//				wavFile.createNewFile();
+//				File spxRawFile = createFile(spxrawname);
+//				LogUtils.i(TAG, "spx to  wav start");
+//				waveSpeex.spx2wav(spxFile.getAbsolutePath(), spxRawFile.getAbsolutePath(), wavFile.getAbsolutePath());
+//				LogUtils.i(TAG, "spx to  wav end");
+//				LogUtils.i(TAG, "play wav start");
+//				deleteFile(spxRawFile.getAbsolutePath());
+//			}
+//			LogUtils.i(TAG, "spxPath: "+spxPath);
+//			LogUtils.i(TAG, "wavfile: "+wavfilename);
+//			LogUtils.i(TAG, "spxrawname: "+spxrawname);
+//			mPlayer.startPlayFile(wavFile.getAbsolutePath());
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//	}
 	
 	private void deleteFile(String deletePath){
 		try {
@@ -739,4 +741,66 @@ public class GameVoiceManager {
 	public native void RecordingVoiceOnVolume(boolean isok, String result);
 
 	public native void RecordingPlayVoiceOnStop(boolean isok, String result);
+	
+	
+	public static void raw2amr(String inPath, String outPath) {
+		try {
+
+			FileInputStream fileInputStream = new FileInputStream(inPath);
+			FileOutputStream fileoutputStream = new FileOutputStream(outPath);
+			// 获得Class
+			Class<?> cls = Class.forName("android.media.AmrInputStream");
+			// 通过Class获得所对应对象的方法
+			Method[] methods = cls.getMethods();
+			// 输出每个方法名
+			fileoutputStream.write(header);
+			Constructor<?> con = cls.getConstructor(InputStream.class);
+			Object obj = con.newInstance(fileInputStream);
+			for (Method method : methods) {
+				Class<?>[] parameterTypes = method.getParameterTypes();
+				if ("read".equals(method.getName())
+						&& parameterTypes.length == 3) {
+					byte[] buf = new byte[1024];
+					int len = 0;
+					while ((len = (int) method.invoke(obj, buf, 0, 1024)) > 0) {
+						fileoutputStream.write(buf, 0, len);
+					}
+					
+				}
+			}
+			for (Method method : methods) {
+				if ("close".equals(method.getName())){
+					method.invoke(obj);
+				}
+			}
+			fileoutputStream.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	 final private static byte[] header = new byte[]{0x23, 0x21, 0x41, 0x4D, 0x52, 0x0A};
+	 
+	public static void RemoveWaveHeader(String inFileName, String outFileName) {
+		RandomAccessFile raf = null;
+		FileOutputStream fileOutputStream = null;
+		try {
+			raf = new RandomAccessFile(inFileName, "r");
+			fileOutputStream = new FileOutputStream(outFileName);
+
+			raf.seek(0);
+			raf.skipBytes(44);
+
+			byte[] buff = new byte[1024];
+			int rc = 0;
+			while ((rc = raf.read(buff, 0, 1024)) > 0) {
+				fileOutputStream.write(buff, 0, rc);
+			}
+
+			fileOutputStream.close();
+			raf.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtils.i("test", e.toString());
+		}
+	}
 }

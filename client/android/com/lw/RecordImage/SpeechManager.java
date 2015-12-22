@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.iflytek.cloud.ErrorCode;
+import com.iflytek.cloud.GrammarListener;
 import com.iflytek.cloud.InitListener;
 import com.iflytek.cloud.RecognizerListener;
 import com.iflytek.cloud.RecognizerResult;
@@ -63,13 +64,13 @@ public class SpeechManager {
 //	ApkInstaller mInstaller;
 	
 	int ret = 0; // 函数调用返回值
-	private RecognizerDialog mIatDialog;
+//	private RecognizerDialog mIatDialog;
 	
 	
 	public void init(Context context) {
 		this.context = context;
 		// 使用SpeechRecognizer对象，可根据回调消息自定义界面；
-		mIat = SpeechRecognizer.createRecognizer(context, mInitListener);
+		mIat = SpeechRecognizer.createRecognizer(context, null);
 		// 初始化听写Dialog，如果只使用有UI听写功能，无需创建SpeechRecognizer
 		// 使用UI听写功能，请根据sdk文件目录下的notice.txt,放置布局文件和图片资源
 		
@@ -92,7 +93,7 @@ public class SpeechManager {
 		if (!TextUtils.isEmpty(voicePath)) {
 			// 设置音频来源为外部文件
 			mIat.setParameter(SpeechConstant.AUDIO_SOURCE, "-1");
-//			mIat.setParameter(SpeechConstant.SAMPLE_RATE, "8000");
+			
 			// 也可以像以下这样直接设置音频文件路径识别（要求设置文件在sdcard上的全路径）：
 			// mIat.setParameter(SpeechConstant.AUDIO_SOURCE, "-2");
 			// mIat.setParameter(SpeechConstant.ASR_SOURCE_PATH, "sdcard/XXX/XXX.pcm");
@@ -101,11 +102,10 @@ public class SpeechManager {
 				showTip("识别失败,错误码：" + ret);
 			} else {
 				byte[] audioData   = FucUtil.toByteArray(voicePath);
-				System.out.println("recognizeStream ... 4");
+				 
 				if (voicePath.length()==0) {
 					return ;
 				} 
-				System.out.println("recognizeStream ... 4"+voicePath);
 				if (null != audioData) {
 //					showTip(getString(R.string.text_begin_recognizer));
 					// 一次（也可以分多次）写入音频文件数据，数据格式必须是采样率为8KHz或16KHz（本地识别只支持16K采样率，云端都支持），位长16bit，单声道的wav或者pcm
@@ -138,12 +138,34 @@ public class SpeechManager {
 	public void record(String wavfilepath,final boolean isRecoginzed){
 		try {
 			LogUtils.i(TAG, "开始录音");
-			if (mIatDialog==null) {
-				mIatDialog = new RecognizerDialog(context, mInitListener);
-			}
+//			if (mIatDialog==null) {
+//				mIatDialog = new RecognizerDialog(context, mInitListener);
+//			}
+			
+//			mIat = SpeechRecognizer.createRecognizer(context, null);
+			setParam();
+			mIat.setParameter(SpeechConstant.SAMPLE_RATE, "8000");
+			
+			
+//			String mCloudGrammar = "#ABNF 1.0 UTF-8;languagezh-CN;mode voice;root $main;$main = $place1 到$place2;";  
+			//2.构建语法文件  
+			mIat.setParameter(SpeechConstant.TEXT_ENCODING, "utf-8");  
+			 
+//			ret = mIat.buildGrammar("abnf", mCloudGrammar , grammarListener);  
+//			if (ret != ErrorCode.SUCCESS){  
+//			    Log.d(TAG,"语法构建失败,错误码：" + ret);  
+//			}else{  
+//			    Log.d(TAG,"语法构建成功");  
+//			}  
+			//3.开始识别,设置引擎类型为云端  
+			mIat.setParameter(SpeechConstant.ENGINE_TYPE, "cloud");  
+			//设置grammarId  
+//			mIat.setParameter(SpeechConstant.CLOUD_GRAMMAR, "1");  
+			  
+			 
 			type = SPEEK_TO_TEXT;
 			this.isRecoginzed = isRecoginzed;
-			setParam();
+			
 			// 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
 			// 注：AUDIO_FORMAT参数语记需要更新版本才能生效
 			mIat.setParameter(SpeechConstant.AUDIO_FORMAT,"wav");
@@ -155,12 +177,26 @@ public class SpeechManager {
 				mIsRecording = true;
 				LogUtils.i(TAG, "正在录音...");
 			}
+			
+			
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
+//	private GrammarListener grammarListener = new GrammarListener() {
+//		@Override
+//		public void onBuildFinish(String grammarId, SpeechError error) {
+//			if (error == null) {
+//				if (!TextUtils.isEmpty(grammarId)) {
+//					// 构建语法成功，请保存grammarId用于识别
+//				} else {
+//					Log.d(TAG, "语法构建失败,错误码：" + error.getErrorCode());
+//				}
+//			}
+//		}
+//	};
 	public boolean mIsRecording=false;
 	public boolean isRecoginzed=false;
 	/**
@@ -538,9 +574,6 @@ public class SpeechManager {
     }
 	
 	/////////////////////////////////// 分段解析  结束 ///////////////////////////////////////////
-	
-	
-	
-	
+ 
 	
 }
