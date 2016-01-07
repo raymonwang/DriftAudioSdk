@@ -211,21 +211,33 @@
 }
 
 /// 停止录音
--(NSInteger)stopRecord:(NSString **)filename duration:(NSInteger *)duration
+-(void)stopRecord
 {
     NSLog(@"in stopRecord");
     if (_opstate == SoundOpRecording) {
-        if (duration) {
-            *duration = [_recorder currentTime];
-        }
+        _voiceDuration = [_recorder currentTime];
+        
         [_recorder stop];
         
-        if ([self transferPCMtoAMR]) {
-            NSLog(@"amr文件压缩成功");
-        }
-        else {
-            NSLog(@"amr文件压缩失败");
-        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            if ([self transferPCMtoAMR]) {
+                NSLog(@"amr文件压缩成功");
+                rtchatsdk::RTChatSDKMain::sharedInstance().onVoiceCompressOver(true, [self.current_recordedFile_mp3 UTF8String]);
+            }
+            else {
+                NSLog(@"amr文件压缩失败");
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                rtchatsdk::RTChatSDKMain::sharedInstance().onVoiceCompressOver(false, nullptr);
+            });
+        });
+        
+//        if ([self transferPCMtoAMR]) {
+//            NSLog(@"amr文件压缩成功");
+//        }
+//        else {
+//            NSLog(@"amr文件压缩失败");
+//        }
         
         _recorder = nil;
         
@@ -236,16 +248,9 @@
         
         _opstate = SoundOpReady;
         NSLog(@"out stopRecord");
-        
-        if (filename) {
-            *filename = self.current_recordedFile_mp3;
-        }
-        
-        return self.currentlabelid;
     }
     else {
         NSLog(@"不在录音状态，stopRecord直接返回");
-        return -1;
     }
 }
 
@@ -276,15 +281,30 @@
     
     NSError *playerError;
     
-    self.player = [[AVAudioPlayer alloc]initWithData:data error:&playerError];
-    if (_player) {
-        [self.player setDelegate:self];
-        [self.player play];
-        NSLog(@"播放开始");
-    }
-    else {
-        NSLog(@"ERror creating player: %@", [playerError description]);
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        self.player = [[AVAudioPlayer alloc]initWithData:data error:nil];
+        if (_player) {
+            [self.player setDelegate:self];
+            [self.player play];
+            NSLog(@"播放开始");
+        }
+        else {
+            NSLog(@"ERror creating player: %@", [playerError description]);
+        }
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            
+//        });
+    });
+    
+//    self.player = [[AVAudioPlayer alloc]initWithData:data error:&playerError];
+//    if (_player) {
+//        [self.player setDelegate:self];
+//        [self.player play];
+//        NSLog(@"播放开始");
+//    }
+//    else {
+//        NSLog(@"ERror creating player: %@", [playerError description]);
+//    }
     
     return YES;
 }

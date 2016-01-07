@@ -25,6 +25,7 @@ enum SoundOpState {
 @property (nonatomic, strong) NSMutableDictionary*  recordFileDic;
 @property (nonatomic) NSInteger  uniquefileid;
 @property (nonatomic) NSInteger  currentlabelid;
+@property (nonatomic) NSInteger  voiceDuration;
 
 + (SoundObject *) sharedInstance;
 
@@ -32,7 +33,7 @@ enum SoundOpState {
 -(BOOL)beginRecord:(NSInteger)labelid;
 
 /// 停止录音
--(NSInteger)stopRecord:(NSString**)filename duration:(NSInteger*)duration;
+-(void)stopRecord;
 
 ///开始语音识别
 -(void)beginSoundRecognize;

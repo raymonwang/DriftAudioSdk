@@ -97,6 +97,9 @@ public:
     /// 语音听写底层回调
     void onReceiveVoiceTextResult(const std::string& text);
     
+    /// 压缩完成回调
+    void onVoiceCompressOver(bool result, const char* fileName);
+    
 protected:
     
     //上传录制的语音数据
@@ -108,8 +111,11 @@ protected:
     /// 构造JSON结构数据
     std::string constructJsonFromData(const StCallBackInfo& info);
     
-    ///
+    /// 播放录制的视频
     void playVideo(const char* fileFullPath);
+    
+    /// 开始处理压缩完成的语音，上传和翻译
+    void beginProcessCompressedVoice();
     
 private:
     std::string         _appid;

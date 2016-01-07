@@ -115,21 +115,9 @@ namespace rtchatsdk {
     /// 停止录制麦克风数据
     bool RTChatSDKMain::stopRecordVoice()
     {
-        NSString* recordFilePath = [[NSString alloc] init];
-        NSInteger duration;
-        NSInteger labelid = [[SoundObject sharedInstance] stopRecord:&recordFilePath duration:&duration];
-        if (labelid >= 0 && [recordFilePath length] > 0) {
-            NSData* data = [NSData dataWithContentsOfFile:recordFilePath];
-            uploadVoiceData((const char *)[data bytes], [data length], (unsigned int)labelid, (unsigned int)duration);
-            
-            if (_isNeedTranslate) {
-                [[SoundObject sharedInstance] translateCurrentVoiceData];
-            }
-            
-            return true;
-        }
+        [[SoundObject sharedInstance] stopRecord];
         
-        return false;
+        return true;
     }
 
     /// 开始播放录制数据
@@ -160,7 +148,7 @@ namespace rtchatsdk {
     /// 取消当前录音
     bool RTChatSDKMain::cancelRecordedVoice()
     {
-        [[SoundObject sharedInstance] stopRecord:nil duration:0];
+        [[SoundObject sharedInstance] stopRecord];
         
         return true;
     }
@@ -260,6 +248,19 @@ namespace rtchatsdk {
         UIViewController* p_parentVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
         if (p_parentVC && playerView) {
             [p_parentVC presentViewController:playerView animated:YES completion:nil];
+        }
+    }
+    
+    /// 开始处理压缩完成的语音，上传和翻译
+    void RTChatSDKMain::beginProcessCompressedVoice()
+    {
+        NSString* fileName = [SoundObject sharedInstance].current_recordedFile_mp3;
+        NSInteger duration = [SoundObject sharedInstance].voiceDuration;
+        if (fileName) {
+            NSData* data = [NSData dataWithContentsOfFile:fileName];
+            if (data) {
+                uploadVoiceData((const char *)[data bytes], [data length], _labelid, (unsigned int)duration);
+            }
         }
     }
     
@@ -395,6 +396,20 @@ namespace rtchatsdk {
         _func(enNotifyVoiceTextResult, OPERATION_OK, buff);
     }
 
+    /// 压缩完成回调
+    void RTChatSDKMain::onVoiceCompressOver(bool result, const char* fileName)
+    {
+        if (result) {
+            beginProcessCompressedVoice();
+            
+            if (_isNeedTranslate) {
+                [[SoundObject sharedInstance] translateCurrentVoiceData];
+            }
+        }
+        else {
+            _func(enRequestRec, OPERATION_FAILED, "");
+        }
+    }
     
 }
 
