@@ -83,6 +83,7 @@ namespace rtchatsdk {
     /// 设置自定义参数
     void RTChatSDKMain::setParams(const std::string& voiceUploadUrl, const char* xunfeiAppID)
     {
+        NSLog(@"voiceUploadUrl:%s", voiceUploadUrl.c_str());
         //创建语音配置,appid必须要传入，仅执行一次则可
         if (xunfeiAppID) {
             NSString *initString = [[NSString alloc] initWithFormat:@"appid=%s,timeout=200000", xunfeiAppID];
