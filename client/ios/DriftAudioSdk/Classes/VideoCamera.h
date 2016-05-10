@@ -3,7 +3,7 @@
 //  VideoCamera2
 //
 //  Created by matao.ct@gmail.com on 12-6-4.
-//  Copyright 2012 __福州微泰网络__. All rights reserved.
+//  Copyright 2012 __RTChatTeam__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

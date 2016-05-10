@@ -3,7 +3,7 @@
 //  VideoCamera2
 //
 //  Created by wang3140@hotmail.com on 12-6-4.
-//  Copyright 2012 __巨人网络__. All rights reserved.
+//  Copyright 2012 __RTChatTeam__. All rights reserved.
 //
 
 #import "VideoCamera.h"
