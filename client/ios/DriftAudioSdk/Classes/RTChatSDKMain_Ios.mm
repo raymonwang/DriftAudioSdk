@@ -160,11 +160,11 @@ namespace rtchatsdk {
         VideoCamera* vc = [[VideoCamera alloc] init];
         UIViewController* p_parentVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
         if (p_parentVC && vc) {
-            [vc setCameraMode:EnuImageMode];
+            [vc setCameraMode:EnuPhotoMode];
             [p_parentVC presentViewController:vc animated:YES completion:^{
                 vc.uid = uid;
                 vc.itype = type;
-                [vc startCamera];
+//                [vc startCamera];
             }];
         }
         return true;

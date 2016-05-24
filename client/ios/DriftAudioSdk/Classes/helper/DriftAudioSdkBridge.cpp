@@ -60,6 +60,12 @@ extern "C"
     {
         return RTChatSDKMain::sharedInstance().cancelRecordedVoice();
     }
+    
+    /// 调用平台相册选择头像图片
+    bool chooseUserPicFromAlbum(unsigned int uid, int type)
+    {
+        return RTChatSDKMain::sharedInstance().setAvater(uid, type);
+    }
 }
 
 

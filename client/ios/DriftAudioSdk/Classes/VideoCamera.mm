@@ -95,7 +95,9 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-	[picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"图片选择控件已关闭!");
+    }];
     
     NSLog(@"info = %@",info);
 		
@@ -149,8 +151,8 @@
         
         NSData* data = UIImageJPEGRepresentation(editedImage, 0.3);
 		
-        fileName = [NSTemporaryDirectory() stringByAppendingFormat:@"/picture/%@", fileName];
-//		[self performSelector:@selector(saveImg:) withObject:data afterDelay:0.0];
+        fileName = [NSTemporaryDirectory() stringByAppendingFormat:@"%@", fileName];
+
         [VideoCamera saveImg:data filename:fileName];
         
         [self uploadImgData:data filename:fileName];
@@ -162,11 +164,14 @@
 	}
 	isCamera = FALSE;
 }
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
 	NSLog(@"Cancle it");
 	isCamera = FALSE;
-	[picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"图片选择控件已关闭!");
+    }];
 }
 
 
