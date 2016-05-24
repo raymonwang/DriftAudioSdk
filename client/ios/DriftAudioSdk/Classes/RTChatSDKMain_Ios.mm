@@ -164,6 +164,7 @@ namespace rtchatsdk {
             [p_parentVC presentViewController:vc animated:YES completion:^{
                 vc.uid = uid;
                 vc.itype = type;
+                vc.uploadUrl = [NSString stringWithUTF8String:_voiceUploadUrl.c_str()];
 //                [vc startCamera];
             }];
         }

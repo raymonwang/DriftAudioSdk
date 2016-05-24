@@ -387,7 +387,7 @@
         return;
     }
     
-    [[CmdHandler sharedInstance]postFile:@"http://uploadchat.ztgame.com.cn:10000/wangpan.php" reqParams:[[NSDictionary alloc]init] data:imageData completBlock:^(id res) {
+    [[CmdHandler sharedInstance]postFile:_uploadUrl reqParams:[[NSDictionary alloc]init] data:imageData completBlock:^(id res) {
         if (res == nil) {
             NSLog(@"上传失败");
             rtchatsdk::RTChatSDKMain::sharedInstance().onImageUploadOver(false, 0, 0, "", "");

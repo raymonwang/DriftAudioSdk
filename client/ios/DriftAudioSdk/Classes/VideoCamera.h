@@ -25,6 +25,7 @@ typedef enum : NSUInteger {
 
 @property(nonatomic)NSInteger   uid;
 @property(nonatomic)NSInteger   itype;
+@property(nonatomic)NSString*   uploadUrl;
 
 -(void)setCameraMode:(CameraMode)inmode;
 
