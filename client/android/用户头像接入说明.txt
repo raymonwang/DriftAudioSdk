@@ -1,0 +1,22 @@
+头像接入说明：
+1.在onCreate()方法中初始化接口：
+
+//设置头像实例化
+GameAvatar.GetIntance(this);
+
+
+2.在游戏主Activity中需要实现下方法：
+
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        
+        switch (requestCode) {
+            
+            case 2: // 相册
+            	GameAvatar.GetIntance(MainActivity.this).takePictureFromAlbumsResult(data);
+                break;
+            case 3:
+            	GameAvatar.GetIntance(MainActivity.this).zoomPicureResult(data);
+                break;
+        }
+    }

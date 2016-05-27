@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DB56C1CB4B50E31F6133FDF45DA69A5FB65BA61A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "eccd39b4-39d4-47ab-bb89-e81f4763b8b8++3220" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DB56C1CB4B50E31F6133FDF45DA69A5FB65BA61A" : 0,
+    "eccd39b4-39d4-47ab-bb89-e81f4763b8b8++3220" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "93AB18CE-C5FB-4FA2-936F-F1A65C568DCA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DB56C1CB4B50E31F6133FDF45DA69A5FB65BA61A" : "DriftAudioSdk",
+    "eccd39b4-39d4-47ab-bb89-e81f4763b8b8++3220" : "DriftAudioSdk\/DriftAudioSdk\/Classes\/VoiceConvert\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DriftAudioSdk",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DriftAudioSdk.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/180.166.92.227:5678\/~\/git_repo\/driftaudiosdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DB56C1CB4B50E31F6133FDF45DA69A5FB65BA61A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.0.240\/repository",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "eccd39b4-39d4-47ab-bb89-e81f4763b8b8++3220"
+    }
+  ]
+}

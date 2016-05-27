@@ -1,0 +1,957 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		43358EC31A24629E00DD301C /* VideoCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43358EC21A24629E00DD301C /* VideoCamera.mm */; };
+		4369110D1AA01DC300E9BFEE /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4369110C1AA01DC300E9BFEE /* LocationHelper.m */; };
+		4369110E1AA01DC300E9BFEE /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4369110C1AA01DC300E9BFEE /* LocationHelper.m */; };
+		4379561C1A1C89D900462004 /* AppNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */; };
+		4379561D1A1C89D900462004 /* BaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42601A10A9410017CFEB /* BaseTools.m */; };
+		4379561E1A1C89D900462004 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A91A0B33100027DFF3 /* AFHTTPRequestOperation.m */; };
+		4379561F1A1C89D900462004 /* DeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42621A10A9410017CFEB /* DeviceHelper.m */; };
+		437956201A1C89D900462004 /* RTChatSDKMain_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */; };
+		437956211A1C89D900462004 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5AB1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m */; };
+		437956221A1C89D900462004 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B01A0B33100027DFF3 /* AFNetworkReachabilityManager.m */; };
+		437956231A1C89D900462004 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B81A0B33100027DFF3 /* AFURLResponseSerialization.m */; };
+		437956241A1C89D900462004 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B41A0B33100027DFF3 /* AFURLConnectionOperation.m */; };
+		437956251A1C89D900462004 /* AppImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425A1A10A9410017CFEB /* AppImages.m */; };
+		437956261A1C89D900462004 /* PhotoAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42331A10A7E30017CFEB /* PhotoAlbumsController.m */; };
+		437956271A1C89D900462004 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B21A0B33100027DFF3 /* AFSecurityPolicy.m */; };
+		437956281A1C89D900462004 /* LogicHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42661A10A9410017CFEB /* LogicHelper.m */; };
+		437956291A1C89D900462004 /* AppWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425E1A10A9410017CFEB /* AppWidget.m */; };
+		4379562A1A1C89D900462004 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5AD1A0B33100027DFF3 /* AFHTTPSessionManager.m */; };
+		4379562B1A1C89D900462004 /* MNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE426A1A10A9410017CFEB /* MNCryptor.m */; };
+		4379562C1A1C89D900462004 /* PhotoInPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C51A10950D0017CFEB /* PhotoInPhoneCell.m */; };
+		4379562D1A1C89D900462004 /* AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42561A10A9410017CFEB /* AppColors.m */; };
+		4379562E1A1C89D900462004 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B61A0B33100027DFF3 /* AFURLRequestSerialization.m */; };
+		4379562F1A1C89D900462004 /* PhotoAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42511A10A9060017CFEB /* PhotoAlbumCell.m */; };
+		437956321A1C89D900462004 /* AppVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425C1A10A9410017CFEB /* AppVoiceManager.m */; };
+		437956331A1C89D900462004 /* SoundObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5CA1A0B55FF0027DFF3 /* SoundObject.mm */; };
+		437956341A1C89D900462004 /* KeyChainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42641A10A9410017CFEB /* KeyChainHelper.m */; };
+		437956351A1C89D900462004 /* TestRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42961A10D8F00017CFEB /* TestRootViewController.m */; };
+		437956361A1C89D900462004 /* MNPresentDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42821A10A9920017CFEB /* MNPresentDismissAnimation.m */; };
+		437956371A1C89D900462004 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5BA1A0B33100027DFF3 /* AFURLSessionManager.m */; };
+		437956381A1C89D900462004 /* CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A51A0B32B30027DFF3 /* CmdHandler.m */; };
+		437956391A1C89D900462004 /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42681A10A9410017CFEB /* MNCryptor+MD5.m */; };
+		4379563A1A1C89D900462004 /* HttpProcess_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess_Ios.mm */; };
+		4379563B1A1C89D900462004 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42921A10C7570017CFEB /* DataManager.m */; };
+		4379563C1A1C89D900462004 /* PhotoInPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C21A1093490017CFEB /* PhotoInPhoneController.m */; };
+		4379563D1A1C89D900462004 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42581A10A9410017CFEB /* AppHelper.m */; };
+		4379563F1A1C89D900462004 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 439CA5C71A0B55ED0027DFF3 /* libmp3lame.a */; };
+		437956421A1C89D900462004 /* RTChatCommonTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5A21A0B31F30027DFF3 /* RTChatCommonTypes.h */; };
+		437956431A1C89D900462004 /* RTChatSdk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */; };
+		4379565C1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */; };
+		4379565D1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */; };
+		4379565E1A1DC5BD00462004 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 437956501A1DC5BD00462004 /* wav.mm */; };
+		4379565F1A1DC5BD00462004 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 437956501A1DC5BD00462004 /* wav.mm */; };
+		437956601A1DC5BD00462004 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956521A1DC5BD00462004 /* libopencore-amrnb.a */; };
+		437956611A1DC5BE00462004 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956521A1DC5BD00462004 /* libopencore-amrnb.a */; };
+		437956621A1DC5BE00462004 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956531A1DC5BD00462004 /* libopencore-amrwb.a */; };
+		437956631A1DC5BE00462004 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437956531A1DC5BD00462004 /* libopencore-amrwb.a */; };
+		437956641A1DC5BE00462004 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379565B1A1DC5BD00462004 /* VoiceConverter.mm */; };
+		437956651A1DC5BE00462004 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4379565B1A1DC5BD00462004 /* VoiceConverter.mm */; };
+		4392CBC71A5E79C600CD0405 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392CBC31A5E79C600CD0405 /* iflyMSC.framework */; };
+		4392CBC81A5E79C600CD0405 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392CBC31A5E79C600CD0405 /* iflyMSC.framework */; };
+		4392CBC91A5E79C600CD0405 /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392CBC61A5E79C600CD0405 /* libSunFlower.a */; };
+		4392CBCA1A5E79C600CD0405 /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392CBC61A5E79C600CD0405 /* libSunFlower.a */; };
+		4392CBCD1A5E80CC00CD0405 /* SoundRecognize.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBCC1A5E80CC00CD0405 /* SoundRecognize.mm */; };
+		4392CBCE1A5E80CC00CD0405 /* SoundRecognize.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBCC1A5E80CC00CD0405 /* SoundRecognize.mm */; };
+		4392CBD11A5E883000CD0405 /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD01A5E883000CD0405 /* ISRDataHelper.m */; };
+		4392CBD21A5E883000CD0405 /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD01A5E883000CD0405 /* ISRDataHelper.m */; };
+		4392CBE31A5E886500CD0405 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD61A5E886500CD0405 /* SBJson4Parser.m */; };
+		4392CBE41A5E886500CD0405 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD61A5E886500CD0405 /* SBJson4Parser.m */; };
+		4392CBE51A5E886500CD0405 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD81A5E886500CD0405 /* SBJson4StreamParser.m */; };
+		4392CBE61A5E886500CD0405 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBD81A5E886500CD0405 /* SBJson4StreamParser.m */; };
+		4392CBE71A5E886500CD0405 /* SBJson4StreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDA1A5E886500CD0405 /* SBJson4StreamParserState.m */; };
+		4392CBE81A5E886500CD0405 /* SBJson4StreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDA1A5E886500CD0405 /* SBJson4StreamParserState.m */; };
+		4392CBE91A5E886500CD0405 /* SBJson4StreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDC1A5E886500CD0405 /* SBJson4StreamTokeniser.m */; };
+		4392CBEA1A5E886500CD0405 /* SBJson4StreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDC1A5E886500CD0405 /* SBJson4StreamTokeniser.m */; };
+		4392CBEB1A5E886500CD0405 /* SBJson4StreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDE1A5E886500CD0405 /* SBJson4StreamWriter.m */; };
+		4392CBEC1A5E886500CD0405 /* SBJson4StreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBDE1A5E886500CD0405 /* SBJson4StreamWriter.m */; };
+		4392CBED1A5E886500CD0405 /* SBJson4StreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBE01A5E886500CD0405 /* SBJson4StreamWriterState.m */; };
+		4392CBEE1A5E886500CD0405 /* SBJson4StreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBE01A5E886500CD0405 /* SBJson4StreamWriterState.m */; };
+		4392CBEF1A5E886500CD0405 /* SBJson4Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBE21A5E886500CD0405 /* SBJson4Writer.m */; };
+		4392CBF01A5E886500CD0405 /* SBJson4Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4392CBE21A5E886500CD0405 /* SBJson4Writer.m */; };
+		439CA59F1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */; };
+		439CA5A31A0B31F30027DFF3 /* HttpProcess_Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A11A0B31F30027DFF3 /* HttpProcess_Ios.mm */; };
+		439CA5A61A0B32B30027DFF3 /* CmdHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A51A0B32B30027DFF3 /* CmdHandler.m */; };
+		439CA5BB1A0B33100027DFF3 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5A91A0B33100027DFF3 /* AFHTTPRequestOperation.m */; };
+		439CA5BC1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5AB1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m */; };
+		439CA5BD1A0B33100027DFF3 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5AD1A0B33100027DFF3 /* AFHTTPSessionManager.m */; };
+		439CA5BE1A0B33100027DFF3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B01A0B33100027DFF3 /* AFNetworkReachabilityManager.m */; };
+		439CA5BF1A0B33100027DFF3 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B21A0B33100027DFF3 /* AFSecurityPolicy.m */; };
+		439CA5C01A0B33100027DFF3 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B41A0B33100027DFF3 /* AFURLConnectionOperation.m */; };
+		439CA5C11A0B33100027DFF3 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B61A0B33100027DFF3 /* AFURLRequestSerialization.m */; };
+		439CA5C21A0B33100027DFF3 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5B81A0B33100027DFF3 /* AFURLResponseSerialization.m */; };
+		439CA5C31A0B33100027DFF3 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5BA1A0B33100027DFF3 /* AFURLSessionManager.m */; };
+		439CA5C81A0B55ED0027DFF3 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 439CA5C71A0B55ED0027DFF3 /* libmp3lame.a */; };
+		439CA5CB1A0B55FF0027DFF3 /* SoundObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 439CA5CA1A0B55FF0027DFF3 /* SoundObject.mm */; };
+		439CA5D41A0B7BAE0027DFF3 /* RTChatCommonTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5A21A0B31F30027DFF3 /* RTChatCommonTypes.h */; };
+		439CA5D61A0B7C870027DFF3 /* RTChatSdk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */; };
+		43ACD98E1C7AF9B20067742A /* DriftAudioSdkBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43ACD98C1C7AF9B20067742A /* DriftAudioSdkBridge.cpp */; };
+		43ACD98F1C7AF9B20067742A /* DriftAudioSdkBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43ACD98C1C7AF9B20067742A /* DriftAudioSdkBridge.cpp */; };
+		43ACDC071C7C5F100067742A /* DriftAudioSdkManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43ACDC051C7C5F100067742A /* DriftAudioSdkManager.cpp */; };
+		43AE41C31A1093490017CFEB /* PhotoInPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C21A1093490017CFEB /* PhotoInPhoneController.m */; };
+		43AE41C61A10950D0017CFEB /* PhotoInPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C51A10950D0017CFEB /* PhotoInPhoneCell.m */; };
+		43AE42341A10A7E30017CFEB /* PhotoAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42331A10A7E30017CFEB /* PhotoAlbumsController.m */; };
+		43AE42521A10A9060017CFEB /* PhotoAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42511A10A9060017CFEB /* PhotoAlbumCell.m */; };
+		43AE426B1A10A9410017CFEB /* AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42561A10A9410017CFEB /* AppColors.m */; };
+		43AE426D1A10A9410017CFEB /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42581A10A9410017CFEB /* AppHelper.m */; };
+		43AE426F1A10A9410017CFEB /* AppImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425A1A10A9410017CFEB /* AppImages.m */; };
+		43AE42711A10A9410017CFEB /* AppVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425C1A10A9410017CFEB /* AppVoiceManager.m */; };
+		43AE42731A10A9410017CFEB /* AppWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE425E1A10A9410017CFEB /* AppWidget.m */; };
+		43AE42751A10A9410017CFEB /* BaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42601A10A9410017CFEB /* BaseTools.m */; };
+		43AE42771A10A9410017CFEB /* DeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42621A10A9410017CFEB /* DeviceHelper.m */; };
+		43AE42791A10A9410017CFEB /* KeyChainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42641A10A9410017CFEB /* KeyChainHelper.m */; };
+		43AE427B1A10A9410017CFEB /* LogicHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42661A10A9410017CFEB /* LogicHelper.m */; };
+		43AE427D1A10A9410017CFEB /* MNCryptor+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42681A10A9410017CFEB /* MNCryptor+MD5.m */; };
+		43AE427F1A10A9410017CFEB /* MNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE426A1A10A9410017CFEB /* MNCryptor.m */; };
+		43AE42831A10A9920017CFEB /* MNPresentDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42821A10A9920017CFEB /* MNPresentDismissAnimation.m */; };
+		43AE42871A10AA7F0017CFEB /* AppNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */; };
+		43AE42931A10C7570017CFEB /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42921A10C7570017CFEB /* DataManager.m */; };
+		43AE42971A10D8F00017CFEB /* TestRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42961A10D8F00017CFEB /* TestRootViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		437956411A1C89D900462004 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				437956421A1C89D900462004 /* RTChatCommonTypes.h in CopyFiles */,
+				437956431A1C89D900462004 /* RTChatSdk.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		439CA5621A0B30C90027DFF3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				439CA5D41A0B7BAE0027DFF3 /* RTChatCommonTypes.h in CopyFiles */,
+				439CA5D61A0B7C870027DFF3 /* RTChatSdk.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		43358EC11A24629E00DD301C /* VideoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCamera.h; sourceTree = "<group>"; };
+		43358EC21A24629E00DD301C /* VideoCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoCamera.mm; sourceTree = "<group>"; };
+		4369110B1AA01DC300E9BFEE /* LocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationHelper.h; sourceTree = "<group>"; };
+		4369110C1AA01DC300E9BFEE /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
+		436911121AA08A7500E9BFEE /* RTChatSdkAndroidIpml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RTChatSdkAndroidIpml.cpp; path = helper/RTChatSdkAndroidIpml.cpp; sourceTree = "<group>"; };
+		436911131AA08A7500E9BFEE /* RTChatSdkAndroidIpml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RTChatSdkAndroidIpml.h; path = helper/RTChatSdkAndroidIpml.h; sourceTree = "<group>"; };
+		437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk_sim.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4379564D1A1DC5BD00462004 /* amrFileCodec_Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec_Ios.h; sourceTree = "<group>"; };
+		4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec_Ios.mm; sourceTree = "<group>"; };
+		4379564F1A1DC5BD00462004 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
+		437956501A1DC5BD00462004 /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
+		437956521A1DC5BD00462004 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		437956531A1DC5BD00462004 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		437956551A1DC5BD00462004 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		437956561A1DC5BD00462004 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		437956581A1DC5BD00462004 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		437956591A1DC5BD00462004 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		4379565A1A1DC5BD00462004 /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
+		4379565B1A1DC5BD00462004 /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
+		4392CBC31A5E79C600CD0405 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		4392CBC51A5E79C600CD0405 /* IFlyFlowerCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFlowerCollector.h; sourceTree = "<group>"; };
+		4392CBC61A5E79C600CD0405 /* libSunFlower.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSunFlower.a; sourceTree = "<group>"; };
+		4392CBCB1A5E80CC00CD0405 /* SoundRecognize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundRecognize.h; sourceTree = "<group>"; };
+		4392CBCC1A5E80CC00CD0405 /* SoundRecognize.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundRecognize.mm; sourceTree = "<group>"; };
+		4392CBCF1A5E883000CD0405 /* ISRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISRDataHelper.h; sourceTree = "<group>"; };
+		4392CBD01A5E883000CD0405 /* ISRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRDataHelper.m; sourceTree = "<group>"; };
+		4392CBD41A5E886500CD0405 /* SBJson4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4.h; sourceTree = "<group>"; };
+		4392CBD51A5E886500CD0405 /* SBJson4Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Parser.h; sourceTree = "<group>"; };
+		4392CBD61A5E886500CD0405 /* SBJson4Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Parser.m; sourceTree = "<group>"; };
+		4392CBD71A5E886500CD0405 /* SBJson4StreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamParser.h; sourceTree = "<group>"; };
+		4392CBD81A5E886500CD0405 /* SBJson4StreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamParser.m; sourceTree = "<group>"; };
+		4392CBD91A5E886500CD0405 /* SBJson4StreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamParserState.h; sourceTree = "<group>"; };
+		4392CBDA1A5E886500CD0405 /* SBJson4StreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamParserState.m; sourceTree = "<group>"; };
+		4392CBDB1A5E886500CD0405 /* SBJson4StreamTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamTokeniser.h; sourceTree = "<group>"; };
+		4392CBDC1A5E886500CD0405 /* SBJson4StreamTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamTokeniser.m; sourceTree = "<group>"; };
+		4392CBDD1A5E886500CD0405 /* SBJson4StreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamWriter.h; sourceTree = "<group>"; };
+		4392CBDE1A5E886500CD0405 /* SBJson4StreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamWriter.m; sourceTree = "<group>"; };
+		4392CBDF1A5E886500CD0405 /* SBJson4StreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamWriterState.h; sourceTree = "<group>"; };
+		4392CBE01A5E886500CD0405 /* SBJson4StreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamWriterState.m; sourceTree = "<group>"; };
+		4392CBE11A5E886500CD0405 /* SBJson4Writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Writer.h; sourceTree = "<group>"; };
+		4392CBE21A5E886500CD0405 /* SBJson4Writer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Writer.m; sourceTree = "<group>"; };
+		439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDriftAudioSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTChatSDKMain_Ios.mm; sourceTree = "<group>"; tabWidth = 4; wrapsLines = 1; };
+		439CA59E1A0B31310027DFF3 /* RTChatSDKMain_Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSDKMain_Ios.h; sourceTree = "<group>"; };
+		439CA5A01A0B31F30027DFF3 /* HttpProcess_Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpProcess_Ios.h; sourceTree = "<group>"; };
+		439CA5A11A0B31F30027DFF3 /* HttpProcess_Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HttpProcess_Ios.mm; sourceTree = "<group>"; };
+		439CA5A21A0B31F30027DFF3 /* RTChatCommonTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatCommonTypes.h; sourceTree = "<group>"; };
+		439CA5A41A0B32B30027DFF3 /* CmdHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdHandler.h; sourceTree = "<group>"; };
+		439CA5A51A0B32B30027DFF3 /* CmdHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CmdHandler.m; sourceTree = "<group>"; };
+		439CA5A81A0B33100027DFF3 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		439CA5A91A0B33100027DFF3 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		439CA5AA1A0B33100027DFF3 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		439CA5AB1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		439CA5AC1A0B33100027DFF3 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		439CA5AD1A0B33100027DFF3 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		439CA5AE1A0B33100027DFF3 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		439CA5AF1A0B33100027DFF3 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		439CA5B01A0B33100027DFF3 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		439CA5B11A0B33100027DFF3 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		439CA5B21A0B33100027DFF3 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		439CA5B31A0B33100027DFF3 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		439CA5B41A0B33100027DFF3 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		439CA5B51A0B33100027DFF3 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		439CA5B61A0B33100027DFF3 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		439CA5B71A0B33100027DFF3 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		439CA5B81A0B33100027DFF3 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		439CA5B91A0B33100027DFF3 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		439CA5BA1A0B33100027DFF3 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		439CA5C41A0B34440027DFF3 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
+		439CA5C61A0B55ED0027DFF3 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		439CA5C71A0B55ED0027DFF3 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		439CA5C91A0B55FF0027DFF3 /* SoundObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundObject.h; sourceTree = "<group>"; };
+		439CA5CA1A0B55FF0027DFF3 /* SoundObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundObject.mm; sourceTree = "<group>"; };
+		439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSdk.h; sourceTree = "<group>"; };
+		43ACD98C1C7AF9B20067742A /* DriftAudioSdkBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DriftAudioSdkBridge.cpp; path = helper/DriftAudioSdkBridge.cpp; sourceTree = "<group>"; };
+		43ACDC051C7C5F100067742A /* DriftAudioSdkManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DriftAudioSdkManager.cpp; sourceTree = "<group>"; };
+		43ACDC061C7C5F100067742A /* DriftAudioSdkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriftAudioSdkManager.h; sourceTree = "<group>"; };
+		43AE41BB1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DriftAudioSdkCocos2dxHelper.cpp; path = helper/DriftAudioSdkCocos2dxHelper.cpp; sourceTree = "<group>"; };
+		43AE41BC1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriftAudioSdkCocos2dxHelper.h; path = helper/DriftAudioSdkCocos2dxHelper.h; sourceTree = "<group>"; };
+		43AE41BF1A1091FC0017CFEB /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		43AE41C11A1093490017CFEB /* PhotoInPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoInPhoneController.h; sourceTree = "<group>"; };
+		43AE41C21A1093490017CFEB /* PhotoInPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoInPhoneController.m; sourceTree = "<group>"; };
+		43AE41C41A10950D0017CFEB /* PhotoInPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoInPhoneCell.h; sourceTree = "<group>"; };
+		43AE41C51A10950D0017CFEB /* PhotoInPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoInPhoneCell.m; sourceTree = "<group>"; };
+		43AE41C71A1095810017CFEB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		43AE42321A10A7E30017CFEB /* PhotoAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAlbumsController.h; sourceTree = "<group>"; };
+		43AE42331A10A7E30017CFEB /* PhotoAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAlbumsController.m; sourceTree = "<group>"; };
+		43AE42501A10A9060017CFEB /* PhotoAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAlbumCell.h; sourceTree = "<group>"; };
+		43AE42511A10A9060017CFEB /* PhotoAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAlbumCell.m; sourceTree = "<group>"; };
+		43AE42551A10A9410017CFEB /* AppColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppColors.h; sourceTree = "<group>"; };
+		43AE42561A10A9410017CFEB /* AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppColors.m; sourceTree = "<group>"; };
+		43AE42571A10A9410017CFEB /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
+		43AE42581A10A9410017CFEB /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		43AE42591A10A9410017CFEB /* AppImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppImages.h; sourceTree = "<group>"; };
+		43AE425A1A10A9410017CFEB /* AppImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppImages.m; sourceTree = "<group>"; };
+		43AE425B1A10A9410017CFEB /* AppVoiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppVoiceManager.h; sourceTree = "<group>"; };
+		43AE425C1A10A9410017CFEB /* AppVoiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppVoiceManager.m; sourceTree = "<group>"; };
+		43AE425D1A10A9410017CFEB /* AppWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppWidget.h; sourceTree = "<group>"; };
+		43AE425E1A10A9410017CFEB /* AppWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppWidget.m; sourceTree = "<group>"; };
+		43AE425F1A10A9410017CFEB /* BaseTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTools.h; sourceTree = "<group>"; };
+		43AE42601A10A9410017CFEB /* BaseTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTools.m; sourceTree = "<group>"; };
+		43AE42611A10A9410017CFEB /* DeviceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceHelper.h; sourceTree = "<group>"; };
+		43AE42621A10A9410017CFEB /* DeviceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceHelper.m; sourceTree = "<group>"; };
+		43AE42631A10A9410017CFEB /* KeyChainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainHelper.h; sourceTree = "<group>"; };
+		43AE42641A10A9410017CFEB /* KeyChainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainHelper.m; sourceTree = "<group>"; };
+		43AE42651A10A9410017CFEB /* LogicHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicHelper.h; sourceTree = "<group>"; };
+		43AE42661A10A9410017CFEB /* LogicHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicHelper.m; sourceTree = "<group>"; };
+		43AE42681A10A9410017CFEB /* MNCryptor+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MNCryptor+MD5.m"; sourceTree = "<group>"; };
+		43AE42691A10A9410017CFEB /* MNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNCryptor.h; sourceTree = "<group>"; };
+		43AE426A1A10A9410017CFEB /* MNCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNCryptor.m; sourceTree = "<group>"; };
+		43AE42811A10A9920017CFEB /* MNPresentDismissAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNPresentDismissAnimation.h; sourceTree = "<group>"; };
+		43AE42821A10A9920017CFEB /* MNPresentDismissAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNPresentDismissAnimation.m; sourceTree = "<group>"; };
+		43AE42851A10AA7F0017CFEB /* AppNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppNotificationCenter.h; sourceTree = "<group>"; };
+		43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppNotificationCenter.m; sourceTree = "<group>"; };
+		43AE42911A10C7570017CFEB /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		43AE42921A10C7570017CFEB /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		43AE42951A10D8F00017CFEB /* TestRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRootViewController.h; sourceTree = "<group>"; };
+		43AE42961A10D8F00017CFEB /* TestRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRootViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4379563E1A1C89D900462004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4392CBC81A5E79C600CD0405 /* iflyMSC.framework in Frameworks */,
+				4379563F1A1C89D900462004 /* libmp3lame.a in Frameworks */,
+				437956631A1DC5BE00462004 /* libopencore-amrwb.a in Frameworks */,
+				437956611A1DC5BE00462004 /* libopencore-amrnb.a in Frameworks */,
+				4392CBCA1A5E79C600CD0405 /* libSunFlower.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		439CA5611A0B30C90027DFF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4392CBC71A5E79C600CD0405 /* iflyMSC.framework in Frameworks */,
+				439CA5C81A0B55ED0027DFF3 /* libmp3lame.a in Frameworks */,
+				437956621A1DC5BE00462004 /* libopencore-amrwb.a in Frameworks */,
+				437956601A1DC5BD00462004 /* libopencore-amrnb.a in Frameworks */,
+				4392CBC91A5E79C600CD0405 /* libSunFlower.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4369110A1AA01D8F00E9BFEE /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4369110B1AA01DC300E9BFEE /* LocationHelper.h */,
+				4369110C1AA01DC300E9BFEE /* LocationHelper.m */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		4379564B1A1DC5BD00462004 /* VoiceConvert */ = {
+			isa = PBXGroup;
+			children = (
+				4379564C1A1DC5BD00462004 /* amrwapper */,
+				437956511A1DC5BD00462004 /* lib */,
+				437956541A1DC5BD00462004 /* opencore-amrnb */,
+				437956571A1DC5BD00462004 /* opencore-amrwb */,
+				4379565A1A1DC5BD00462004 /* VoiceConverter.h */,
+				4379565B1A1DC5BD00462004 /* VoiceConverter.mm */,
+			);
+			path = VoiceConvert;
+			sourceTree = "<group>";
+		};
+		4379564C1A1DC5BD00462004 /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				4379564D1A1DC5BD00462004 /* amrFileCodec_Ios.h */,
+				4379564E1A1DC5BD00462004 /* amrFileCodec_Ios.mm */,
+				4379564F1A1DC5BD00462004 /* wav.h */,
+				437956501A1DC5BD00462004 /* wav.mm */,
+			);
+			path = amrwapper;
+			sourceTree = "<group>";
+		};
+		437956511A1DC5BD00462004 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				437956521A1DC5BD00462004 /* libopencore-amrnb.a */,
+				437956531A1DC5BD00462004 /* libopencore-amrwb.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		437956541A1DC5BD00462004 /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				437956551A1DC5BD00462004 /* interf_dec.h */,
+				437956561A1DC5BD00462004 /* interf_enc.h */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		437956571A1DC5BD00462004 /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				437956581A1DC5BD00462004 /* dec_if.h */,
+				437956591A1DC5BD00462004 /* if_rom.h */,
+			);
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		4392CBC21A5E79C600CD0405 /* xunfei */ = {
+			isa = PBXGroup;
+			children = (
+				4392CBC31A5E79C600CD0405 /* iflyMSC.framework */,
+				4392CBC41A5E79C600CD0405 /* sunflower */,
+			);
+			path = xunfei;
+			sourceTree = "<group>";
+		};
+		4392CBC41A5E79C600CD0405 /* sunflower */ = {
+			isa = PBXGroup;
+			children = (
+				4392CBC51A5E79C600CD0405 /* IFlyFlowerCollector.h */,
+				4392CBC61A5E79C600CD0405 /* libSunFlower.a */,
+			);
+			path = sunflower;
+			sourceTree = "<group>";
+		};
+		4392CBD31A5E886500CD0405 /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				4392CBD41A5E886500CD0405 /* SBJson4.h */,
+				4392CBD51A5E886500CD0405 /* SBJson4Parser.h */,
+				4392CBD61A5E886500CD0405 /* SBJson4Parser.m */,
+				4392CBD71A5E886500CD0405 /* SBJson4StreamParser.h */,
+				4392CBD81A5E886500CD0405 /* SBJson4StreamParser.m */,
+				4392CBD91A5E886500CD0405 /* SBJson4StreamParserState.h */,
+				4392CBDA1A5E886500CD0405 /* SBJson4StreamParserState.m */,
+				4392CBDB1A5E886500CD0405 /* SBJson4StreamTokeniser.h */,
+				4392CBDC1A5E886500CD0405 /* SBJson4StreamTokeniser.m */,
+				4392CBDD1A5E886500CD0405 /* SBJson4StreamWriter.h */,
+				4392CBDE1A5E886500CD0405 /* SBJson4StreamWriter.m */,
+				4392CBDF1A5E886500CD0405 /* SBJson4StreamWriterState.h */,
+				4392CBE01A5E886500CD0405 /* SBJson4StreamWriterState.m */,
+				4392CBE11A5E886500CD0405 /* SBJson4Writer.h */,
+				4392CBE21A5E886500CD0405 /* SBJson4Writer.m */,
+			);
+			path = SBJson;
+			sourceTree = "<group>";
+		};
+		439CA55B1A0B30C90027DFF3 = {
+			isa = PBXGroup;
+			children = (
+				439CA5661A0B30C90027DFF3 /* DriftAudioSdk */,
+				439CA5651A0B30C90027DFF3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		439CA5651A0B30C90027DFF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */,
+				437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		439CA5661A0B30C90027DFF3 /* DriftAudioSdk */ = {
+			isa = PBXGroup;
+			children = (
+				43AE41BE1A1091D50017CFEB /* Resources */,
+				439CA59C1A0B31310027DFF3 /* Classes */,
+			);
+			path = DriftAudioSdk;
+			sourceTree = "<group>";
+		};
+		439CA59C1A0B31310027DFF3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4369110A1AA01D8F00E9BFEE /* Location */,
+				4392CBD31A5E886500CD0405 /* SBJson */,
+				4392CBC21A5E79C600CD0405 /* xunfei */,
+				4379564B1A1DC5BD00462004 /* VoiceConvert */,
+				43AE41C01A10931C0017CFEB /* PhotoModel */,
+				43AE41BA1A106C720017CFEB /* cocos2dx */,
+				439CA5C51A0B55ED0027DFF3 /* lame */,
+				439CA5A71A0B33100027DFF3 /* AFNetworking */,
+				439CA5A41A0B32B30027DFF3 /* CmdHandler.h */,
+				439CA5A51A0B32B30027DFF3 /* CmdHandler.m */,
+				439CA5A01A0B31F30027DFF3 /* HttpProcess_Ios.h */,
+				439CA5A11A0B31F30027DFF3 /* HttpProcess_Ios.mm */,
+				439CA5A21A0B31F30027DFF3 /* RTChatCommonTypes.h */,
+				439CA59D1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm */,
+				439CA59E1A0B31310027DFF3 /* RTChatSDKMain_Ios.h */,
+				439CA5C91A0B55FF0027DFF3 /* SoundObject.h */,
+				439CA5CA1A0B55FF0027DFF3 /* SoundObject.mm */,
+				4392CBCB1A5E80CC00CD0405 /* SoundRecognize.h */,
+				4392CBCC1A5E80CC00CD0405 /* SoundRecognize.mm */,
+				4392CBCF1A5E883000CD0405 /* ISRDataHelper.h */,
+				4392CBD01A5E883000CD0405 /* ISRDataHelper.m */,
+				43358EC11A24629E00DD301C /* VideoCamera.h */,
+				43358EC21A24629E00DD301C /* VideoCamera.mm */,
+				439CA5C41A0B34440027DFF3 /* defines.h */,
+				439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		439CA5A71A0B33100027DFF3 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				439CA5A81A0B33100027DFF3 /* AFHTTPRequestOperation.h */,
+				439CA5A91A0B33100027DFF3 /* AFHTTPRequestOperation.m */,
+				439CA5AA1A0B33100027DFF3 /* AFHTTPRequestOperationManager.h */,
+				439CA5AB1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m */,
+				439CA5AC1A0B33100027DFF3 /* AFHTTPSessionManager.h */,
+				439CA5AD1A0B33100027DFF3 /* AFHTTPSessionManager.m */,
+				439CA5AE1A0B33100027DFF3 /* AFNetworking.h */,
+				439CA5AF1A0B33100027DFF3 /* AFNetworkReachabilityManager.h */,
+				439CA5B01A0B33100027DFF3 /* AFNetworkReachabilityManager.m */,
+				439CA5B11A0B33100027DFF3 /* AFSecurityPolicy.h */,
+				439CA5B21A0B33100027DFF3 /* AFSecurityPolicy.m */,
+				439CA5B31A0B33100027DFF3 /* AFURLConnectionOperation.h */,
+				439CA5B41A0B33100027DFF3 /* AFURLConnectionOperation.m */,
+				439CA5B51A0B33100027DFF3 /* AFURLRequestSerialization.h */,
+				439CA5B61A0B33100027DFF3 /* AFURLRequestSerialization.m */,
+				439CA5B71A0B33100027DFF3 /* AFURLResponseSerialization.h */,
+				439CA5B81A0B33100027DFF3 /* AFURLResponseSerialization.m */,
+				439CA5B91A0B33100027DFF3 /* AFURLSessionManager.h */,
+				439CA5BA1A0B33100027DFF3 /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		439CA5C51A0B55ED0027DFF3 /* lame */ = {
+			isa = PBXGroup;
+			children = (
+				439CA5C61A0B55ED0027DFF3 /* lame.h */,
+				439CA5C71A0B55ED0027DFF3 /* libmp3lame.a */,
+			);
+			path = lame;
+			sourceTree = "<group>";
+		};
+		43AE41BA1A106C720017CFEB /* cocos2dx */ = {
+			isa = PBXGroup;
+			children = (
+				436911121AA08A7500E9BFEE /* RTChatSdkAndroidIpml.cpp */,
+				436911131AA08A7500E9BFEE /* RTChatSdkAndroidIpml.h */,
+				43AE41BB1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.cpp */,
+				43AE41BC1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.h */,
+				43ACD98C1C7AF9B20067742A /* DriftAudioSdkBridge.cpp */,
+				43ACDC051C7C5F100067742A /* DriftAudioSdkManager.cpp */,
+				43ACDC061C7C5F100067742A /* DriftAudioSdkManager.h */,
+			);
+			name = cocos2dx;
+			sourceTree = "<group>";
+		};
+		43AE41BE1A1091D50017CFEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				43AE41BF1A1091FC0017CFEB /* MainStoryboard.storyboard */,
+				43AE41C71A1095810017CFEB /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		43AE41C01A10931C0017CFEB /* PhotoModel */ = {
+			isa = PBXGroup;
+			children = (
+				43AE42811A10A9920017CFEB /* MNPresentDismissAnimation.h */,
+				43AE42821A10A9920017CFEB /* MNPresentDismissAnimation.m */,
+				43AE42541A10A9410017CFEB /* Helper */,
+				43AE42501A10A9060017CFEB /* PhotoAlbumCell.h */,
+				43AE42511A10A9060017CFEB /* PhotoAlbumCell.m */,
+				43AE42321A10A7E30017CFEB /* PhotoAlbumsController.h */,
+				43AE42331A10A7E30017CFEB /* PhotoAlbumsController.m */,
+				43AE41C41A10950D0017CFEB /* PhotoInPhoneCell.h */,
+				43AE41C51A10950D0017CFEB /* PhotoInPhoneCell.m */,
+				43AE41C11A1093490017CFEB /* PhotoInPhoneController.h */,
+				43AE41C21A1093490017CFEB /* PhotoInPhoneController.m */,
+				43AE42851A10AA7F0017CFEB /* AppNotificationCenter.h */,
+				43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */,
+				43AE42951A10D8F00017CFEB /* TestRootViewController.h */,
+				43AE42961A10D8F00017CFEB /* TestRootViewController.m */,
+				43AE42911A10C7570017CFEB /* DataManager.h */,
+				43AE42921A10C7570017CFEB /* DataManager.m */,
+			);
+			path = PhotoModel;
+			sourceTree = "<group>";
+		};
+		43AE42541A10A9410017CFEB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				43AE42551A10A9410017CFEB /* AppColors.h */,
+				43AE42561A10A9410017CFEB /* AppColors.m */,
+				43AE42571A10A9410017CFEB /* AppHelper.h */,
+				43AE42581A10A9410017CFEB /* AppHelper.m */,
+				43AE42591A10A9410017CFEB /* AppImages.h */,
+				43AE425A1A10A9410017CFEB /* AppImages.m */,
+				43AE425B1A10A9410017CFEB /* AppVoiceManager.h */,
+				43AE425C1A10A9410017CFEB /* AppVoiceManager.m */,
+				43AE425D1A10A9410017CFEB /* AppWidget.h */,
+				43AE425E1A10A9410017CFEB /* AppWidget.m */,
+				43AE425F1A10A9410017CFEB /* BaseTools.h */,
+				43AE42601A10A9410017CFEB /* BaseTools.m */,
+				43AE42611A10A9410017CFEB /* DeviceHelper.h */,
+				43AE42621A10A9410017CFEB /* DeviceHelper.m */,
+				43AE42631A10A9410017CFEB /* KeyChainHelper.h */,
+				43AE42641A10A9410017CFEB /* KeyChainHelper.m */,
+				43AE42651A10A9410017CFEB /* LogicHelper.h */,
+				43AE42661A10A9410017CFEB /* LogicHelper.m */,
+				43AE42671A10A9410017CFEB /* MNSecurity */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		43AE42671A10A9410017CFEB /* MNSecurity */ = {
+			isa = PBXGroup;
+			children = (
+				43AE42681A10A9410017CFEB /* MNCryptor+MD5.m */,
+				43AE42691A10A9410017CFEB /* MNCryptor.h */,
+				43AE426A1A10A9410017CFEB /* MNCryptor.m */,
+			);
+			path = MNSecurity;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4379561A1A1C89D900462004 /* DriftAudioSdk_sim */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 437956441A1C89D900462004 /* Build configuration list for PBXNativeTarget "DriftAudioSdk_sim" */;
+			buildPhases = (
+				4379561B1A1C89D900462004 /* Sources */,
+				4379563E1A1C89D900462004 /* Frameworks */,
+				437956411A1C89D900462004 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DriftAudioSdk_sim;
+			productName = DriftAudioSdk;
+			productReference = 437956471A1C89D900462004 /* libDriftAudioSdk_sim.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		439CA5631A0B30C90027DFF3 /* DriftAudioSdk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 439CA5781A0B30C90027DFF3 /* Build configuration list for PBXNativeTarget "DriftAudioSdk" */;
+			buildPhases = (
+				439CA5601A0B30C90027DFF3 /* Sources */,
+				439CA5611A0B30C90027DFF3 /* Frameworks */,
+				439CA5621A0B30C90027DFF3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DriftAudioSdk;
+			productName = DriftAudioSdk;
+			productReference = 439CA5641A0B30C90027DFF3 /* libDriftAudioSdk.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		439CA55C1A0B30C90027DFF3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "wang3140@hotmail.com";
+				TargetAttributes = {
+					439CA5631A0B30C90027DFF3 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 439CA55F1A0B30C90027DFF3 /* Build configuration list for PBXProject "DriftAudioSdk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 439CA55B1A0B30C90027DFF3;
+			productRefGroup = 439CA5651A0B30C90027DFF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				439CA5631A0B30C90027DFF3 /* DriftAudioSdk */,
+				4379561A1A1C89D900462004 /* DriftAudioSdk_sim */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4379561B1A1C89D900462004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4379561C1A1C89D900462004 /* AppNotificationCenter.m in Sources */,
+				4379561D1A1C89D900462004 /* BaseTools.m in Sources */,
+				4379561E1A1C89D900462004 /* AFHTTPRequestOperation.m in Sources */,
+				4379561F1A1C89D900462004 /* DeviceHelper.m in Sources */,
+				437956201A1C89D900462004 /* RTChatSDKMain_Ios.mm in Sources */,
+				437956211A1C89D900462004 /* AFHTTPRequestOperationManager.m in Sources */,
+				43ACD98F1C7AF9B20067742A /* DriftAudioSdkBridge.cpp in Sources */,
+				437956221A1C89D900462004 /* AFNetworkReachabilityManager.m in Sources */,
+				437956231A1C89D900462004 /* AFURLResponseSerialization.m in Sources */,
+				4392CBEC1A5E886500CD0405 /* SBJson4StreamWriter.m in Sources */,
+				437956241A1C89D900462004 /* AFURLConnectionOperation.m in Sources */,
+				437956251A1C89D900462004 /* AppImages.m in Sources */,
+				437956261A1C89D900462004 /* PhotoAlbumsController.m in Sources */,
+				437956271A1C89D900462004 /* AFSecurityPolicy.m in Sources */,
+				4369110E1AA01DC300E9BFEE /* LocationHelper.m in Sources */,
+				4392CBD21A5E883000CD0405 /* ISRDataHelper.m in Sources */,
+				4392CBF01A5E886500CD0405 /* SBJson4Writer.m in Sources */,
+				437956281A1C89D900462004 /* LogicHelper.m in Sources */,
+				437956291A1C89D900462004 /* AppWidget.m in Sources */,
+				4379565D1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */,
+				4392CBE41A5E886500CD0405 /* SBJson4Parser.m in Sources */,
+				4392CBE61A5E886500CD0405 /* SBJson4StreamParser.m in Sources */,
+				4379562A1A1C89D900462004 /* AFHTTPSessionManager.m in Sources */,
+				4379565F1A1DC5BD00462004 /* wav.mm in Sources */,
+				4379562B1A1C89D900462004 /* MNCryptor.m in Sources */,
+				4379562C1A1C89D900462004 /* PhotoInPhoneCell.m in Sources */,
+				4379562D1A1C89D900462004 /* AppColors.m in Sources */,
+				4379562E1A1C89D900462004 /* AFURLRequestSerialization.m in Sources */,
+				4379562F1A1C89D900462004 /* PhotoAlbumCell.m in Sources */,
+				4392CBCE1A5E80CC00CD0405 /* SoundRecognize.mm in Sources */,
+				437956651A1DC5BE00462004 /* VoiceConverter.mm in Sources */,
+				437956321A1C89D900462004 /* AppVoiceManager.m in Sources */,
+				437956331A1C89D900462004 /* SoundObject.mm in Sources */,
+				437956341A1C89D900462004 /* KeyChainHelper.m in Sources */,
+				437956351A1C89D900462004 /* TestRootViewController.m in Sources */,
+				437956361A1C89D900462004 /* MNPresentDismissAnimation.m in Sources */,
+				437956371A1C89D900462004 /* AFURLSessionManager.m in Sources */,
+				4392CBEA1A5E886500CD0405 /* SBJson4StreamTokeniser.m in Sources */,
+				437956381A1C89D900462004 /* CmdHandler.m in Sources */,
+				4392CBE81A5E886500CD0405 /* SBJson4StreamParserState.m in Sources */,
+				437956391A1C89D900462004 /* MNCryptor+MD5.m in Sources */,
+				4379563A1A1C89D900462004 /* HttpProcess_Ios.mm in Sources */,
+				4379563B1A1C89D900462004 /* DataManager.m in Sources */,
+				4392CBEE1A5E886500CD0405 /* SBJson4StreamWriterState.m in Sources */,
+				4379563C1A1C89D900462004 /* PhotoInPhoneController.m in Sources */,
+				4379563D1A1C89D900462004 /* AppHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		439CA5601A0B30C90027DFF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43358EC31A24629E00DD301C /* VideoCamera.mm in Sources */,
+				43AE42871A10AA7F0017CFEB /* AppNotificationCenter.m in Sources */,
+				4392CBE91A5E886500CD0405 /* SBJson4StreamTokeniser.m in Sources */,
+				43AE42751A10A9410017CFEB /* BaseTools.m in Sources */,
+				4369110D1AA01DC300E9BFEE /* LocationHelper.m in Sources */,
+				4392CBEF1A5E886500CD0405 /* SBJson4Writer.m in Sources */,
+				439CA5BB1A0B33100027DFF3 /* AFHTTPRequestOperation.m in Sources */,
+				43AE42771A10A9410017CFEB /* DeviceHelper.m in Sources */,
+				439CA59F1A0B31310027DFF3 /* RTChatSDKMain_Ios.mm in Sources */,
+				4392CBD11A5E883000CD0405 /* ISRDataHelper.m in Sources */,
+				439CA5BC1A0B33100027DFF3 /* AFHTTPRequestOperationManager.m in Sources */,
+				439CA5BE1A0B33100027DFF3 /* AFNetworkReachabilityManager.m in Sources */,
+				439CA5C21A0B33100027DFF3 /* AFURLResponseSerialization.m in Sources */,
+				439CA5C01A0B33100027DFF3 /* AFURLConnectionOperation.m in Sources */,
+				43ACD98E1C7AF9B20067742A /* DriftAudioSdkBridge.cpp in Sources */,
+				43AE426F1A10A9410017CFEB /* AppImages.m in Sources */,
+				43AE42341A10A7E30017CFEB /* PhotoAlbumsController.m in Sources */,
+				4392CBEB1A5E886500CD0405 /* SBJson4StreamWriter.m in Sources */,
+				439CA5BF1A0B33100027DFF3 /* AFSecurityPolicy.m in Sources */,
+				43AE427B1A10A9410017CFEB /* LogicHelper.m in Sources */,
+				43AE42731A10A9410017CFEB /* AppWidget.m in Sources */,
+				4379565C1A1DC5BD00462004 /* amrFileCodec_Ios.mm in Sources */,
+				439CA5BD1A0B33100027DFF3 /* AFHTTPSessionManager.m in Sources */,
+				4392CBE31A5E886500CD0405 /* SBJson4Parser.m in Sources */,
+				4379565E1A1DC5BD00462004 /* wav.mm in Sources */,
+				4392CBE51A5E886500CD0405 /* SBJson4StreamParser.m in Sources */,
+				43AE427F1A10A9410017CFEB /* MNCryptor.m in Sources */,
+				4392CBE71A5E886500CD0405 /* SBJson4StreamParserState.m in Sources */,
+				43AE41C61A10950D0017CFEB /* PhotoInPhoneCell.m in Sources */,
+				43AE426B1A10A9410017CFEB /* AppColors.m in Sources */,
+				439CA5C11A0B33100027DFF3 /* AFURLRequestSerialization.m in Sources */,
+				43AE42521A10A9060017CFEB /* PhotoAlbumCell.m in Sources */,
+				437956641A1DC5BE00462004 /* VoiceConverter.mm in Sources */,
+				43ACDC071C7C5F100067742A /* DriftAudioSdkManager.cpp in Sources */,
+				43AE42711A10A9410017CFEB /* AppVoiceManager.m in Sources */,
+				4392CBCD1A5E80CC00CD0405 /* SoundRecognize.mm in Sources */,
+				439CA5CB1A0B55FF0027DFF3 /* SoundObject.mm in Sources */,
+				43AE42791A10A9410017CFEB /* KeyChainHelper.m in Sources */,
+				43AE42971A10D8F00017CFEB /* TestRootViewController.m in Sources */,
+				43AE42831A10A9920017CFEB /* MNPresentDismissAnimation.m in Sources */,
+				439CA5C31A0B33100027DFF3 /* AFURLSessionManager.m in Sources */,
+				439CA5A61A0B32B30027DFF3 /* CmdHandler.m in Sources */,
+				43AE427D1A10A9410017CFEB /* MNCryptor+MD5.m in Sources */,
+				439CA5A31A0B31F30027DFF3 /* HttpProcess_Ios.mm in Sources */,
+				43AE42931A10C7570017CFEB /* DataManager.m in Sources */,
+				43AE41C31A1093490017CFEB /* PhotoInPhoneController.m in Sources */,
+				4392CBED1A5E886500CD0405 /* SBJson4StreamWriterState.m in Sources */,
+				43AE426D1A10A9410017CFEB /* AppHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		437956451A1C89D900462004 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/VoiceConvert/lib",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei/sunflower",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DriftAudioSdk_sim;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		437956461A1C89D900462004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/VoiceConvert/lib",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei/sunflower",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DriftAudioSdk_sim;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+		439CA5761A0B30C90027DFF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		439CA5771A0B30C90027DFF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		439CA5791A0B30C90027DFF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LD_NO_PIE = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/VoiceConvert/lib",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei/sunflower",
+				);
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		439CA57A1A0B30C90027DFF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LD_NO_PIE = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/lame",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/amr_codec",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/VoiceConvert/lib",
+					"$(PROJECT_DIR)/DriftAudioSdk/Classes/xunfei/sunflower",
+				);
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		437956441A1C89D900462004 /* Build configuration list for PBXNativeTarget "DriftAudioSdk_sim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				437956451A1C89D900462004 /* Debug */,
+				437956461A1C89D900462004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		439CA55F1A0B30C90027DFF3 /* Build configuration list for PBXProject "DriftAudioSdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				439CA5761A0B30C90027DFF3 /* Debug */,
+				439CA5771A0B30C90027DFF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		439CA5781A0B30C90027DFF3 /* Build configuration list for PBXNativeTarget "DriftAudioSdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				439CA5791A0B30C90027DFF3 /* Debug */,
+				439CA57A1A0B30C90027DFF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 439CA55C1A0B30C90027DFF3 /* Project object */;
+}
