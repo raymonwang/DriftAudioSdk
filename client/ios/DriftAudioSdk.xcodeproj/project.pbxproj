@@ -95,7 +95,6 @@
 		439CA5D61A0B7C870027DFF3 /* RTChatSdk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */; };
 		43ACD98E1C7AF9B20067742A /* DriftAudioSdkBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43ACD98C1C7AF9B20067742A /* DriftAudioSdkBridge.cpp */; };
 		43ACD98F1C7AF9B20067742A /* DriftAudioSdkBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43ACD98C1C7AF9B20067742A /* DriftAudioSdkBridge.cpp */; };
-		43ACDC071C7C5F100067742A /* DriftAudioSdkManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43ACDC051C7C5F100067742A /* DriftAudioSdkManager.cpp */; };
 		43AE41C31A1093490017CFEB /* PhotoInPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C21A1093490017CFEB /* PhotoInPhoneController.m */; };
 		43AE41C61A10950D0017CFEB /* PhotoInPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE41C51A10950D0017CFEB /* PhotoInPhoneCell.m */; };
 		43AE42341A10A7E30017CFEB /* PhotoAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42331A10A7E30017CFEB /* PhotoAlbumsController.m */; };
@@ -115,6 +114,7 @@
 		43AE42871A10AA7F0017CFEB /* AppNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42861A10AA7F0017CFEB /* AppNotificationCenter.m */; };
 		43AE42931A10C7570017CFEB /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42921A10C7570017CFEB /* DataManager.m */; };
 		43AE42971A10D8F00017CFEB /* TestRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE42961A10D8F00017CFEB /* TestRootViewController.m */; };
+		43D445521CF874B8002CD00E /* DriftAudioSdkManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43D445501CF874B8002CD00E /* DriftAudioSdkManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -218,8 +218,6 @@
 		439CA5CA1A0B55FF0027DFF3 /* SoundObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundObject.mm; sourceTree = "<group>"; };
 		439CA5D51A0B7C4D0027DFF3 /* RTChatSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSdk.h; sourceTree = "<group>"; };
 		43ACD98C1C7AF9B20067742A /* DriftAudioSdkBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DriftAudioSdkBridge.cpp; path = helper/DriftAudioSdkBridge.cpp; sourceTree = "<group>"; };
-		43ACDC051C7C5F100067742A /* DriftAudioSdkManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DriftAudioSdkManager.cpp; sourceTree = "<group>"; };
-		43ACDC061C7C5F100067742A /* DriftAudioSdkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriftAudioSdkManager.h; sourceTree = "<group>"; };
 		43AE41BB1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DriftAudioSdkCocos2dxHelper.cpp; path = helper/DriftAudioSdkCocos2dxHelper.cpp; sourceTree = "<group>"; };
 		43AE41BC1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriftAudioSdkCocos2dxHelper.h; path = helper/DriftAudioSdkCocos2dxHelper.h; sourceTree = "<group>"; };
 		43AE41BF1A1091FC0017CFEB /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -261,6 +259,8 @@
 		43AE42921A10C7570017CFEB /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		43AE42951A10D8F00017CFEB /* TestRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRootViewController.h; sourceTree = "<group>"; };
 		43AE42961A10D8F00017CFEB /* TestRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRootViewController.m; sourceTree = "<group>"; };
+		43D445501CF874B8002CD00E /* DriftAudioSdkManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DriftAudioSdkManager.cpp; path = Helper/DriftAudioSdkManager.cpp; sourceTree = "<group>"; };
+		43D445511CF874B8002CD00E /* DriftAudioSdkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriftAudioSdkManager.h; path = Helper/DriftAudioSdkManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,7 +425,7 @@
 				4392CBC21A5E79C600CD0405 /* xunfei */,
 				4379564B1A1DC5BD00462004 /* VoiceConvert */,
 				43AE41C01A10931C0017CFEB /* PhotoModel */,
-				43AE41BA1A106C720017CFEB /* cocos2dx */,
+				43AE41BA1A106C720017CFEB /* Helper */,
 				439CA5C51A0B55ED0027DFF3 /* lame */,
 				439CA5A71A0B33100027DFF3 /* AFNetworking */,
 				439CA5A41A0B32B30027DFF3 /* CmdHandler.h */,
@@ -484,18 +484,18 @@
 			path = lame;
 			sourceTree = "<group>";
 		};
-		43AE41BA1A106C720017CFEB /* cocos2dx */ = {
+		43AE41BA1A106C720017CFEB /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				43D445501CF874B8002CD00E /* DriftAudioSdkManager.cpp */,
+				43D445511CF874B8002CD00E /* DriftAudioSdkManager.h */,
 				436911121AA08A7500E9BFEE /* RTChatSdkAndroidIpml.cpp */,
 				436911131AA08A7500E9BFEE /* RTChatSdkAndroidIpml.h */,
 				43AE41BB1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.cpp */,
 				43AE41BC1A106CB10017CFEB /* DriftAudioSdkCocos2dxHelper.h */,
 				43ACD98C1C7AF9B20067742A /* DriftAudioSdkBridge.cpp */,
-				43ACDC051C7C5F100067742A /* DriftAudioSdkManager.cpp */,
-				43ACDC061C7C5F100067742A /* DriftAudioSdkManager.h */,
 			);
-			name = cocos2dx;
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		43AE41BE1A1091D50017CFEB /* Resources */ = {
@@ -728,7 +728,7 @@
 				439CA5C11A0B33100027DFF3 /* AFURLRequestSerialization.m in Sources */,
 				43AE42521A10A9060017CFEB /* PhotoAlbumCell.m in Sources */,
 				437956641A1DC5BE00462004 /* VoiceConverter.mm in Sources */,
-				43ACDC071C7C5F100067742A /* DriftAudioSdkManager.cpp in Sources */,
+				43D445521CF874B8002CD00E /* DriftAudioSdkManager.cpp in Sources */,
 				43AE42711A10A9410017CFEB /* AppVoiceManager.m in Sources */,
 				4392CBCD1A5E80CC00CD0405 /* SoundRecognize.mm in Sources */,
 				439CA5CB1A0B55FF0027DFF3 /* SoundObject.mm in Sources */,
