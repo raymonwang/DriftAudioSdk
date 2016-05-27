@@ -60,11 +60,7 @@ public class MainActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         
         switch (requestCode) {
-            case 1: // 拍照
-                if (resultCode == Activity.RESULT_OK) {
-                    //startPhotoZoom(Uri.parse(IMAGE_FILE_LOCATION + IMAGE_FILE_NAME));
-                }
-                break;
+            
             case 2: // 相册
             	GameAvatar.GetIntance(MainActivity.this).takePictureFromAlbumsResult(data);
                 break;

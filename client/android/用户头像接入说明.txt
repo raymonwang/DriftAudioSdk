@@ -11,16 +11,12 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         
         switch (requestCode) {
-            case 1: // ≈ƒ’’
-                if (resultCode == Activity.RESULT_OK) {
-                    //startPhotoZoom(Uri.parse(IMAGE_FILE_LOCATION + IMAGE_FILE_NAME));
-                }
-                break;
+            
             case 2: // œ‡≤·
-            	GameAvatar.GetIntance(UnityPlayerActivity.this).takePictureFromAlbumsResult(data);
+            	GameAvatar.GetIntance(MainActivity.this).takePictureFromAlbumsResult(data);
                 break;
             case 3:
-            	GameAvatar.GetIntance(UnityPlayerActivity.this).zoomPicureResult(data);
+            	GameAvatar.GetIntance(MainActivity.this).zoomPicureResult(data);
                 break;
         }
     }
