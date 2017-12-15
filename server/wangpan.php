@@ -1,5 +1,11 @@
 <?php
-define('UPLOAD_DIR',dirname(__FILE__).DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR);
+
+ini_set('date.timezone','PRC');
+
+$upload_dir = isset($_GET['persis']) && $_GET['persis']==1?"persis":"upload";
+
+define('UPLOAD_DIR',dirname(__FILE__).DIRECTORY_SEPARATOR.$upload_dir.DIRECTORY_SEPARATOR);
+
 /*检查和建立上传文件夹的逻辑*/
 if(!file_exists(UPLOAD_DIR))
 {
@@ -22,5 +28,5 @@ if ($_FILES["file"]["error"]>0) {
         echo "Error:".$_FILES["file"]["error"]."<br/>";
 } else {
         move_uploaded_file($_FILES["file"]["tmp_name"],UPLOAD_DIR.$dest_file);
-        echo 'http://'.$_SERVER['HTTP_HOST'].'/upload/'.str_replace(DIRECTORY_SEPARATOR, '/', $dest_file);
+        echo 'http://'.$_SERVER['HTTP_HOST']."/{$upload_dir}/".str_replace(DIRECTORY_SEPARATOR, '/', $dest_file);
 }
